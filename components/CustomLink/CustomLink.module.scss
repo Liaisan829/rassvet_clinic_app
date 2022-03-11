@@ -1,0 +1,6 @@
+@import "styles/mixins";
+
+.link {
+  @include bold-text;
+  margin-right: 23px;
+}

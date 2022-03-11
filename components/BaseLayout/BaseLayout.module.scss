@@ -1,0 +1,55 @@
+@import "styles/mixins";
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.hr {
+  background-color: $c-light-gray;
+}
+
+.headerTop {
+  display: flex;
+  margin-left: 410px; //по другому пока не прижимается к правому краю
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    @include regular-text;
+  }
+
+  a {
+    color: $c-black;
+  }
+}
+
+.header {
+  border-bottom: 3px solid $c-light-gray;
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.main {
+  margin-top: 75px;
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
