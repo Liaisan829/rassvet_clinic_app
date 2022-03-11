@@ -1,10 +1,11 @@
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
+import {Slider} from "../components/Slider/Slider";
 
 const MainPage = () => {
   return (
       <>
           <BaseLayout title={"Главная страница"}>
-              Главная страница
+              <Slider/>
           </BaseLayout>
       </>
   )
