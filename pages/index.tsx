@@ -5,6 +5,7 @@ import Image from "next/image";
 import heart from '../public/heart.svg';
 import sun from '../public/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
+import map from '../public/map.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
@@ -76,6 +77,27 @@ const MainPage = () => {
                             fullName={"Федор Катасонов"}
                             text={"Лучшее, что случилось со мной за последнее время в плане медицины. Удобное расположение, сверхпрофессиональные врачи, качественное лечение (даже таких беспокойных пациентов, как я). Узнал об организме много нового, обрадовался. Лишние услуги не навязывают, ненужные приемы не назначают, цена абсолютно адекватна. Рекомендую!"}
                         />
+                    </div>
+                </section>
+
+                <section className={styles.address}>
+                    <h1>Адрес клиники</h1>
+                    <div className={styles.address__info}>
+                        <Image src={map} width={650} height={520}/>
+                        <div className={styles.address__info__text}>
+                            <div>
+                                <h6>Москва</h6>
+                                <p>Столярный переулок, дом 3, корпус 2</p>
+                            </div>
+                            <div>
+                                <h6>Телефон</h6>
+                                <p>+7 (499) 116-66-73</p>
+                            </div>
+                            <div>
+                                <h6>Время работы</h6>
+                                <p>С 8:00 до 21:00 без выходных</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </BaseLayout>
