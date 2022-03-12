@@ -1,0 +1,32 @@
+@import "mixins";
+
+.healthCare {
+  background: $c-light-gray;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin-top: -20px;
+    p {
+      margin-left: 10px;
+    }
+  }
+}
+
+.legendaryDoctors {
+  margin-bottom: 20px;
+  &__description {
+    display: flex;
+    flex-direction: row;
+    &__item {
+      display: flex;
+      flex-direction: row;
+      margin-left: 45px;
+      margin-top: -8px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+}

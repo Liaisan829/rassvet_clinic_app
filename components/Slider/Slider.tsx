@@ -14,11 +14,9 @@ export const Slider = () => {
             <div className="slider">
                 <div className="navigation">
                     <div className="swiper-button-prev-custom">
-                        {/*<Icon name="prev-arrow" width={24} height={24}/>*/}
                         <Image src={prevArrow} width={24} height={24}/>
                     </div>
                     <div className="swiper-button-next-custom">
-                        {/*<Icon name="next-arrow" width={24} height={24}/>*/}
                         <Image src={nextArrow} width={24} height={24}/>
                     </div>
                 </div>

@@ -50,7 +50,12 @@
 
 .main {
   margin-top: 20px;
-
+  h1 {
+    @include header-text;
+  }
+  p {
+    @include average-text;
+  }
   &__container {
     max-width: 1200px;
     width: 100%;

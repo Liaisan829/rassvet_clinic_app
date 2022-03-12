@@ -14,7 +14,7 @@ a {
   box-sizing: border-box;
 }
 
-h1, p{
-  margin: 0 auto;
+h6 {
+  margin: 0;
 }
 

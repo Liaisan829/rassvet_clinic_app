@@ -1,4 +1,5 @@
-@import "../../styles/mixins";
+@import "styles/mixins";
+
 .slider {
   width: 1200px;
   .navigation {
@@ -6,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    top: 280px;
+    top: 200px;
     z-index: 10;
     cursor: pointer;
   }
@@ -26,14 +27,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -22px;
+  margin-left: -10px;
 }
 
 .swiper-button-next-custom {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: -22px;
+  margin-right: -10px;
 }
 
 .swiper-button-prev-custom.swiper-button-disabled,
@@ -56,17 +57,4 @@
     font-size: 50px;
     font-weight: bold;
   }
-}
-
-.slide1 {
-  background: url("../../public/slider/slide1.svg");
-}
-.slide2 {
-  background: url("../../public/slider/slide2.svg");
-}
-.slide3 {
-  background: url("../../public/slider/slide3.svg");
-}
-.slide4 {
-  background: url("../../public/slider/slide4.svg");
 }
