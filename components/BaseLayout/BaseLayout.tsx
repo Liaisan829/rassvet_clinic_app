@@ -1,14 +1,21 @@
 import Link from "next/link";
+import Head from "next/head";
 import {FC, ReactNode} from "react";
-import {CustomLink} from "../ui/CustomLink/CustomLink";
 import Image from "next/image";
+import {CustomLink} from "../ui/CustomLink/CustomLink";
+import { Button } from "../ui/Button/Button";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
 import location from '../../public/header/location.svg';
+import vk from '../../public/vk.svg';
+import facebook from '../../public/facebook.svg';
+import instagram from '../../public/instagram.svg';
+import youtube from '../../public/youtube.svg';
+import visa from '../../public/visa.svg';
+import mastercard from '../../public/mastercard.svg';
+import mir from '../../public/mir.svg';
 import styles from './BaseLayout.module.scss';
-import { Button } from "../ui/Button/Button";
-import Head from "next/head";
 
 interface Props {
     children: ReactNode;
@@ -72,6 +79,51 @@ export const BaseLayout:FC<Props> = ({children, title}) => {
                     {children}
                 </section>
             </main>
+
+            <footer className={styles.footer}>
+                <section className={`${styles.container} ${styles.footer__desc}`}>
+                    <div className={styles.footer__contacts}>
+                        <div className={styles.footer__contacts__item}>
+                            <Image src={phone} width={24} height={24} />
+                            <a href="tel:+7 (499) 116-66-73">+7 (499) 116-66-73</a>
+                        </div>
+
+                        <div className={styles.footer__contacts__item}>
+                            <Image src={email} width={24} height={24} />
+                            <a href="mailto:management@klinikarassvet.ru">management@klinikarassvet.ru</a>
+                        </div>
+
+                        <div className={styles.footer__contacts__item}>
+                            <Image src={location} width={24} height={24} />
+                            <a>Москва, Столярный переулок, дом 3, корпус 2</a>
+                        </div>
+                    </div>
+
+                    <div className={styles.footer__info}>
+                        <div className={styles.footer__info__block}>
+                            <h2>Мы в соцсетях</h2>
+                            <div className={styles.footer__info__block__icons}>
+                                <Image src={vk} width={50} height={50}/>
+                                <Image src={facebook} width={50} height={50}/>
+                                <Image src={instagram} width={50} height={50}/>
+                                <Image src={youtube} width={40} height={40}/>
+                            </div>
+                        </div>
+                        <div className={styles.footer__block}>
+                            <h2>Мы принимаем к оплате</h2>
+                            <div className={`${styles.footer__info__block__icons} ${styles.footer__info__block__payment}`}>
+                                <Image src={visa} width={80} height={80}/>
+                                <Image src={mastercard} width={80} height={80}/>
+                                <Image src={mir} width={80} height={80}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p>© 2022 Клиника “Рассвет”</p>
+                    </div>
+                </section>
+            </footer>
         </>
     )
 }

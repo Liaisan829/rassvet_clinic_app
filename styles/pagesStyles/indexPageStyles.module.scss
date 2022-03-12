@@ -49,3 +49,25 @@
     justify-content: space-between;
   }
 }
+
+.address {
+  margin-top: 60px;
+  &__info {
+    display: flex;
+    flex-direction: row;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 140px;
+    }
+  }
+  h6 {
+    @include regular-text;
+    font-weight: bold;
+    color: $c-gray;
+  }
+  p {
+    @include small-text;
+  }
+}
