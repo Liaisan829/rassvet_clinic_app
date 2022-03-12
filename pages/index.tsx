@@ -1,14 +1,14 @@
 /* eslint-disable */
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
+import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
+import {CardReview} from "../components/Card/CardReview/CardReview";
 import Image from "next/image";
 import heart from '../public/heart.svg';
-import sun from '../public/sun.svg';
+import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import map from '../public/map.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
-import {CardReview} from "../components/Card/CardReview/CardReview";
 
 const MainPage = () => {
     return (
@@ -64,7 +64,7 @@ const MainPage = () => {
                 <section className={styles.reviews}>
                     <div className={styles.reviews__title}>
                         <h1>Отзывы</h1>
-                        <p>Все отзывы</p>
+                        <h5>Все отзывы</h5>
                     </div>
                     <div className={styles.reviews__item}>
                         <CardReview
@@ -85,15 +85,15 @@ const MainPage = () => {
                     <div className={styles.address__info}>
                         <Image src={map} width={650} height={520}/>
                         <div className={styles.address__info__text}>
-                            <div>
+                            <div className={styles.address__info__text__item}>
                                 <h6>Москва</h6>
                                 <p>Столярный переулок, дом 3, корпус 2</p>
                             </div>
-                            <div>
+                            <div className={styles.address__info__text__item}>
                                 <h6>Телефон</h6>
                                 <p>+7 (499) 116-66-73</p>
                             </div>
-                            <div>
+                            <div className={styles.address__info__text__item}>
                                 <h6>Время работы</h6>
                                 <p>С 8:00 до 21:00 без выходных</p>
                             </div>

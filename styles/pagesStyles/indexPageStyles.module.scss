@@ -2,38 +2,50 @@
 
 .healthCare {
   background: $c-light-gray;
-  margin-top: 20px;
+  margin-top: 60px;
   &__item {
     display: flex;
     flex-direction: row;
-    margin-top: -20px;
+    margin-bottom: 15px;
     p {
+      @include average-text;
       margin-left: 10px;
     }
+  }
+  h1 {
+    margin-bottom: 20px;
   }
 }
 
 .legendaryDoctors {
-  margin-bottom: 20px;
+  margin-top: 60px;
   &__description {
     display: flex;
     flex-direction: row;
     &__item {
       display: flex;
       flex-direction: row;
+      align-items: center;
       margin-left: 45px;
-      margin-top: -8px;
+      margin-bottom: 15px;
+      p {
+        @include average-text;
+        margin-left: 10px;
+      }
     }
   }
   &__list {
     display: flex;
     flex-direction: column;
   }
+  h1 {
+    margin-bottom: 20px;
+  }
 }
 
 .reviews {
-  margin-top: 40px;
-  p {
+  margin-top: 60px;
+  h5 {
     @include regular-text;
     color: $c-orange;
   }
@@ -48,6 +60,9 @@
     flex-direction: row;
     justify-content: space-between;
   }
+  h1 {
+    margin-bottom: 20px;
+  }
 }
 
 .address {
@@ -55,19 +70,25 @@
   &__info {
     display: flex;
     flex-direction: row;
-
     &__text {
       display: flex;
       flex-direction: column;
       margin-left: 140px;
+      &__item {
+        margin-bottom:20px;
+      }
     }
   }
   h6 {
     @include regular-text;
     font-weight: bold;
     color: $c-gray;
+    margin-bottom: 10px;
   }
   p {
     @include small-text;
+  }
+  h1 {
+    margin-bottom: 20px;
   }
 }

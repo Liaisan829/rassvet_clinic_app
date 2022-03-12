@@ -11,7 +11,7 @@
     @include bold-text;
   }
   p {
-    @include regular-text;
+    @include small-text;
     line-height: 20px;
   }
   h6 {
