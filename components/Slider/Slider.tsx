@@ -1,33 +1,17 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Navigation, Lazy} from "swiper";
-import Image from "next/image";
-import prevArrow from '../../public/slider/prev-arrow.svg';
-import nextArrow from '../../public/slider/next-arrow.svg';
+import SwiperCore, {Navigation, Lazy, Autoplay} from "swiper";
 
 export const Slider = () => {
 
     SwiperCore.use([Navigation]);
-    SwiperCore.use([Lazy]); //это для автомат.листания слайдов, которое потом мб сделаем
+    SwiperCore.use([Autoplay]);
 
     return (
         <>
             <div className="slider">
-                <div className="navigation">
-                    <div className="swiper-button-prev-custom">
-                        <Image src={prevArrow} width={24} height={24}/>
-                    </div>
-                    <div className="swiper-button-next-custom">
-                        <Image src={nextArrow} width={24} height={24}/>
-                    </div>
-                </div>
-
                 <Swiper
-                    navigation={{
-                        prevEl: ".swiper-button-prev-custom",
-                        nextEl: ".swiper-button-next-custom"
-                    }}
                     loop={true}
-                    lazy={true}
+                    autoplay={true}
                     slidesPerView={1}
                     onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}
