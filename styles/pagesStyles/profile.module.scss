@@ -1,0 +1,31 @@
+@import "../mixins";
+
+.profile {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px $c-dark-gray solid;
+  border-radius: 20px;
+  float: left;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
+.visits {
+  background-color: $c-light-yellow;
+  margin-top: 75px;
+  margin-left: 400px;
+
+  &__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,14 +1,14 @@
 import Link from "next/link";
 import {FC, ReactNode} from "react";
 import {CustomLink} from "../ui/CustomLink/CustomLink";
+import Head from "next/head";
 import Image from "next/image";
+import { Button } from "../ui/Button/Button";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
 import location from '../../public/header/location.svg';
 import styles from './BaseLayout.module.scss';
-import { Button } from "../ui/Button/Button";
-import Head from "next/head";
 
 interface Props {
     children: ReactNode;
