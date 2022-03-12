@@ -1,35 +1,35 @@
 @import "colors";
 
-@mixin regular-style{
+@mixin regular-style {
   font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: normal;
   color: $c-black;
 }
 
-@mixin header-text{
+@mixin header-text {
   @include regular-style;
   font-size: 40px;
   font-weight: 400;
 }
 
-@mixin average-text{
+@mixin average-text {
   @include regular-style;
   font-size: 20px;
 }
 
-@mixin bold-text{
+@mixin bold-text {
   @include regular-style;
   font-size: 18px;
   font-weight: bold;
 }
 
-@mixin small-text{
+@mixin small-text {
   @include regular-style;
   font-size: 16px;
 }
 
-@mixin regular-text{
+@mixin regular-text {
   @include regular-style;
   font-size: 14px;
 }

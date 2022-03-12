@@ -15,7 +15,8 @@
 
 .headerTop {
   display: flex;
-  margin-left: 380px; //по другому пока не прижимается к правому краю
+  justify-content: flex-end;
+  flex: 1;
 
   &__item {
     display: flex;
@@ -50,12 +51,15 @@
 
 .main {
   margin-top: 20px;
+
   h1 {
     @include header-text;
   }
+
   p {
     @include average-text;
   }
+
   &__container {
     max-width: 1200px;
     width: 100%;

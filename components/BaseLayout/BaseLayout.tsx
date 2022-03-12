@@ -3,7 +3,7 @@ import {FC, ReactNode} from "react";
 import {CustomLink} from "../ui/CustomLink/CustomLink";
 import Head from "next/head";
 import Image from "next/image";
-import { Button } from "../ui/Button/Button";
+import {Button} from "../ui/Button/Button";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
@@ -15,31 +15,32 @@ interface Props {
     title: string
 }
 
-const onButtonClick = () => {}
+const onButtonClick = () => {
+}
 
-export const BaseLayout:FC<Props> = ({children, title}) => {
+export const BaseLayout: FC<Props> = ({children, title}) => {
     return (
         <>
             <Head>
                 <title>{title} | Клиника Рассвет</title>
                 {/*туть потом надо сделать др картинку*/}
-                <link rel="icon" href={"/header/logo.svg"} />
+                <link rel="icon" href={"/header/logo.svg"}/>
             </Head>
             <header className={styles.hr}>
                 <section className={styles.container}>
                     <div className={styles.headerTop}>
                         <div className={styles.headerTop__item}>
-                            <Image src={phone} width={24} height={24} />
+                            <Image src={phone} width={24} height={24}/>
                             <a href="tel:+7 (499) 116-66-73">+7 (499) 116-66-73</a>
                         </div>
 
                         <div className={styles.headerTop__item}>
-                            <Image src={email} width={24} height={24} />
+                            <Image src={email} width={24} height={24}/>
                             <a href="mailto:management@klinikarassvet.ru">management@klinikarassvet.ru</a>
                         </div>
 
                         <div className={styles.headerTop__item}>
-                            <Image src={location} width={24} height={24} />
+                            <Image src={location} width={24} height={24}/>
                             <a>Москва, Столярный переулок, дом 3, корпус 2</a>
                         </div>
                     </div>

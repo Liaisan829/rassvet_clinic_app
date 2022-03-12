@@ -23,7 +23,7 @@ const Profile = () => {
                 <h1>Записи на прием</h1>
                 <div className={styles.visits__info}>
                     <Image src={apply_note} width={200} height={200}/>
-                    <p>Здесь будут записи на предстоящие записи</p>
+                    <p>Здесь будут записи на предстоящие приемы</p>
                 </div>
             </div>
 
