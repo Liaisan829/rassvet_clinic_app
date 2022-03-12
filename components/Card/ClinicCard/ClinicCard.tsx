@@ -14,18 +14,22 @@ export const ClinicCard: FC<CardProps> = ({img, title}) => {
     return (
         <>
             <div className={styles.card}>
-                <Image src={img} width={285} height={165}/>
+                <Link href={`/adultClinic/${title}`}>
+                    <Image src={img} width={285} height={165}/>
+                </Link>
+
                 <div className={styles.card__bottom}>
                     <Link href={`/adultClinic/${title}`}>
+
                         <p>{title}</p>
                     </Link>
                 </div>
             </div>
         </>
     );
-}
+};
 
-//missing key
+// missing key
 // const[adultCards, setAdultCards] = useState([
 //     <ClinicCard img={therapy} title="Терапия"/>,
 //     <ClinicCard img={cardiology} title="Кардиология"/>,

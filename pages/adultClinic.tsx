@@ -1,6 +1,5 @@
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {ClinicCard} from "../components/Card/ClinicCard/ClinicCard";
-
 import therapy from "../public/adultClinic/therapy.svg";
 import cardiology from "../public/adultClinic/cardiology.svg";
 import dermatology from "../public/adultClinic/dermatology.svg";
@@ -9,7 +8,6 @@ import psicology from "../public/adultClinic/psicology.svg";
 import revmatology from "../public/adultClinic/revmatology.svg";
 import ultrasound from "../public/adultClinic/ultrasound.svg";
 import endoscopia from "../public/adultClinic/endoscopia.svg";
-
 import styles from "../styles/pagesStyles/adultClinic.module.scss";
 
 const AdultClinic = () => {

@@ -2,14 +2,14 @@
 
 .card{
   border: 1px solid $c-light-gray;
+  cursor: pointer;
 
   p{
     cursor: pointer;
   }
 
 
-  &__title{
-    @include average-text();
+  &__bottom{
     margin: 8px auto 10px 20px;
   }
 }
