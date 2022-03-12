@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import styles from "./Card.module.scss";
+import styles from "./CardSlider.module.scss";
 
 interface CardProps {
     img: any,
@@ -9,7 +9,7 @@ interface CardProps {
     price: string
 }
 
-export const Card: FC<CardProps> = (props) => {
+export const CardSlider: FC<CardProps> = (props) => {
 
     return (
         <>

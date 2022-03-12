@@ -1,5 +1,5 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Navigation, Lazy, Autoplay} from "swiper";
+import SwiperCore, {Navigation, Autoplay} from "swiper";
 
 export const Slider = () => {
 

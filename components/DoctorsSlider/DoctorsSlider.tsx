@@ -1,7 +1,7 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Navigation, Lazy} from "swiper";
 import Image from "next/image";
-import {Card} from "../Card/Card";
+import {CardSlider} from "../Card/CardSlider/CardSlider";
 import prevArrow from '../../public/slider/prev-arrow.svg';
 import nextArrow from '../../public/slider/next-arrow.svg';
 import doc1 from '../../public/doctorsSlider/doc1.svg';
@@ -40,7 +40,7 @@ export const DoctorsSlider = () => {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc1}
                             fullName={"Тарасова Анна Константиновна"}
                             speciality={"Ревматолог, терапевт"}
@@ -48,7 +48,7 @@ export const DoctorsSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc2}
                             fullName={"Головенко Алексей Олегович"}
                             speciality={"Гастроэнтеролог"}
@@ -56,7 +56,7 @@ export const DoctorsSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc3}
                             fullName={"Рамеева Анна Сергеевна"}
                             speciality={"Терапевт"}
@@ -64,7 +64,7 @@ export const DoctorsSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc4}
                             fullName={"Охотин Андрей Николаевич"}
                             speciality={"Стоматолог"}
@@ -72,7 +72,7 @@ export const DoctorsSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc5}
                             fullName={"Наумова Наталья Андреевна"}
                             speciality={"Кардиолог"}
@@ -80,7 +80,7 @@ export const DoctorsSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Card
+                        <CardSlider
                             img={doc6}
                             fullName={"Латышев Александр Васильевич"}
                             speciality={"Хирург"}

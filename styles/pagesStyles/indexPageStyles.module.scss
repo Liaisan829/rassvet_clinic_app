@@ -1,4 +1,4 @@
-@import "mixins";
+@import "styles/mixins";
 
 .healthCare {
   background: $c-light-gray;
@@ -28,5 +28,24 @@
   &__list {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.reviews {
+  margin-top: 40px;
+  p {
+    @include regular-text;
+    color: $c-orange;
+  }
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

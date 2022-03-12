@@ -3,22 +3,20 @@
 .section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  &__info {
-    margin: 0 auto;
-    text-align: center;
-  }
+  border: 1px solid $c-gray;
+  border-radius: 8px;
+  padding: 60px;
+  width: 580px;
   h4 {
     @include bold-text;
   }
   p {
     @include regular-text;
-    font-weight: bold;
-    color: $c-gray;
+    line-height: 20px;
   }
   h6 {
-    @include small-text;
+    @include regular-text;
     font-weight: bold;
-    color: $c-dark-gray;
+    color: $c-gray;
   }
 }

@@ -5,8 +5,9 @@ import Image from "next/image";
 import heart from '../public/heart.svg';
 import sun from '../public/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
-import styles from '../styles/indexPageStyles.module.scss';
+import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
+import {CardReview} from "../components/Card/CardReview/CardReview";
 
 const MainPage = () => {
     return (
@@ -58,6 +59,25 @@ const MainPage = () => {
                 </section>
 
                 <DoctorsSlider/>
+
+                <section className={styles.reviews}>
+                    <div className={styles.reviews__title}>
+                        <h1>Отзывы</h1>
+                        <p>Все отзывы</p>
+                    </div>
+                    <div className={styles.reviews__item}>
+                        <CardReview
+                            date={"17 ноября  2021"}
+                            fullName={"Александр Иванов"}
+                            text={"Спасибо вам за клинику, были с женой в субботу у кардиолога, вышли счастливые и вдохновлённые, доктор оценила риски, осмотрела, рассказала, сняла мою тревожность! Спасибо что вы теперь есть у нас пациентов!"}
+                        />
+                        <CardReview
+                            date={"15 февраля  2022"}
+                            fullName={"Федор Катасонов"}
+                            text={"Лучшее, что случилось со мной за последнее время в плане медицины. Удобное расположение, сверхпрофессиональные врачи, качественное лечение (даже таких беспокойных пациентов, как я). Узнал об организме много нового, обрадовался. Лишние услуги не навязывают, ненужные приемы не назначают, цена абсолютно адекватна. Рекомендую!"}
+                        />
+                    </div>
+                </section>
             </BaseLayout>
         </>
     )
