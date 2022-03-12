@@ -9,6 +9,7 @@ import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import map from '../public/map.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import AddressMap from "../components/yandexMap/AddressMap";
 
 const MainPage = () => {
     return (
@@ -83,7 +84,8 @@ const MainPage = () => {
                 <section className={styles.address}>
                     <h1>Адрес клиники</h1>
                     <div className={styles.address__info}>
-                        <Image src={map} width={650} height={520}/>
+                        {/*<Image src={map} width={650} height={520}/>*/}
+                        <AddressMap/>
                         <div className={styles.address__info__text}>
                             <div className={styles.address__info__text__item}>
                                 <h6>Москва</h6>
