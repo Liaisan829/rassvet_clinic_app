@@ -1,8 +1,8 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Navigation, Lazy} from "swiper";
 import Image from "next/image";
-import prevArrow from '../../public/prev-arrow.svg';
-import nextArrow from '../../public/next-arrow.svg';
+import prevArrow from '../../public/slider/prev-arrow.svg';
+import nextArrow from '../../public/slider/next-arrow.svg';
 
 export const Slider = () => {
 

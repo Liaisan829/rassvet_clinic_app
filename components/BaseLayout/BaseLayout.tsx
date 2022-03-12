@@ -2,7 +2,10 @@ import Link from "next/link";
 import {FC, ReactNode} from "react";
 import {CustomLink} from "../CustomLink/CustomLink";
 import Image from "next/image";
-import logo from '../../public/logo.svg';
+import logo from '../../public/header/logo.svg';
+import phone from '../../public/header/phone.svg';
+import email from '../../public/header/email.svg';
+import location from '../../public/header/location.svg';
 import styles from './BaseLayout.module.scss';
 import { Button } from "../Button/Button";
 import Head from "next/head";
@@ -26,17 +29,17 @@ export const BaseLayout:FC<Props> = ({children, title}) => {
                 <section className={styles.container}>
                     <div className={styles.headerTop}>
                         <div className={styles.headerTop__item}>
-                            {/*<Icon name="phone" width="24" height="24" />*/}
+                            <Image src={phone} width={24} height={24} />
                             <a href="tel:+7 (499) 116-66-73">+7 (499) 116-66-73</a>
                         </div>
 
                         <div className={styles.headerTop__item}>
-                            {/*<Icon name="email" width="24" height="24" />*/}
+                            <Image src={email} width={24} height={24} />
                             <a href="mailto:management@klinikarassvet.ru">management@klinikarassvet.ru</a>
                         </div>
 
                         <div className={styles.headerTop__item}>
-                            {/*<Icon name="location" width="24" height="24" />*/}
+                            <Image src={location} width={24} height={24} />
                             <a>Москва, Столярный переулок, дом 3, корпус 2</a>
                         </div>
                     </div>
@@ -50,6 +53,7 @@ export const BaseLayout:FC<Props> = ({children, title}) => {
                             <Image src={logo} width={150} height={96} alt="logo"/>
                         </Link>
 
+                        <CustomLink href={"/"} text={"Главная"}/>
                         <CustomLink href={"/adultClinic"} text={"Взрослая клиника"}/>
                         <CustomLink href={"/childrenClinic"} text={"Детская клиника"}/>
                         <CustomLink href={"/dentistry"} text={"Стоматология"}/>
