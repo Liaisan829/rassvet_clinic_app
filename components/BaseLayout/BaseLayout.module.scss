@@ -9,6 +9,24 @@
   margin: 0 auto;
 }
 
+.link {
+  @include bold-text;
+  margin-left: 23px;
+  a {
+    color: $c-black;
+    margin-right: 20px;
+
+    &:hover {
+      color: $c-orange;
+    }
+    &.active {
+      color: $c-orange;
+      border-bottom: 3px solid $c-orange;
+      padding-bottom: 38px;
+    }
+  }
+}
+
 .hr {
   background-color: $c-light-gray;
 }

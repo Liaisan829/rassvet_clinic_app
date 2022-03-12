@@ -16,7 +16,6 @@ const AddressMap = () => {
                     <TrafficControl options={{float: 'right'}}/>
                     <ZoomControl options={{float: 'left'}}/>
                 </Map>
-
             </YMaps>
     );
 };

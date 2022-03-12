@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {FC, ReactNode} from "react";
-import {CustomLink} from "../ui/CustomLink/CustomLink";
+import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import {Button} from "../ui/Button/Button";
@@ -22,10 +22,20 @@ interface Props {
     title: string
 }
 
+const navigation = [
+    {id: 1, title: 'Главная', path: '/'},
+    {id: 2, title: 'Взрослая клиника', path: '/adultClinic'},
+    {id: 3, title: 'Детская клиника', path: '/childrenClinic'},
+    {id: 4, title: 'Стоматология', path: '/dentistry'},
+    {id: 5, title: 'Стационар', path: '/hospital'},
+]
+
 const onButtonClick = () => {
 }
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
+    const {pathname} = useRouter();
+
     return (
         <>
             <Head>
@@ -61,11 +71,13 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                             <Image src={logo} width={150} height={96} alt="logo"/>
                         </Link>
 
-                        <CustomLink href={"/"} text={"Главная"}/>
-                        <CustomLink href={"/adultClinic"} text={"Взрослая клиника"}/>
-                        <CustomLink href={"/childrenClinic"} text={"Детская клиника"}/>
-                        <CustomLink href={"/dentistry"} text={"Стоматология"}/>
-                        <CustomLink href={"/hospital"} text={"Стационар"}/>
+                        <div className={styles.link}>
+                            {navigation.map(({id, title, path}) => (
+                                <Link key={id} href={path}>
+                                    <a className={pathname === path ? styles.active : ''}>{title}</a>
+                                </Link>
+                            ))}
+                        </div>
                     </nav>
 
                     <div className={styles.header__btn}>
