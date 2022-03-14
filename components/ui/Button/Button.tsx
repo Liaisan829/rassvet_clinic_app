@@ -6,6 +6,7 @@ interface ButtonProps {
     onClick: any,
     buttonText: string,
     buttonColor?: string
+    className?: string
 }
 
 export const Button: FC<ButtonProps> = (props) => {

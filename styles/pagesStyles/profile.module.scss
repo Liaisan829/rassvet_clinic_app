@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  border: 2px $c-dark-gray solid;
+  border: 1px $c-dark-gray solid;
   border-radius: 20px;
   float: left;
 
@@ -20,13 +20,27 @@
 .visits {
   background-color: $c-light-yellow;
   margin-top: 75px;
-  margin-left: 400px;
+  margin-left: 500px;
   padding: 10px 0 10px 10px;
+  max-width: 700px;
 
   &__info{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.review{
+  margin-top: 50px;
+  background: $c-light-gray;
+  display: flex;
+  flex-direction: column;
+
+  &__button{
+    background: $c-orange;
+    border: none;
+    color:$c-white;
   }
 }

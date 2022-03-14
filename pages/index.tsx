@@ -1,15 +1,13 @@
-/* eslint-disable */
+import Image from "next/image";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
-import Image from "next/image";
+import AddressMap from "../components/yandexMap/AddressMap";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
-import map from '../public/map.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-import AddressMap from "../components/yandexMap/AddressMap";
 
 const MainPage = () => {
     return (
@@ -35,7 +33,7 @@ const MainPage = () => {
                 </section>
 
                 <section className={styles.legendaryDoctors}>
-                    <h1>Легендарные врачи клиники "Рассвет"</h1>
+                    <h1>Легендарные врачи клиники &quot;Рассвет&quot;</h1>
                     <div className={styles.legendaryDoctors__description}>
                         <Image src={doctorLogo} width={200} height={200}/>
                         <div className={styles.healthCare__list}>
