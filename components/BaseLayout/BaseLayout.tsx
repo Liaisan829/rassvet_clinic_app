@@ -30,8 +30,8 @@ const navigation = [
     {id: 5, title: 'Стационар', path: '/hospital'},
 ]
 
-const onButtonClick = () => {
-}
+const openLoginModal = () => {}
+const openRegistrationModal = () => {}
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
     const {pathname} = useRouter();
@@ -81,8 +81,20 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     </nav>
 
                     <div className={styles.header__btn}>
-                        <Button type="submit" onClick={onButtonClick} buttonText="Регистрация"/>
-                        <Button type="submit" onClick={onButtonClick} buttonText="Вход"/>
+                        <Button
+                            type="button"
+                            onClick={openRegistrationModal}
+                            theme="transparent"
+                        >
+                            Регистрация
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={openLoginModal}
+                            theme="transparent"
+                        >
+                            Вход
+                        </Button>
                     </div>
                 </section>
             </header>
@@ -97,21 +109,18 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                 <section className={`${styles.container} ${styles.footer__desc}`}>
                     <div className={styles.footer__contacts}>
                         <div className={styles.footer__contacts__item}>
-                            <Image src={phone} width={24} height={24} />
+                            <Image src={phone} width={24} height={24}/>
                             <a href="tel:+7 (499) 116-66-73">+7 (499) 116-66-73</a>
                         </div>
-
                         <div className={styles.footer__contacts__item}>
-                            <Image src={email} width={24} height={24} />
+                            <Image src={email} width={24} height={24}/>
                             <a href="mailto:management@klinikarassvet.ru">management@klinikarassvet.ru</a>
                         </div>
-
                         <div className={styles.footer__contacts__item}>
-                            <Image src={location} width={24} height={24} />
+                            <Image src={location} width={24} height={24}/>
                             <a>Москва, Столярный переулок, дом 3, корпус 2</a>
                         </div>
                     </div>
-
                     <div className={styles.footer__info}>
                         <div className={styles.footer__info__block}>
                             <h2>Мы в соцсетях</h2>
@@ -124,14 +133,14 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                         </div>
                         <div className={styles.footer__info__block}>
                             <h2>Мы принимаем к оплате</h2>
-                            <div className={`${styles.footer__info__block__icons} ${styles.footer__info__block__payment}`}>
+                            <div
+                                className={`${styles.footer__info__block__icons} ${styles.footer__info__block__payment}`}>
                                 <Image src={visa} width={80} height={80}/>
                                 <Image src={mastercard} width={80} height={80}/>
                                 <Image src={mir} width={80} height={80}/>
                             </div>
                         </div>
                     </div>
-
                     <div>
                         <p>© 2022 Клиника “Рассвет”</p>
                     </div>

@@ -1,26 +1,26 @@
 import { FC } from "react";
+import cn from "classnames/bind";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
     type: any,
-    onClick: any,
-    buttonText: string,
-    buttonColor?: string
-    className?: string
+    onClick: () => void,
+    theme: string
 }
 
-export const Button: FC<ButtonProps> = (props) => {
-    return (
-        <>
-            <button
-                className={styles.button}
-                style={{ "backgroundColor": `${props.buttonColor}` }}
-                type={props.type}
-                onClick={props.onClick}
-            >
-                {props.buttonText}
-            </button>
+const cx = cn.bind(styles);
 
-        </>
+export const Button: FC<ButtonProps> = ({type, onClick, theme, children}) => {
+    return (
+            <button
+                type={type}
+                onClick={onClick}
+                className={cx(styles.button, {
+                    buttonOrange: theme === 'orange',
+                    buttonTransparent: theme === 'transparent'
+                })}
+            >
+                {children}
+            </button>
     );
 };
