@@ -39,11 +39,10 @@ const Profile = () => {
                 <input type="text" placeholder="Введите фамилию и имя"/>
                 <input type="text" placeholder="Напишите отзыв"/>
                 <Button
-                    className={styles.review__button}
                     type="submit"
-                    buttonText="Отправить отзыв"
+                    theme={"orange"}
                     onClick={sendReview}
-                />
+                >Отправить отзыв</Button>
             </div>
         </BaseLayout>
     );

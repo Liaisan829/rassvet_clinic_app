@@ -3,6 +3,7 @@ import { BaseLayout } from "../../components/BaseLayout/BaseLayout";
 
 export default function Clinic() {
     const {query} = useRouter();
+
     return (
         <>
             <BaseLayout title={query.title}>

@@ -8,6 +8,9 @@ import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import {setupMocks} from "../mocks";
+
+setupMocks();
 
 const MainPage = () => {
     return (

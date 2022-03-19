@@ -36,8 +36,8 @@ export const DoctorsSlider = () => {
                     loop={true}
                     lazy={true}
                     slidesPerView={3}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => {}}
+                    onSwiper={() => {}}
                 >
                     <SwiperSlide>
                         <CardSlider

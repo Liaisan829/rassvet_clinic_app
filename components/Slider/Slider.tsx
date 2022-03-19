@@ -13,8 +13,10 @@ export const Slider = () => {
                     loop={true}
                     autoplay={true}
                     slidesPerView={1}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => {
+                    }}
+                    onSwiper={() => {
+                    }}
                 >
                     <SwiperSlide>
                         <div className="slide slide1">
