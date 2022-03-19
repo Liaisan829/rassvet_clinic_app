@@ -34,12 +34,10 @@ const navigation = [
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
 
-    const router = useRouter();
     const [showModal, setShowModal] = useState(false);
 
     const openLoginModal = () => {
         setShowModal(true)
-        router.push('/login');
     }
     const openSignUpModal = () => {
     }
