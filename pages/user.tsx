@@ -1,22 +1,15 @@
-import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const User = () => {
-    const [user, setUser] = useState<any>();
-
-    useEffect(() => {
-        fetch('/user')
-            .then((res) => res.json())
-            .then(setUser)
-    }, [])
+    const [newUser, setNewUser] = useState<any>();
 
     return (
         <>
             <h1>Users</h1>
-            {user && (
+            {newUser && (
                 <ul>
                     <li>
-                        {user.username}
+                        {newUser.username}
                     </li>
                 </ul>
             )}

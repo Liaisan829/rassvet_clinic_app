@@ -1,5 +1,5 @@
 import {rest} from 'msw'
-import {clearGlobalAppDefaultCred} from "firebase-admin/lib/app/credential-factory";
+import user from "../pages/user";
 
 export const handlers = [
     rest.get('/login', (req, res, ctx) => {
@@ -34,5 +34,18 @@ export const handlers = [
                 username: 'admin',
             }),
         )
+    }),
+    rest.post("/signIn", (req, res, ctx) => {
+        if (typeof req.body === "string") {
+            const {user} = JSON.parse(req.body);
+            console.log('user', user);
+
+            return res(
+                ctx.json({
+                    id: Math.random(),
+                    user
+                })
+            )
+        }
     })
 ]
