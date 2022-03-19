@@ -3,6 +3,7 @@
 .button {
   @include regular-text;
   background: none;
+  border: none;
   border-radius: 20px;
   padding: 10px 34px;
   cursor: pointer;
@@ -17,5 +18,11 @@
     @extend .button;
     color: $c-orange;
     border: 1px solid $c-orange;
+  }
+
+  &Default {
+    @extend .button;
+    color: $c-orange;
+    padding: 0;
   }
 }

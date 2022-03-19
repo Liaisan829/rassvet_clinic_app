@@ -4,7 +4,7 @@ import styles from "./Button.module.scss";
 
 interface ButtonProps {
     type: any,
-    onClick: () => void,
+    onClick?: any,
     theme: string
 }
 
@@ -17,7 +17,8 @@ export const Button: FC<ButtonProps> = ({type, onClick, theme, children}) => {
                 onClick={onClick}
                 className={cx(styles.button, {
                     buttonOrange: theme === 'orange',
-                    buttonTransparent: theme === 'transparent'
+                    buttonTransparent: theme === 'transparent',
+                    buttonDefault: theme === ''
                 })}
             >
                 {children}

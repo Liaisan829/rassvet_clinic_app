@@ -1,3 +1,4 @@
+import {useState} from "react";
 import Link from "next/link";
 import {FC, ReactNode} from "react";
 import {useRouter} from "next/router";
@@ -16,6 +17,7 @@ import visa from '../../public/footer/visa.svg';
 import mastercard from '../../public/footer/mastercard.svg';
 import mir from '../../public/footer/mir.svg';
 import styles from './BaseLayout.module.scss';
+import {LoginModal} from "../Modals/LoginModal/LoginModal";
 
 interface Props {
     children: ReactNode;
@@ -30,10 +32,19 @@ const navigation = [
     {id: 5, title: 'Стационар', path: '/hospital'},
 ]
 
-const openLoginModal = () => {}
-const openRegistrationModal = () => {}
-
 export const BaseLayout: FC<Props> = ({children, title}) => {
+
+    const router = useRouter();
+    const [showModal, setShowModal] = useState(false);
+
+    const openLoginModal = () => {
+        setShowModal(true)
+        router.push('/login');
+    }
+    const openSignUpModal = () => {
+    }
+    const onLoginClick = () => {
+    }
     const {pathname} = useRouter();
 
     return (
@@ -83,7 +94,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     <div className={styles.header__btn}>
                         <Button
                             type="button"
-                            onClick={openRegistrationModal}
+                            onClick={openSignUpModal}
                             theme="transparent"
                         >
                             Регистрация
@@ -95,6 +106,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                         >
                             Вход
                         </Button>
+                        <LoginModal show={showModal} setShowModal={setShowModal}/>
                     </div>
                 </section>
             </header>

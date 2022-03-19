@@ -82,7 +82,6 @@ const MainPage = () => {
                 <section className={styles.address}>
                     <h1>Адрес клиники</h1>
                     <div className={styles.address__info}>
-                        {/*<Image src={map} width={650} height={520}/>*/}
                         <AddressMap/>
                         <div className={styles.address__info__text}>
                             <div className={styles.address__info__text__item}>
