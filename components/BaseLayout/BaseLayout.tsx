@@ -17,7 +17,6 @@ import visa from '../../public/footer/visa.svg';
 import mastercard from '../../public/footer/mastercard.svg';
 import mir from '../../public/footer/mir.svg';
 import styles from './BaseLayout.module.scss';
-import {LoginModal} from "../Modals/LoginModal/LoginModal";
 
 interface Props {
     children: ReactNode;
@@ -34,15 +33,14 @@ const navigation = [
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
 
-    const [showModal, setShowModal] = useState(false);
+    const openSignUpPage = () => {
 
-    const openLoginModal = () => {
-        setShowModal(true)
     }
-    const openSignUpModal = () => {
+    const openSignInPage = () => {
+
     }
-    const onLoginClick = () => {
-    }
+
+
     const {pathname} = useRouter();
 
     return (
@@ -90,21 +88,24 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     </nav>
 
                     <div className={styles.header__btn}>
-                        <Button
-                            type="button"
-                            onClick={openSignUpModal}
-                            theme="transparent"
-                        >
-                            Регистрация
-                        </Button>
-                        <Button
-                            type="button"
-                            onClick={openLoginModal}
-                            theme="transparent"
-                        >
-                            Вход
-                        </Button>
-                        <LoginModal show={showModal} setShowModal={setShowModal}/>
+                        <Link href={'/signUp'}>
+                            <Button
+                                type="button"
+                                onClick={openSignUpPage}
+                                theme="transparent"
+                            >
+                                Регистрация
+                            </Button>
+                        </Link>
+                        <Link href={"/signIn"}>
+                            <Button
+                                type="button"
+                                onClick={openSignInPage}
+                                theme="transparent"
+                            >
+                                Вход
+                            </Button>
+                        </Link>
                     </div>
                 </section>
             </header>
