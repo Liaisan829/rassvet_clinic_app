@@ -1,14 +1,12 @@
 import {Field, Form, Formik} from "formik";
 import Image from "next/image";
-import Link from "next/link";
 import {Button} from "../components/ui/Button/Button";
+import Link from "next/link";
 import logo from '../public/header/logo.svg';
 import rassvet from '../public/rassvet.svg';
-import styles from '../styles/pagesStyles/signinPage.module.scss';
+import styles from '../styles/pagesStyles/signInPage.module.scss';
 
-const SignIn = () => {
-    const onLoginClick = () => {
-    }
+const SignUp3 = () => {
     return (
         <div className={styles.loginPage}>
             <div className={styles.loginPage_image}>
@@ -18,7 +16,7 @@ const SignIn = () => {
                 <Image src={logo} width={180} height={110} alt="logo"/>
                 <div className={styles.loginPage__popup}>
                     <div className={styles.loginPage__popup__top}>
-                        <h2>Вход</h2>
+                        <h2>Регистрация</h2>
                         <Link href={'/'}>
                             <Button
                                 type="button"
@@ -28,8 +26,9 @@ const SignIn = () => {
                         </Link>
                     </div>
                     <Formik initialValues={{
+                        birthDate: "",
                         email: "",
-                        password: ""
+                        phone: ""
                     }}
                             onSubmit={values => {
                                 console.log(values)
@@ -37,23 +36,25 @@ const SignIn = () => {
                     >
                         {({errors, touched, dirty}) => (
                             <Form className={styles.modal_container}>
-                                <Field name="email" placeholder="Ваша почта"/>
-                                <Field name="password" placeholder="Пароль"/>
-                                <Button
-                                    type="submit"
-                                    onClick={onLoginClick}
-                                    theme="orange"
-                                >Войти</Button>
+                                <Field type="password" name="password" placeholder="Пароль"/>
+                                <Field type="password" name="repassword" placeholder="Повторите пароль"/>
+                                <Link href={"/"}>
+                                    <Button
+                                        type="submit"
+                                        theme="orange"
+                                    >Зарегистрироваться</Button>
+                                </Link>
+
+                                <div className={styles.loginPage__popup__bottom}>
+                                    <p><Link href={"/signUp2"}>Предыдущий шаг</Link></p>
+                                </div>
                             </Form>
                         )}
                     </Formik>
-                    <div className={styles.loginPage__popup__bottom}>
-                        <p>Вы у нас впервые? <Link href={"/signUp"}>Зарегистрируйтесь</Link></p>
-                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default SignIn;
+export default SignUp3;
