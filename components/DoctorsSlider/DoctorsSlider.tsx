@@ -41,6 +41,7 @@ export const DoctorsSlider = () => {
                 >
                     <SwiperSlide>
                         <CardSlider
+                            id={1}
                             img={doc1}
                             fullName={"Тарасова Анна Константиновна"}
                             speciality={"Ревматолог, терапевт"}
@@ -49,6 +50,7 @@ export const DoctorsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardSlider
+                            id={2}
                             img={doc2}
                             fullName={"Головенко Алексей Олегович"}
                             speciality={"Гастроэнтеролог"}
@@ -57,6 +59,7 @@ export const DoctorsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardSlider
+                            id={3}
                             img={doc3}
                             fullName={"Рамеева Анна Сергеевна"}
                             speciality={"Терапевт"}
@@ -65,6 +68,7 @@ export const DoctorsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardSlider
+                            id={4}
                             img={doc4}
                             fullName={"Охотин Андрей Николаевич"}
                             speciality={"Стоматолог"}
@@ -73,6 +77,7 @@ export const DoctorsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardSlider
+                            id={5}
                             img={doc5}
                             fullName={"Наумова Наталья Андреевна"}
                             speciality={"Кардиолог"}
@@ -81,6 +86,7 @@ export const DoctorsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardSlider
+                            id={6}
                             img={doc6}
                             fullName={"Латышев Александр Васильевич"}
                             speciality={"Хирург"}
