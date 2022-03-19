@@ -9,7 +9,8 @@ const User = () => {
             {newUser && (
                 <ul>
                     <li>
-                        {newUser.username}
+                        {newUser.email},
+                        {newUser.password}
                     </li>
                 </ul>
             )}

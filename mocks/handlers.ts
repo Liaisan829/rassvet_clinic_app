@@ -1,5 +1,6 @@
 import {rest} from 'msw'
 import user from "../pages/user";
+import users from "../stores/users";
 
 export const handlers = [
     rest.get('/login', (req, res, ctx) => {
@@ -15,6 +16,7 @@ export const handlers = [
             })
         )
     }),
+
     rest.get('/user', (req, res, ctx) => {
         // Check if the user is authenticated in this session
         const isAuthenticated = sessionStorage.getItem('is-authenticated')
@@ -35,10 +37,12 @@ export const handlers = [
             }),
         )
     }),
+
     rest.post("/signIn", (req, res, ctx) => {
         if (typeof req.body === "string") {
             const {user} = JSON.parse(req.body);
-            console.log('user', user);
+            //если что все что внизу не выводит ничего в консоль, выводится из формика все
+            console.log(user);
 
             return res(
                 ctx.json({

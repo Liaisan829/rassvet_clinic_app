@@ -8,6 +8,7 @@ import styles from '../styles/pagesStyles/signinPage.module.scss';
 
 const SignIn = () => {
     const onLoginClick = () => {
+
     }
     return (
         <div className={styles.loginPage}>
