@@ -4,11 +4,12 @@ import {Slider} from "../components/Slider/Slider";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import AddressMap from "../components/yandexMap/AddressMap";
+import {setupMocks} from "../mocks";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-import {setupMocks} from "../mocks";
+
 
 setupMocks();
 
@@ -36,7 +37,10 @@ const MainPage = () => {
                 </section>
 
                 <section className={styles.legendaryDoctors}>
-                    <h1>Легендарные врачи клиники &quot;Рассвет&quot;</h1>
+                    <div>
+                        <h1>Легендарные врачи клиники &quot;Рассвет&quot;</h1>
+                        <h5>Список врачей</h5>
+                    </div>
                     <div className={styles.legendaryDoctors__description}>
                         <Image src={doctorLogo} width={200} height={200}/>
                         <div className={styles.healthCare__list}>
