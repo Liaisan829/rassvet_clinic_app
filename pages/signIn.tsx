@@ -1,20 +1,17 @@
 import {Field, Form, Formik} from "formik";
-import Image from "next/image";
 import Link from "next/link";
 import {Button} from "../components/ui/Button/Button";
+import Image from "next/image";
 import logo from '../public/header/logo.svg';
-import rassvet from '../public/rassvet.svg';
 import styles from '../styles/pagesStyles/signinPage.module.scss';
 
 const SignIn = () => {
-    const onLoginClick = () => {
 
+    const onLoginClick = () => {
     }
+
     return (
         <div className={styles.loginPage}>
-            <div className={styles.loginPage_image}>
-                <Image src={rassvet}/>
-            </div>
             <div className={styles.loginPage__login}>
                 <Image src={logo} width={180} height={110} alt="logo"/>
                 <div className={styles.loginPage__popup}>
@@ -28,6 +25,7 @@ const SignIn = () => {
                             ><h2>X</h2></Button>
                         </Link>
                     </div>
+
                     <Formik initialValues={{
                         email: "",
                         password: ""
@@ -54,6 +52,7 @@ const SignIn = () => {
                 </div>
             </div>
         </div>
+
     )
 }
 

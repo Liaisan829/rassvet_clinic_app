@@ -1,4 +1,3 @@
-import {useState} from "react";
 import Link from "next/link";
 import {FC, ReactNode} from "react";
 import {useRouter} from "next/router";
@@ -33,14 +32,8 @@ const navigation = [
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
 
-    const openSignUpPage = () => {
-
-    }
-    const openSignInPage = () => {
-
-    }
-
-
+    const openSignUpPage = () => {}
+    const openSignInPage = () => {}
     const {pathname} = useRouter();
 
     return (

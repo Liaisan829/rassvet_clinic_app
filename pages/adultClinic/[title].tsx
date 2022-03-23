@@ -6,7 +6,7 @@ export default function Clinic() {
     console.log(router);
     return (
         <>
-            <BaseLayout title={router.query.title}>
+            <BaseLayout title={'Отделение'}>
                 <h1>{router.query.title}</h1>
             </BaseLayout>
         </>

@@ -10,7 +10,6 @@ import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 
-
 setupMocks();
 
 const MainPage = () => {

@@ -8,7 +8,7 @@ export default function Doctor ({img, speciality, experience}:any)  {
 
     return (
         <>
-            <BaseLayout title={query.fullName}>
+            <BaseLayout title={'Специалист'}>
                 <h1>{query.fullName}</h1>
                     <div className={styles.doctorTitle}>
                         <img src={img} alt="doct"/>

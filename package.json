@@ -12,9 +12,6 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "express": "^4.17.3",
-    "firebase": "^9.6.8",
-    "firebase-admin": "^10.0.2",
-    "firebase-tools": "^10.3.0",
     "formik": "^2.2.9",
     "mobx": "^6.5.0",
     "mobx-react": "^7.3.0",

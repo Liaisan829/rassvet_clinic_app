@@ -1,17 +1,14 @@
-import {Html, Head, Main, NextScript} from 'next/document'
-import {DataProvider} from "../context/DataContext";
+import {Html, Head, Main, NextScript} from 'next/document';
 
 export default function Document() {
     return (
         <Html>
-            <DataProvider>
-                <Head/>
-                <body>
-                <Main/>
-                <NextScript/>
-                <div id="modal-root"/>
-                </body>
-            </DataProvider>
+            <Head/>
+            <body>
+            <Main/>
+            <NextScript/>
+            <div id="modal-root"/>
+            </body>
         </Html>
     )
 }
