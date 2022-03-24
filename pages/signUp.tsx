@@ -2,12 +2,49 @@ import {Field, Form, Formik} from "formik";
 import Link from "next/link";
 import {Button} from "../components/ui/Button/Button";
 import Image from "next/image";
+import {useAuth} from "../context/AuthContext";
+import {useState} from "react";
+import Head from "next/head";
 import logo from "../public/header/logo.svg";
 import styles from '../styles/pagesStyles/signUpPage.module.scss';
+import {useRouter} from "next/router";
 
 const SignUp = () => {
+    const {user, signup} = useAuth()
+    const router = useRouter()
+    console.log(user)
+    const [data, setData] = useState({
+        name: '',
+        surname: '',
+        patronymic: '',
+        email: '',
+        password: '',
+        repassword: '',
+        phone: ''
+    })
+
+    const handleSignup = async (e: any) => {
+        e.preventDefault()
+
+        try {
+            await signup(data.email, data.phone)
+        } catch (err) {
+            console.log(err)
+        }
+
+        console.log(data)
+    }
+
+    const onRegisterClick = () => {
+    }
+
     return (
         <div className={styles.loginPage}>
+            <Head>
+                <title>Регистрация | Клиника Рассвет</title>
+                {/*туть потом надо сделать др картинку*/}
+                <link rel="icon" href={"/header/logo.svg"}/>
+            </Head>
             <div className={styles.loginPage__login}>
                 <Image src={logo} width={180} height={110} alt="logo"/>
                 <div className={styles.loginPage__popup}>
@@ -22,52 +59,69 @@ const SignUp = () => {
                         </Link>
                     </div>
                     <Formik initialValues={{
-                        surname: "",
-                        name: "",
-                        patronymic: "",
-                        password: "",
-                        repassword: "",
-                        birthDate: "",
                         email: "",
-                        phone: ""
+                        password: ""
                     }}
-                            onSubmit={values => {
-                                console.log(values)
-                            }}
+                            onSubmit={console.log}
                     >
                         {({errors, touched, dirty}) => (
-                            <Form className={styles.modal_container}>
+                            <Form className={styles.modal_container} onSubmit={handleSignup}>
                                 <div className={styles.modal_container__row}>
-                                    <Field name="surname" placeholder="Фамилия"/>
-                                    <Field name="name" placeholder="Имя"/>
-                                    <Field name="surname" placeholder="Отчество"/>
+                                    <Field
+                                        name="surname"
+                                        value={data.surname}
+                                        placeholder="Фамилия"
+                                        onChange={(e: any) => setData({...data, surname: e.target.value})}
+                                    />
+                                    <Field
+                                        name="name"
+                                        value={data.name}
+                                        placeholder="Имя"
+                                        onChange={(e: any) => setData({...data, name: e.target.value})}
+                                    />
+                                    <Field
+                                        name="name"
+                                        value={data.patronymic}
+                                        placeholder="Отчество"
+                                        onChange={(e: any) => setData({...data, patronymic: e.target.value})}
+                                    />
                                 </div>
-                                <div className={styles.modal_container__gender}>
-                                    <h4>Пол:</h4>
-                                    <label className={styles.modal_container__gender__item}>
-                                        Мужской
-                                        <Field type="checkbox" name="checked" value="female"/>
-                                    </label>
-                                    <label className={styles.modal_container__gender__item}>
-                                        Женский
-                                        <Field type="checkbox" name="checked" value="male"/>
-                                    </label>
-                                </div>
-                                <Field name="birthDate" placeholder="Дата рождения"/>
+                                <Field
+                                    name="email"
+                                    value={data.email}
+                                    placeholder="Ваша почта"
+                                    onChange={(e: any) => setData({...data, email: e.target.value})}
+                                />
+                                <Field
+                                    name="email"
+                                    value={data.phone}
+                                    placeholder="Ваша телефон"
+                                    onChange={(e: any) => setData({...data, phone: e.target.value})}
+                                />
                                 <div className={styles.modal_container__row}>
-                                    <Field name="email" placeholder="Почта"/>
-                                    <Field name="phone" placeholder="Телефон"/>
+                                    <Field
+                                        name="password"
+                                        type="password"
+                                        value={data.password}
+                                        placeholder="Пароль"
+                                        onChange={(e: any) => setData({...data, password: e.target.value})}
+                                    />
+                                    <Field
+                                        name="repassword"
+                                        type="password"
+                                        value={data.repassword}
+                                        placeholder="Повторите пароль"
+                                        onChange={(e: any) => setData({...data, repassword: e.target.value})}
+                                    />
                                 </div>
-                                <div className={styles.modal_container__row}>
-                                    <Field type="password" name="password" placeholder="Пароль"/>
-                                    <Field type="password" name="repassword" placeholder="Повторите пароль"/>
-                                </div>
-                                <Link href={"/"}>
                                     <Button
                                         type="submit"
+                                        onClick={() => {
+                                            onRegisterClick
+                                            router.push('/')
+                                        }}
                                         theme="orange"
                                     >Зарегистрироваться</Button>
-                                </Link>
                             </Form>
                         )}
                     </Formik>

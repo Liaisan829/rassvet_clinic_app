@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import {Button} from "../ui/Button/Button";
+import {useAuth} from "../../context/AuthContext";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
@@ -31,10 +32,15 @@ const navigation = [
 ]
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
-
-    const openSignUpPage = () => {}
-    const openSignInPage = () => {}
+    const {user, logout} = useAuth()
+    const openSignUpPage = () => {
+    }
+    const openSignInPage = () => {
+    }
+    const openProfilePage = () => {
+    }
     const {pathname} = useRouter();
+    const router = useRouter();
 
     return (
         <>
@@ -81,24 +87,51 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     </nav>
 
                     <div className={styles.header__btn}>
-                        <Link href={'/signUp'}>
-                            <Button
-                                type="button"
-                                onClick={openSignUpPage}
-                                theme="transparent"
-                            >
-                                Регистрация
-                            </Button>
-                        </Link>
-                        <Link href={"/signIn"}>
-                            <Button
-                                type="button"
-                                onClick={openSignInPage}
-                                theme="transparent"
-                            >
-                                Вход
-                            </Button>
-                        </Link>
+                        {user ? (
+                            <>
+                                <Link href={'/profile'}>
+                                    <Button
+                                        type="button"
+                                        onClick={openProfilePage}
+                                        theme="transparent"
+                                    >
+                                        Личный кабинет
+                                    </Button>
+                                </Link>
+
+                                <Button
+                                    type="button"
+                                    onClick={() => {
+                                        logout()
+                                        router.push('/')
+                                    }}
+                                    theme="transparent"
+                                >
+                                    Выход
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href={'/signUp'}>
+                                    <Button
+                                        type="button"
+                                        onClick={openSignUpPage}
+                                        theme="transparent"
+                                    >
+                                        Регистрация
+                                    </Button>
+                                </Link>
+                                <Link href={"/signIn"}>
+                                    <Button
+                                        type="button"
+                                        onClick={openSignInPage}
+                                        theme="transparent"
+                                    >
+                                        Вход
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </section>
             </header>

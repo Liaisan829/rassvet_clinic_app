@@ -12,6 +12,7 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "express": "^4.17.3",
+    "firebase": "^9.6.9",
     "formik": "^2.2.9",
     "mobx": "^6.5.0",
     "mobx-react": "^7.3.0",
