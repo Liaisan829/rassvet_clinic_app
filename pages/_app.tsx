@@ -13,7 +13,7 @@ import('../mocks').then(({setupMocks}) => {
     setupMocks();
 })
 
-const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic']
+const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic']
 
 function MyApp({Component, pageProps}: AppProps) {
     const router = useRouter()
