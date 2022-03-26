@@ -1,10 +1,10 @@
 import Image from "next/image";
 import {Button} from "../components/ui/Button/Button";
+import {useAuth} from "../context/AuthContext";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import profileLogo from "../public/profile/profileLogo.svg";
 import apply_note from "../public/profile/apply_note.svg";
 import styles from "../styles/pagesStyles/profile.module.scss";
-import {useAuth} from "../context/AuthContext";
 
 const Profile = () => {
     const {user} = useAuth()
@@ -20,7 +20,7 @@ const Profile = () => {
                 <Image src={profileLogo} width={120} height={120}/>
 
                 <div className={styles.profileInfo__info}>
-                    {/*<h1>{user.displayName}</h1>*/}
+                    <h1>{user.displayName}</h1>
                     <p>{user.email}</p>
                     <p>12.03.2022</p>
                 </div>

@@ -38,10 +38,11 @@ const MainPage = () => {
                 <section className={styles.legendaryDoctors}>
                     <div>
                         <h1>Легендарные врачи клиники &quot;Рассвет&quot;</h1>
-                        <h5>Список врачей</h5>
                     </div>
+
                     <div className={styles.legendaryDoctors__description}>
                         <Image src={doctorLogo} width={200} height={200}/>
+
                         <div className={styles.healthCare__list}>
                             <div className={styles.legendaryDoctors__description__item}>
                                 <Image src={sun} width={40} height={40}/>

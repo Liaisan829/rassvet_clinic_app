@@ -12,3 +12,4 @@ export default function Clinic() {
         </>
     );
 }
+// общий див для layout и футеру сделать margin top auto

@@ -2,12 +2,12 @@ import {Field, Form, Formik} from "formik";
 import Link from "next/link";
 import {Button} from "../components/ui/Button/Button";
 import Image from "next/image";
-import {useAuth} from "../context/AuthContext";
 import {useState} from "react";
+import {useRouter} from "next/router";
 import Head from "next/head";
+import {useAuth} from "../context/AuthContext";
 import logo from "../public/header/logo.svg";
 import styles from '../styles/pagesStyles/signUpPage.module.scss';
-import {useRouter} from "next/router";
 
 const SignUp = () => {
     const {user, signup} = useAuth()

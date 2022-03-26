@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import ReactDOM from "react-dom";
-import {ReactNode} from 'react';
 import {FC} from 'react';
 import {useState, useEffect} from "react";
 import Image from "next/image";
@@ -36,7 +35,7 @@ export const Modal: FC<ModalProps> = ({title, onClose, children, show}) => {
                         theme=""
                         onClick={onHandleClose}
                     >
-                        <Image src={close} width={24} height={24}/>
+                        <Image src={close} width={24} height={24} alt={"close"}/>
                     </Button>
                 </div>
                 <div>

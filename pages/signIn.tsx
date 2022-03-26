@@ -22,7 +22,7 @@ const SignIn = () => {
         console.log(user)
         try {
             await login(data.email, data.password)
-            router.push('/profile')
+            await router.push('/profile')
         } catch (err) {
             console.log(err)
         }
