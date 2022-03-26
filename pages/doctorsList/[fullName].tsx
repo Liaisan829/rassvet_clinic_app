@@ -4,10 +4,8 @@ import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import {database} from "../../config/firebase";
 import {collection, getDocs} from "@firebase/firestore";
 import {useEffect, useState} from "react";
-import {Modal} from "../../components/Modals/Modal/Modal";
-import {Field, Form, Formik} from "formik";
-import styles from '../../styles/pagesStyles/doctorsList.module.scss';
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
+import styles from '../../styles/pagesStyles/doctorsList.module.scss';
 
 export default function Doctor() {
     const {query} = useRouter();
@@ -19,10 +17,10 @@ export default function Doctor() {
     useEffect(() => {
         const getDoctors = async () => {
             const data = await getDocs(databaseRef);
-            setDoctors(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            setDoctors(data.docs.map((doc) => ({...doc.data()})));
         };
         getDoctors()
-    }, [0])
+    }, [])
 
     const openAppointmentModal = () => {
         setShowModal(true)
