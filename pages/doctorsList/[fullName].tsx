@@ -4,12 +4,17 @@ import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import {database} from "../../config/firebase";
 import {collection, getDocs} from "@firebase/firestore";
 import {useEffect, useState} from "react";
+import {Modal} from "../../components/Modals/Modal/Modal";
+import {Field, Form, Formik} from "formik";
 import styles from '../../styles/pagesStyles/doctorsList.module.scss';
+import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
 
 export default function Doctor() {
     const {query} = useRouter();
     const [doctors, setDoctors] = useState<any>([]);
     const databaseRef = collection(database, 'doctors');
+    const [showModal, setShowModal] = useState(false)
+
 
     useEffect(() => {
         const getDoctors = async () => {
@@ -18,6 +23,10 @@ export default function Doctor() {
         };
         getDoctors()
     }, [0])
+
+    const openAppointmentModal = () => {
+        setShowModal(true)
+    }
 
     return (
         <>
@@ -43,7 +52,12 @@ export default function Doctor() {
                                         <Button
                                             type="submit"
                                             theme="orange"
+                                            onClick={openAppointmentModal}
                                         >Записаться на прием</Button>
+                                        <AppointmentModal
+                                            showModal={showModal}
+                                            setShowModal={setShowModal}
+                                        />
                                         <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                     </div>
                                 </div>

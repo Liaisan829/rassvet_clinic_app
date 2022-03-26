@@ -6,7 +6,7 @@ import {useState, useEffect} from "react";
 import Image from "next/image";
 import {Button} from "../../ui/Button/Button";
 import close from '../../../public/close.svg';
-import styles from '../LoginModal/Modal.module.scss';
+import styles from './Modal.module.scss';
 
 interface ModalProps {
     title: ReactNode;
