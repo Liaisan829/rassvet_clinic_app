@@ -24,7 +24,7 @@
   padding: 10px 0 10px 10px;
   max-width: 700px;
 
-  &__info{
+  &__info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,15 +32,37 @@
   }
 }
 
-.review{
+.review {
   margin-top: 50px;
-  background: $c-light-gray;
   display: flex;
   flex-direction: column;
 
-  &__button{
-    background: $c-orange;
-    border: none;
-    color:$c-white;
+  &__button {
+    width: 350px;
   }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 35px;
+  }
+
+  &__reviewName {
+    height: 50px;
+    margin-bottom: 15px;
+    border: 1px solid $c-gray;
+    border-radius: 4px;
+  }
+
+  &__reviewBlock {
+    @extend .review__reviewName;
+    height: 150px;
+
+    //::placeholder { не работает
+    //  vertical-align: top;
+    //}
+  }
+
 }
