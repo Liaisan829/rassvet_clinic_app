@@ -10,6 +10,11 @@
   border-radius: 20px;
   float: left;
 
+  &__photo{
+    width: 150px;
+    height: 150px;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;

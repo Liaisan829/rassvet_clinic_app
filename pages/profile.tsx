@@ -1,9 +1,8 @@
 import {useEffect, useState} from "react";
 import Image from "next/image";
-import {storage} from "../config/firebase";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
+import {upload} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import profileLogo from "../public/profile/profileLogo.svg";
 import apply_note from "../public/profile/apply_note.svg";
@@ -11,42 +10,37 @@ import styles from "../styles/pagesStyles/profile.module.scss";
 
 const Profile = () => {
     const {user} = useAuth()
-    const [image, setImage] = useState<any>(null);
+    const [photo, setPhoto] = useState<any>(null);
     const [photoURL, setPhotoURL] = useState(profileLogo);
+    const [loading, setLoading] = useState(false);
 
     const sendReview = () => {
         console.log("send review")
     }
 
-    const handleImageChange = (event: any) => {
-        if (event.target.files[0]) {
-            setImage(event.target.files[0]);
+    const handleChange = (event: any) => {
+        if(event.target.files[0]){
+            setPhoto(event.target.files[0])
         }
+    };
+
+    const handleClick = () => {
+        upload(photo, user, setLoading);
     }
 
-    const handleSubmit = () => {
-        const imageRef = ref(storage, "image");// "image" - название файла или папки внутри firebase
-        uploadBytes(imageRef, image)
-            .then(() => {
-                getDownloadURL(imageRef)
-                    .then((photoURL) => {
-                        setPhotoURL(photoURL);
-                    }).catch(error => {
-                    console.log(error.message, "Error getting the image url");
-                })
-                setImage(null);
-            }).catch(error => {
-            console.log(error.message);
-        });
-    };
+    useEffect(()=>{
+        if(user?.photoURL){
+            setPhotoURL(user.photoURL);
+        }
+    }, [user]);
 
     return (
         <BaseLayout title="Профиль">
 
             <aside className={styles.profile}>
-                <Image src={photoURL} width={120} height={120} alt={"image"}/>
-                <input type="file" onChange={handleImageChange}/>
-                <button onClick={handleSubmit}>Submit</button>
+                <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
+                <input type="file" onChange={handleChange}/>
+                <button disabled={loading || !photo} onClick={handleClick}>Submit</button>
 
                 <div className={styles.profileInfo__info}>
                     <h1>{user.displayName}</h1>
@@ -77,7 +71,6 @@ const Profile = () => {
                 </div>
             </div>
         </BaseLayout>
-    )
-        ;
+    );
 }
 export default Profile;
