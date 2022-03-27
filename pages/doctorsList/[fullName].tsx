@@ -31,7 +31,7 @@ export default function Doctor() {
             <BaseLayout title={'Специалист'}>
                 <h1>{query.fullName}</h1>
                 {doctors.filter((doctor:any)=>(query.fullName === doctor.fullName)).map((filteredDoctor:any)=>(
-                        <div className={styles.doctorPage}>
+                        <div key={filteredDoctor.fullName} className={styles.doctorPage}>
                             <div className={styles.doctorTitle}>
                                 <img src={filteredDoctor.url} alt="doct"/>
                                 <div className={styles.doctorTitle__info}>

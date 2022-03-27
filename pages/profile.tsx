@@ -61,7 +61,7 @@ const Profile = () => {
                 <h1>Отзывы</h1>
                 <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>
                 <input type="text" placeholder="Введите фамилию и имя" className={styles.review__reviewName}/>
-                <input type="text" placeholder="Напишите отзыв" className={styles.review__reviewBlock}/>
+                <textarea placeholder="Напишите отзыв" className={styles.review__reviewText}/>
                 <div className={styles.review__button}>
                     <Button
                         type="submit"

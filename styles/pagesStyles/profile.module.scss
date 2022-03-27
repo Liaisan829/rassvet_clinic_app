@@ -61,13 +61,8 @@
     border-radius: 4px;
   }
 
-  &__reviewBlock {
+  &__reviewText {
     @extend .review__reviewName;
     height: 150px;
-
-    //::placeholder { не работает
-    //  vertical-align: top;
-    //}
   }
-
 }
