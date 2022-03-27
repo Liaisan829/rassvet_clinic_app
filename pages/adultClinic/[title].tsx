@@ -2,12 +2,11 @@ import {useRouter} from "next/router";
 import { BaseLayout } from "../../components/BaseLayout/BaseLayout";
 
 export default function Clinic() {
-    const router = useRouter();
-    console.log(router);
+    const {query} = useRouter();
     return (
         <>
             <BaseLayout title={'Отделение'}>
-                <h1>{router.query.title}</h1>
+                <h1>{query.title}</h1>
             </BaseLayout>
         </>
     );
