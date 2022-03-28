@@ -9,6 +9,7 @@ import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import Link from "next/link";
 
 setupMocks();
 
@@ -70,7 +71,7 @@ const MainPage = () => {
                 <section className={styles.reviews}>
                     <div className={styles.reviews__title}>
                         <h1>Отзывы</h1>
-                        <h5>Все отзывы</h5>
+                        <Link href={"/clinicReviews"}><h5>Все отзывы</h5></Link>
                     </div>
                     <div className={styles.reviews__item}>
                         <CardReview
