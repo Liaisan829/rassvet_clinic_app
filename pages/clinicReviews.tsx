@@ -18,7 +18,7 @@ const ClinicReviews = () => {
             <div className={styles.allReviews}>
                 {reviewsList.map((review:any) => {
                     return (
-                        <div className={styles.review}>
+                        <div key={review.author} className={styles.review}>
                             <h1>{review.author}</h1>
                             <p>{review.reviewText}</p>
                         </div>
