@@ -29,7 +29,7 @@ export default function Doctor() {
     return (
         <>
             <BaseLayout title={'Специалист'}>
-                <h1>{query.fullName}</h1>
+                <h1>[{query.fullName}]</h1>
                 {doctors.filter((doctor:any)=>(query.fullName === doctor.fullName)).map((filteredDoctor:any)=>(
                         <div key={filteredDoctor.fullName} className={styles.doctorPage}>
                             <div className={styles.doctorTitle}>

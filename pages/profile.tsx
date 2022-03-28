@@ -2,17 +2,22 @@ import {useEffect, useState} from "react";
 import Image from "next/image";
 import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
-import {upload} from "../config/firebase";
+import {database, upload} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import profileLogo from "../public/profile/profileLogo.svg";
 import apply_note from "../public/profile/apply_note.svg";
 import styles from "../styles/pagesStyles/profile.module.scss";
+import {collection, getDocs} from "@firebase/firestore";
+import {useRouter} from "next/router";
 
 const Profile = () => {
     const {user} = useAuth()
     const [photo, setPhoto] = useState<any>(null);
     const [photoURL, setPhotoURL] = useState(profileLogo);
     const [loading, setLoading] = useState(false);
+    const databaseRef = collection(database, 'appointments');
+    const [appointments, setAppointments] = useState<any>([]);
+    const {query} = useRouter();
 
     const sendReview = () => {
         console.log("send review")
@@ -34,6 +39,14 @@ const Profile = () => {
         }
     }, [user]);
 
+    useEffect(() => {
+        const getAppointments = async () => {
+            const data = await getDocs(databaseRef);
+            setAppointments(data.docs.map((doc) => ({...doc.data()})));
+        };
+        getAppointments()
+    }, [])
+
     return (
         <BaseLayout title="Профиль">
 
@@ -54,7 +67,19 @@ const Profile = () => {
                 <div className={styles.visits__info}>
                     <Image src={apply_note} width={180} height={180}/>
                     <p>Здесь будут записи на предстоящие приемы</p>
+                    {/*<h3>{appointment.fullName}</h3>*/}
+                    {/*<h3>{appointment.phone}</h3>*/}
                 </div>
+                {/*{appointments.map((appointment:any) => {*/}
+                {/*    return(*/}
+                {/*        <div className={styles.visits__info}>*/}
+                {/*            <Image src={apply_note} width={180} height={180}/>*/}
+                {/*            <p>Здесь будут записи на предстоящие приемы</p>*/}
+                {/*            /!*<h3>{appointment.fullName}</h3>*!/*/}
+                {/*            /!*<h3>{appointment.phone}</h3>*!/*/}
+                {/*        </div>*/}
+                {/*        )*/}
+                {/*})}*/}
             </div>
 
             <div className={styles.review}>
