@@ -29,52 +29,52 @@ export default function Doctor() {
     return (
         <>
             <BaseLayout title={'Специалист'}>
-                <h1>{query.fullName}</h1>
-                {doctors.filter((doctor: any) => (query.fullName === doctor.fullName)).map((filteredDoctor: any) => (
-                    <div key={filteredDoctor.fullName} className={styles.doctorPage}>
-                        <div className={styles.doctorTitle}>
-                            <img src={filteredDoctor.url} alt="doct"/>
-                            <div className={styles.doctorTitle__info}>
-                                <div className={styles.doctorTitle__info__block}>
-                                    <div>
-                                        <h6>Должность:</h6>
-                                        <h5>{filteredDoctor.speciality}</h5>
+                <h1>[{query.fullName}]</h1>
+                {doctors.filter((doctor:any)=>(query.fullName === doctor.fullName)).map((filteredDoctor:any)=>(
+                        <div key={filteredDoctor.fullName} className={styles.doctorPage}>
+                            <div className={styles.doctorTitle}>
+                                <img src={filteredDoctor.url} alt="doct"/>
+                                <div className={styles.doctorTitle__info}>
+                                    <div className={styles.doctorTitle__info__block}>
+                                        <div>
+                                            <h6>Должность:</h6>
+                                            <h5>{filteredDoctor.speciality}</h5>
+                                        </div>
+                                        <div>
+                                            <h6>Стаж работы по специальности:</h6>
+                                            <h5>{filteredDoctor.experience}</h5>
+                                        </div>
                                     </div>
                                     <div>
-                                        <h6>Стаж работы по специальности:</h6>
-                                        <h5>{filteredDoctor.experience}</h5>
+                                        <Button
+                                            type="submit"
+                                            theme="orange"
+                                            onClick={openAppointmentModal}
+                                        >Записаться на прием</Button>
+                                        <AppointmentModal
+                                            showModal={showModal}
+                                            setShowModal={setShowModal}
+                                        />
+                                        <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <Button
-                                        type="submit"
-                                        theme="orange"
-                                        onClick={openAppointmentModal}
-                                    >Записаться на прием</Button>
-                                    <AppointmentModal
-                                        showModal={showModal}
-                                        setShowModal={setShowModal}
-                                    />
-                                    <p>Запишитесь на прием к специалисту в удобное для вас время</p>
+                            </div>
+                            <div className={styles.doctorDescription}>
+                                <div className={styles.doctorDescription__block}>
+                                    <h6>Образование</h6>
+                                    <p>{filteredDoctor.education}</p>
+                                </div>
+                                <div className={styles.doctorDescription__block}>
+                                    <h6>Опыт работы</h6>
+                                    <p>{filteredDoctor.work}</p>
+                                </div>
+                                <div className={styles.doctorDescription__block}>
+                                    <h6>Область профессиональных интересов</h6>
+                                    <p>{filteredDoctor.interests}</p>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.doctorDescription}>
-                            <div className={styles.doctorDescription__block}>
-                                <h6>Образование</h6>
-                                <p>{filteredDoctor.education}</p>
-                            </div>
-                            <div className={styles.doctorDescription__block}>
-                                <h6>Опыт работы</h6>
-                                <p>{filteredDoctor.work}</p>
-                            </div>
-                            <div className={styles.doctorDescription__block}>
-                                <h6>Область профессиональных интересов</h6>
-                                <p>{filteredDoctor.interests}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                    ))}
             </BaseLayout>
         </>
     );

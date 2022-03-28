@@ -6,7 +6,7 @@ export default function Clinic() {
     return (
         <>
             <BaseLayout title={'Отделение'}>
-                <h1>{query.title}</h1>
+                <h1>[{query.title}]</h1>
             </BaseLayout>
         </>
     );
