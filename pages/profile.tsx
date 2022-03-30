@@ -57,13 +57,13 @@ const Profile = () => {
         }
     }, [user]);
 
-    useEffect(() => {
-        const getAppointments = async () => {
-            const data = await getDocs(databaseRef);
-            setAppointments(data.docs.map((doc) => ({...doc.data()})));
-        };
-        getAppointments()
-    }, [])
+    // useEffect(() => {
+    //     const getAppointments = async () => {
+    //         const data = await getDocs(databaseRef);
+    //         setAppointments(data.docs.map((doc) => ({...doc.data()})));
+    //     };
+    //     getAppointments()
+    // }, [])
 
     return (
         <BaseLayout title="Профиль">
