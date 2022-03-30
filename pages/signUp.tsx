@@ -64,7 +64,7 @@ const SignUp = () => {
                     }}
                             onSubmit={console.log}
                     >
-                        {({errors, touched, dirty}) => (
+                        {() => (
                             <Form className={styles.modal_container} onSubmit={handleSignup}>
                                 <div className={styles.modal_container__row}>
                                     <Field

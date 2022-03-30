@@ -37,8 +37,6 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
     }
     const openSignInPage = () => {
     }
-    const openProfilePage = () => {
-    }
     const {pathname} = useRouter();
     const router = useRouter();
 
@@ -89,16 +87,15 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     <div className={styles.header__btn}>
                         {user ? (
                             <>
-                                <Link href={'/profile'}>
-                                    <Button
-                                        type="button"
-                                        onClick={openProfilePage}
-                                        theme="transparent"
-                                    >
-                                        Личный кабинет
-                                    </Button>
-                                </Link>
-
+                                <Button
+                                    type="button"
+                                    onClick={() => {
+                                        router.push('/profile')
+                                    }}
+                                    theme="transparent"
+                                >
+                                    Личный кабинет
+                                </Button>
                                 <Button
                                     type="button"
                                     onClick={() => {
@@ -112,24 +109,24 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                             </>
                         ) : (
                             <>
-                                <Link href={'/signUp'}>
-                                    <Button
-                                        type="button"
-                                        onClick={openSignUpPage}
-                                        theme="transparent"
-                                    >
-                                        Регистрация
-                                    </Button>
-                                </Link>
-                                <Link href={"/signIn"}>
-                                    <Button
-                                        type="button"
-                                        onClick={openSignInPage}
-                                        theme="transparent"
-                                    >
-                                        Вход
-                                    </Button>
-                                </Link>
+                                <Button
+                                    type="button"
+                                    onClick={() => {
+                                        router.push('/signUp')
+                                    }}
+                                    theme="transparent"
+                                >
+                                    Регистрация
+                                </Button>
+                                <Button
+                                    type="button"
+                                    onClick={() => {
+                                        router.push('/signIn')
+                                    }}
+                                    theme="transparent"
+                                >
+                                    Вход
+                                </Button>
                             </>
                         )}
                     </div>
