@@ -26,7 +26,7 @@ const SignUp = () => {
         e.preventDefault()
 
         try {
-            await signup(data.email, data.phone)//почему по телефону а не по паролю
+            await signup(data.email, data.password)//почему по телефону а не по паролю
         } catch (err) {
             console.log(err)
         }

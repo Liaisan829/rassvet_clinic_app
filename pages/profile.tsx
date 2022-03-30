@@ -11,21 +11,22 @@ import {addDoc, collection} from "@firebase/firestore";
 const Profile = () => {
     const {user} = useAuth()
 
-    const [author, setAuthor] = useState(null);
+    const [reviewer, setReviewerName] = useState(null);
     const [reviewText, setReviewText] = useState("");
 
     const reviewsCollectionRef = collection(database, "reviews");
 
     const createReview = async () => {
         await addDoc(reviewsCollectionRef, {
-            author,
+            time: new Date().toLocaleDateString(),
+            reviewer,
             reviewText
         });
     }
 
-    const setAuthorInfo = (event: any) => {
+    const setReviewer = (event: any) => {
         console.log(event.target.value);
-        setAuthor(event.target.value)
+        setReviewerName(event.target.value)
     };
 
     const setReview = (event: any) => {
@@ -99,7 +100,7 @@ const Profile = () => {
                     type="text"
                     placeholder="Введите фамилию и имя"
                     className={styles.review__reviewName}
-                    onChange={setAuthorInfo}
+                    onChange={setReviewer}
                 />
                 <textarea
                     placeholder="Напишите отзыв"
