@@ -4,7 +4,7 @@ const ChildrenClinic = () => {
 
     return (
         <BaseLayout title="Детская клиника">
-            hello
+            страница детской поликлиники
         </BaseLayout>
     )
 }

@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Image from "next/image";
 import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
-import {database, upload} from "../config/firebase";
+import {database} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import profileLogo from "../public/profile/profileLogo.svg";
 import apply_note from "../public/profile/apply_note.svg";
@@ -47,15 +47,15 @@ const Profile = () => {
         }
     };
 
-    const handleClick = () => {
-        upload(photo, user, setLoading);
-    }
+    // const handleClick = () => {
+    //     upload(photo, user, setLoading);
+    // }
 
-    useEffect(()=>{
-        if(user?.photoURL){
-            setPhotoURL(user.photoURL);
-        }
-    }, [user]);
+    // useEffect(()=>{
+    //     if(user?.photoURL){
+    //         setPhotoURL(user.photoURL);
+    //     }
+    // }, [user]);
 
     // useEffect(() => {
     //     const getAppointments = async () => {
@@ -71,7 +71,7 @@ const Profile = () => {
             <aside className={styles.profile}>
                 <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
                 <input type="file" onChange={handleChange}/>
-                <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
+                {/*<button disabled={loading || !photo} onClick={handleClick}>Upload</button>*/}
 
                 <div className={styles.profileInfo__info}>
                     <h1>{user.displayName}</h1>
