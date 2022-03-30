@@ -33,10 +33,6 @@ const navigation = [
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
     const {user, logout} = useAuth()
-    const openSignUpPage = () => {
-    }
-    const openSignInPage = () => {
-    }
     const {pathname} = useRouter();
     const router = useRouter();
 
@@ -72,7 +68,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                 <section className={styles.container}>
                     <nav className={styles.header__navbar}>
                         <Link href="/">
-                            <Image src={logo} width={150} height={96} alt="logo"/>
+                            <a><Image src={logo} width={150} height={96} alt="logo"/></a>
                         </Link>
 
                         <div className={styles.link}>

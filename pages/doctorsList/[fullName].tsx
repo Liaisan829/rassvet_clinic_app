@@ -13,8 +13,12 @@ export default function Doctor() {
     const {query} = useRouter();
     const [doctors, setDoctors] = useState<any>([]);
     const databaseRef = collection(database, 'doctors');
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(false);
 
+    const openAppointmentModal = () => {
+        setShowModal(true)
+    }
 
     useEffect(() => {
         const getDoctors = async () => {
@@ -24,17 +28,11 @@ export default function Doctor() {
         getDoctors()
     }, [])
 
-    const openAppointmentModal = () => {
-        setShowModal(true)
-    }
-
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 3700);
         return () => clearTimeout(timing);
     }, []);
 

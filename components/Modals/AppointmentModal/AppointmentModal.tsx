@@ -1,4 +1,3 @@
-import {Field, Form, Formik} from "formik";
 import {Button} from "../../ui/Button/Button";
 import { Modal } from "../Modal/Modal";
 import {FC, useState} from "react";
@@ -35,7 +34,7 @@ export const AppointmentModal:FC<Props> = ({showModal, setShowModal})  => {
             <input type="text" name="phone" placeholder="Контактный телефон"
                    onChange={(event:any) => setPhone(event.target.value)}/>
 
-            <h5>Специалист: [{query.fullName}]</h5>
+            <h5>Специалист: {query.fullName}</h5>
 
             <Button
                 type="submit"

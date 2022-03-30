@@ -1,13 +1,12 @@
 import type {AppProps} from 'next/app';
+import { AuthContextProvider } from '../context/AuthContext';
+import {useRouter} from "next/router";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import '../styles/globals.css';
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
-import { AuthContextProvider } from '../context/AuthContext';
-import {useRouter} from "next/router";
-import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
-
 
 import('../mocks').then(({setupMocks}) => {
     setupMocks();

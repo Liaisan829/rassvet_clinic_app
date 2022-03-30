@@ -71,7 +71,7 @@ const Profile = () => {
             <aside className={styles.profile}>
                 <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
                 <input type="file" onChange={handleChange}/>
-                <button disabled={loading || !photo} onClick={handleClick}>Submit</button>
+                <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
 
                 <div className={styles.profileInfo__info}>
                     <h1>{user.displayName}</h1>

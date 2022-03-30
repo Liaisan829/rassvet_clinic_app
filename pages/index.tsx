@@ -5,11 +5,11 @@ import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import AddressMap from "../components/yandexMap/AddressMap";
 import {setupMocks} from "../mocks";
+import Link from "next/link";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-import Link from "next/link";
 
 setupMocks();
 
@@ -71,7 +71,9 @@ const MainPage = () => {
                 <section className={styles.reviews}>
                     <div className={styles.reviews__title}>
                         <h1>Отзывы</h1>
-                        <Link href={"/clinicReviews"}><h5>Все отзывы</h5></Link>
+                        <Link href={"/clinicReviews"}>
+                            <a><h5>Все отзывы</h5></a>
+                        </Link>
                     </div>
                     <div className={styles.reviews__item}>
                         <CardReview

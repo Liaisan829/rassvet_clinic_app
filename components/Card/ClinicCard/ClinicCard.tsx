@@ -15,13 +15,12 @@ export const ClinicCard: FC<CardProps> = ({img, title}) => {
         <>
             <div className={styles.card}>
                 <Link href={`/adultClinic/${title}`}>
-                    <Image src={img} width={285} height={165}/>
+                    <a><Image src={img} width={285} height={165}/></a>
                 </Link>
 
                 <div className={styles.card__bottom}>
                     <Link href={`/adultClinic/${title}`}>
-
-                        <p>{title}</p>
+                        <a><p>{title}</p></a>
                     </Link>
                 </div>
             </div>

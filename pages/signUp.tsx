@@ -1,5 +1,4 @@
 import {Field, Form, Formik} from "formik";
-import Link from "next/link";
 import {Button} from "../components/ui/Button/Button";
 import Image from "next/image";
 import {useState} from "react";
@@ -50,13 +49,14 @@ const SignUp = () => {
                 <div className={styles.loginPage__popup}>
                     <div className={styles.loginPage__popup__top}>
                         <h2>Регистрация</h2>
-                        <Link href={'/'}>
-                            <Button
-                                type="button"
-                                theme=""
-                                color={'#000000'}
-                            ><h2>X</h2></Button>
-                        </Link>
+                        <Button
+                            type="button"
+                            theme=""
+                            color={'#000000'}
+                            onClick={() => {
+                                router.push('/')
+                            }}
+                        ><h2>X</h2></Button>
                     </div>
                     <Formik initialValues={{
                         email: "",
@@ -114,14 +114,14 @@ const SignUp = () => {
                                         onChange={(e: any) => setData({...data, repassword: e.target.value})}
                                     />
                                 </div>
-                                    <Button
-                                        type="submit"
-                                        onClick={() => {
-                                            onRegisterClick
-                                            router.push('/')
-                                        }}
-                                        theme="orange"
-                                    >Зарегистрироваться</Button>
+                                <Button
+                                    type="submit"
+                                    onClick={() => {
+                                        onRegisterClick
+                                        router.push('/')
+                                    }}
+                                    theme="orange"
+                                >Зарегистрироваться</Button>
                             </Form>
                         )}
                     </Formik>

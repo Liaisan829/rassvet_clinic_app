@@ -11,7 +11,7 @@ import styles from '../styles/pagesStyles/signinPage.module.scss';
 
 const SignIn = () => {
     const router = useRouter()
-    const { user, login } = useAuth()
+    const {user, login} = useAuth()
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -28,7 +28,8 @@ const SignIn = () => {
         }
     }
 
-    const onLoginClick = () => {}
+    const onLoginClick = () => {
+    }
 
     return (
         <div className={styles.loginPage}>
@@ -42,13 +43,14 @@ const SignIn = () => {
                 <div className={styles.loginPage__popup}>
                     <div className={styles.loginPage__popup__top}>
                         <h2>Вход</h2>
-                        <Link href={'/'}>
-                            <Button
-                                type="button"
-                                theme=""
-                                color={'#000000'}
-                            ><h2>X</h2></Button>
-                        </Link>
+                        <Button
+                            type="button"
+                            theme=""
+                            color={'#000000'}
+                            onClick={() => {
+                                router.push('/')
+                            }}
+                        ><h2>X</h2></Button>
                     </div>
 
                     <Formik initialValues={{
@@ -63,14 +65,14 @@ const SignIn = () => {
                                     name="email"
                                     value={data.email}
                                     placeholder="Ваша почта"
-                                    onChange={(e:any) => setData({...data, email: e.target.value})}
+                                    onChange={(e: any) => setData({...data, email: e.target.value})}
                                 />
                                 <Field
                                     name="password"
                                     type="password"
                                     value={data.password}
                                     placeholder="Пароль"
-                                    onChange={(e:any) => setData({...data, password: e.target.value})}
+                                    onChange={(e: any) => setData({...data, password: e.target.value})}
                                 />
                                 <Button
                                     type="submit"
@@ -81,7 +83,7 @@ const SignIn = () => {
                         )}
                     </Formik>
                     <div className={styles.loginPage__popup__bottom}>
-                        <p>Вы у нас впервые? <Link href={"/signUp"}>Зарегистрируйтесь</Link></p>
+                        <p>Вы у нас впервые? <Link href={"/signUp"}><a>Зарегистрируйтесь</a></Link></p>
                     </div>
                 </div>
             </div>
