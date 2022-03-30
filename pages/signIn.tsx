@@ -7,7 +7,7 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import logo from '../public/header/logo.svg';
-import styles from '../styles/pagesStyles/signinPage.module.scss';
+import styles from '../styles/pagesStyles/signInPage.module.scss';
 
 const SignIn = () => {
     const router = useRouter()
