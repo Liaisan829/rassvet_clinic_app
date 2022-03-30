@@ -8,10 +8,6 @@ import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
 
-import('../mocks').then(({setupMocks}) => {
-    setupMocks();
-})
-
 const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic']
 
 function MyApp({Component, pageProps}: AppProps) {

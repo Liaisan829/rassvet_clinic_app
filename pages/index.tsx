@@ -4,14 +4,11 @@ import {Slider} from "../components/Slider/Slider";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import AddressMap from "../components/yandexMap/AddressMap";
-import {setupMocks} from "../mocks";
 import Link from "next/link";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-
-setupMocks();
 
 const MainPage = () => {
     return (
