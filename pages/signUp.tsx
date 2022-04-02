@@ -1,7 +1,7 @@
 import {Field, Form, Formik} from "formik";
 import {Button} from "../components/ui/Button/Button";
 import Image from "next/image";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {useAuth} from "../context/AuthContext";
@@ -26,15 +26,12 @@ const SignUp = () => {
         e.preventDefault()
 
         try {
-            await signup(data.email, data.password)//почему по телефону а не по паролю
+            await signup(data.email, data.password)
+            await router.push('/')
         } catch (err) {
             console.log(err)
         }
-
-        console.log(data)
-    }
-
-    const onRegisterClick = () => {
+        console.log(user)
     }
 
     return (
@@ -58,6 +55,7 @@ const SignUp = () => {
                             }}
                         ><h2>X</h2></Button>
                     </div>
+
                     <Formik initialValues={{
                         email: "",
                         password: ""
@@ -116,10 +114,6 @@ const SignUp = () => {
                                 </div>
                                 <Button
                                     type="submit"
-                                    onClick={() => {
-                                        onRegisterClick
-                                        router.push('/')
-                                    }}
                                     theme="orange"
                                 >Зарегистрироваться</Button>
                             </Form>

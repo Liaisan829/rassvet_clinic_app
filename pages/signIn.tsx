@@ -28,9 +28,6 @@ const SignIn = () => {
         }
     }
 
-    const onLoginClick = () => {
-    }
-
     return (
         <div className={styles.loginPage}>
             <Head>
@@ -76,7 +73,6 @@ const SignIn = () => {
                                 />
                                 <Button
                                     type="submit"
-                                    onClick={onLoginClick}
                                     theme="orange"
                                 >Войти</Button>
                             </Form>
