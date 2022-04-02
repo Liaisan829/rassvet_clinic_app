@@ -1,16 +1,32 @@
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {ClinicCard} from "../components/Card/ClinicCard/ClinicCard";
-import therapy from "../public/adultClinic/therapy.svg";
-import cardiology from "../public/adultClinic/cardiology.svg";
-import dermatology from "../public/adultClinic/dermatology.svg";
-import nevrology from "../public/adultClinic/nevrology.svg";
-import psicology from "../public/adultClinic/psicology.svg";
-import revmatology from "../public/adultClinic/revmatology.svg";
-import ultrasound from "../public/adultClinic/ultrasound.svg";
-import endoscopia from "../public/adultClinic/endoscopia.svg";
 import styles from "../styles/pagesStyles/adultClinic.module.scss";
+import {useEffect, useState} from "react";
+import {collection, getDocs} from "@firebase/firestore";
+import {database} from "../config/firebase";
+import SkeletonClinicsPage from "../components/Skeleton/SkeletonClinicsPage";
 
 const AdultClinic = () => {
+
+    const [loading, setLoading] = useState(false);
+    const [adultClinics, setAdultClinics] = useState<any>([]);
+    const databaseRef = collection(database, 'adultClinic');
+
+    useEffect(() => {
+        const getAdultClinics = async () => {
+            const data = await getDocs(databaseRef);
+            setAdultClinics(data.docs.map((doc) => ({...doc.data()})));
+        };
+        getAdultClinics()
+    }, [])
+
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 3700);
+        return () => clearTimeout(timing);
+    }, []);
 
     return (
         <BaseLayout title="Взрослая клиника">
@@ -21,14 +37,15 @@ const AdultClinic = () => {
                     жизненного пути — от беременности и
                     новорожденности до реабилитации и возвращения работоспособности пожилым пациентам.</p>
                 <section className={styles.clinicCards}>
-                    <ClinicCard img={therapy} title="Терапия"/>
-                    <ClinicCard img={cardiology} title="Кардиология"/>
-                    <ClinicCard img={dermatology} title="Дерматология"/>
-                    <ClinicCard img={nevrology} title="Неврология"/>
-                    <ClinicCard img={psicology} title="Психология"/>
-                    <ClinicCard img={revmatology} title="Ревматология"/>
-                    <ClinicCard img={ultrasound} title="УЗИ"/>
-                    <ClinicCard img={endoscopia} title="Эндоскопия"/>
+                    {loading ? <SkeletonClinicsPage/> :
+                        adultClinics.map((adultClinic: any)=>(
+                            <ClinicCard
+                                key={adultClinic.title}
+                                title={adultClinic.title}
+                                img={adultClinic.url}
+                            />
+                        ))
+                    }
                 </section>
             </div>
 
