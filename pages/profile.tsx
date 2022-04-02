@@ -4,7 +4,6 @@ import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
 import {database} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
-import apply_note from "../public/profile/apply_note.svg";
 import styles from "../styles/pagesStyles/profile.module.scss";
 import {addDoc, collection, getDocs} from "@firebase/firestore";
 import photoURL from '../public/profile/profileLogo.svg';

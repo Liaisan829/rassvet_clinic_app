@@ -6,7 +6,7 @@ import {collection, getDocs} from "@firebase/firestore";
 import {useEffect, useState} from "react";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
 import SkeletonDoctorPage from "../../components/Skeleton/SkeletonDoctorPage";
-import 'react-loading-skeleton/dist/skeleton.css'
+import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '../../styles/pagesStyles/doctorsList.module.scss';
 
 export default function Doctor() {

@@ -1,7 +1,6 @@
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
 import {FC, useState} from "react";
-import {useRouter} from "next/router";
 import {addDoc, collection} from "@firebase/firestore";
 import {database} from "../../../config/firebase";
 
