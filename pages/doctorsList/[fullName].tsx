@@ -32,7 +32,7 @@ export default function Doctor() {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 3700);
+        }, 5000);
         return () => clearTimeout(timing);
     }, []);
 
@@ -64,6 +64,7 @@ export default function Doctor() {
                                     <AppointmentModal
                                         showModal={showModal}
                                         setShowModal={setShowModal}
+                                        specialistName={filteredDoctor.fullName}
                                     />
                                     <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                 </div>

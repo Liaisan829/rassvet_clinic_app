@@ -25,7 +25,7 @@ const ClinicReviews = () => {
                     return (
                         <CardReview
                             key={review.reviewer}
-                            date={new Date().toLocaleDateString()}
+                            date={review.time}
                             fullName={review.reviewer}
                             text={review.reviewText}
                         />

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
@@ -6,14 +6,17 @@ import {database} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import apply_note from "../public/profile/apply_note.svg";
 import styles from "../styles/pagesStyles/profile.module.scss";
-import {addDoc, collection} from "@firebase/firestore";
+import {addDoc, collection, getDocs} from "@firebase/firestore";
+import photoURL from '../public/profile/profileLogo.svg';
 
 const Profile = () => {
     const {user} = useAuth()
 
     const [reviewer, setReviewerName] = useState(null);
     const [reviewText, setReviewText] = useState("");
+    const [appointments, setAppointments] = useState<any>([]);
 
+    const databaseRef = collection(database, 'appointments');
     const reviewsCollectionRef = collection(database, "reviews");
 
     const createReview = async () => {
@@ -50,19 +53,19 @@ const Profile = () => {
     //     }
     // }, [user]);
 
-    // useEffect(() => {
-    //     const getAppointments = async () => {
-    //         const data = await getDocs(databaseRef);
-    //         setAppointments(data.docs.map((doc) => ({...doc.data()})));
-    //     };
-    //     getAppointments()
-    // }, [])
+    useEffect(() => {
+        const getAppointments = async () => {
+            const data = await getDocs(databaseRef);
+            setAppointments(data.docs.map((doc) => ({...doc.data()})));
+        };
+        getAppointments()
+    }, [])
 
     return (
         <BaseLayout title="Профиль">
 
             <aside className={styles.profile}>
-                {/*<Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>*/}
+                <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
                 {/*<input type="file" onChange={handleChange}/>*/}
                 {/*<button disabled={loading || !photo} onClick={handleClick}>Upload</button>*/}
 
@@ -75,22 +78,29 @@ const Profile = () => {
 
             <div className={styles.visits}>
                 <h1>Записи на прием</h1>
-                <div className={styles.visits__info}>
-                    <Image src={apply_note} width={180} height={180}/>
-                    <p>Здесь будут записи на предстоящие приемы</p>
-                    {/*<h3>{appointment.fullName}</h3>*/}
-                    {/*<h3>{appointment.phone}</h3>*/}
-                </div>
-                {/*{appointments.map((appointment:any) => {*/}
-                {/*    return(*/}
+                {/*<Image src={apply_note} width={180} height={180}/>*/}
+                {/*<p>Здесь будут записи на предстоящие приемы</p>*/}
+                {/*/!*<h3>{appointment.fullName}</h3>*!/*/}
+                {/*/!*<h3>{appointment.phone}</h3>*!/*/}
+
+                {appointments.filter((appointment: any) => (user.email === appointment.email)).map((filteredAppointment: any) => (
+                        <div key={filteredAppointment.email} className={styles.visits__info}>
+                            {/*<Image src={apply_note} width={180} height={180}/>*/}
+                            {/*<p>Здесь будут записи на предстоящие приемы</p>*/}
+                            <h3>{filteredAppointment.fullName}</h3>
+                            <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>
+                        </div>
+                    )
+                )}
+
+                {/*{appointments.map((filteredAppointment:any) => (*/}
                 {/*        <div className={styles.visits__info}>*/}
-                {/*            <Image src={apply_note} width={180} height={180}/>*/}
-                {/*            <p>Здесь будут записи на предстоящие приемы</p>*/}
-                {/*            /!*<h3>{appointment.fullName}</h3>*!/*/}
-                {/*            /!*<h3>{appointment.phone}</h3>*!/*/}
+                {/*            /!*<Image src={apply_note} width={180} height={180}/>*!/*/}
+                {/*            /!*<p>Здесь будут записи на предстоящие приемы</p>*!/*/}
+                {/*            <h3>{filteredAppointment.fullName}</h3>*/}
+                {/*            <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>*/}
                 {/*        </div>*/}
-                {/*        )*/}
-                {/*})}*/}
+                {/*    ))}*/}
             </div>
 
             <div className={styles.review}>

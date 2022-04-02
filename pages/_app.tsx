@@ -8,7 +8,7 @@ import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
 
-const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic']
+const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic', '/doctorsList/*']
 
 function MyApp({Component, pageProps}: AppProps) {
     const router = useRouter()
