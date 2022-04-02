@@ -43,4 +43,4 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
 
         </Modal>
     )
-}
+};

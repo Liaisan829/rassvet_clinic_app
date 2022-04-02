@@ -76,6 +76,7 @@
 
   h1 {
     @include header-text;
+    margin-bottom: 40px;
   }
 
   p {

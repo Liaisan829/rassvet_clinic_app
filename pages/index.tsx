@@ -9,8 +9,24 @@ import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import {useEffect, useState} from "react";
+import {collection, getDocs} from "@firebase/firestore";
+import {database} from "../config/firebase";
 
 const MainPage = () => {
+
+    // const [reviewsList, setReviewsList] = useState<any>([]);
+    // const reviewsCollectionRef = collection(database, "reviews");
+    //
+    // useEffect(() => {
+    //     const getAllReviews = async () => {
+    //         const data = await getDocs(reviewsCollectionRef);
+    //         setReviewsList(data.docs.map((doc) => ({...doc.data()})));
+    //     };
+    //     getAllReviews();
+    //     возможно это стоит вынести в хук, получать массив отзывов, слайсом брать первые два и записать в новый массив и его выводить
+    // }, []);
+
     return (
         <>
             <BaseLayout title={"Главная страница"}>
@@ -73,6 +89,7 @@ const MainPage = () => {
                         </Link>
                     </div>
                     <div className={styles.reviews__item}>
+
                         <CardReview
                             date={"17 ноября  2021"}
                             fullName={"Александр Иванов"}

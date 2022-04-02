@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {database} from "../config/firebase";
 import {collection, getDocs} from "@firebase/firestore";
-import styles from "../styles/pagesStyles/clinicReviews.module.scss";
 import {CardReview} from "../components/Card/CardReview/CardReview";
+import {BaseLayout} from "../components/BaseLayout/BaseLayout";
+import styles from "../styles/pagesStyles/clinicReviews.module.scss";
 
 const ClinicReviews = () => {
 
@@ -12,14 +13,15 @@ const ClinicReviews = () => {
     useEffect(() => {
         const getAllReviews = async () => {
             const data = await getDocs(reviewsCollectionRef);
-            setReviewsList(data.docs.map((doc)=>({...doc.data()})));
+            setReviewsList(data.docs.map((doc) => ({...doc.data()})));
         };
         getAllReviews();
     }, []);
 
     return (
-        <>
-            <h1>Отзывы</h1>
+
+        <BaseLayout title={"Отзывы"}>
+            <h1>Отзывы о клинике &quot;Рассвет&quot;</h1>
             <div className={styles.allReviews}>
                 {reviewsList.map((review: any) => {
                     return (
@@ -29,15 +31,10 @@ const ClinicReviews = () => {
                             fullName={review.reviewer}
                             text={review.reviewText}
                         />
-                        // <div key={review.reviewer} className={styles.review}>
-                        //     <p>{new Date().toLocaleDateString()}</p>
-                        //     <h1>{review.reviewer}</h1>
-                        //     <p>{review.reviewText}</p>
-                        // </div>
                     )
                 })}
             </div>
-        </>
+        </BaseLayout>
     );
 }
 
