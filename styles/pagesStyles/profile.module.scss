@@ -1,44 +1,46 @@
 @import "../mixins";
 
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
 .profile {
-  max-width: 400px;
-  width: 100%;
+  width: 500px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   border: 1px $c-dark-gray solid;
   border-radius: 20px;
-  float: left;
-
+  margin-right: 70px;
   &__photo{
     width: 150px;
     height: 150px;
   }
-
   &__info {
     display: flex;
     flex-direction: column;
-
   }
 }
 
 .visits {
   background-color: $c-light-yellow;
-  margin-top: 75px;
-  margin-left: 500px;
   padding: 10px 0 10px 10px;
-  max-width: 700px;
+  width: 700px;
+  min-height: 300px;
 
   &__info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
   }
 }
 
 .review {
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
 
@@ -66,3 +68,12 @@
     height: 150px;
   }
 }
+
+.visitsSkeleton {
+  margin-top: 40px;
+
+  &__item {
+    margin-bottom: 20px;
+  }
+}
+

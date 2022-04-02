@@ -1,5 +1,4 @@
 import Skeleton from 'react-loading-skeleton';
-import {BaseLayout} from "../BaseLayout/BaseLayout";
 import styles from "../../styles/pagesStyles/adultClinic.module.scss";
 
 const SkeletonClinicsPage = () => {

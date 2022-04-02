@@ -7,6 +7,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic', '/doctorsList/*']
 

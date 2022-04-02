@@ -4,9 +4,11 @@ import {Button} from "../components/ui/Button/Button";
 import {useAuth} from "../context/AuthContext";
 import {database} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
-import styles from "../styles/pagesStyles/profile.module.scss";
 import {addDoc, collection, getDocs} from "@firebase/firestore";
+import SkeletonAppointmentsComponent from "../components/Skeleton/SkeletonAppointmentsComponent";
 import photoURL from '../public/profile/profileLogo.svg';
+import applyNote from '../public/profile/applyNote.svg';
+import styles from "../styles/pagesStyles/profile.module.scss";
 
 const Profile = () => {
     const {user} = useAuth()
@@ -14,9 +16,28 @@ const Profile = () => {
     const [reviewer, setReviewerName] = useState(null);
     const [reviewText, setReviewText] = useState("");
     const [appointments, setAppointments] = useState<any>([]);
+    const [loading, setLoading] = useState(false);
+    const [isAppointments, setIsAppointments] = useState(false)
 
     const databaseRef = collection(database, 'appointments');
     const reviewsCollectionRef = collection(database, "reviews");
+
+    useEffect(() => {
+        setIsAppointments(true)
+        const getAppointments = async () => {
+            const data = await getDocs(databaseRef);
+            setAppointments(data.docs.map((doc) => ({...doc.data()})));
+        };
+        getAppointments().then(err => console.log(err))
+    }, [])
+
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 2800);
+        return () => clearTimeout(timing);
+    }, []);
 
     const createReview = async () => {
         await addDoc(reviewsCollectionRef, {
@@ -36,71 +57,32 @@ const Profile = () => {
         setReviewText(event.target.value)
     };
 
-    // const handleChange = (event: any) => {
-    //     if(event.target.files[0]){
-    //         setPhoto(event.target.files[0])
-    //     }
-    // };
-
-    // const handleClick = () => {
-    //     upload(photo, user, setLoading);
-    // }
-
-    // useEffect(()=>{
-    //     if(user?.photoURL){
-    //         setPhotoURL(user.photoURL);
-    //     }
-    // }, [user]);
-
-    useEffect(() => {
-        const getAppointments = async () => {
-            const data = await getDocs(databaseRef);
-            setAppointments(data.docs.map((doc) => ({...doc.data()})));
-        };
-        getAppointments()
-    }, [])
-
     return (
         <BaseLayout title="Профиль">
-
-            <aside className={styles.profile}>
-                <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
-                {/*<input type="file" onChange={handleChange}/>*/}
-                {/*<button disabled={loading || !photo} onClick={handleClick}>Upload</button>*/}
-
-                <div className={styles.profileInfo__info}>
-                    <h1>{user.displayName}</h1>
-                    <p>{user.email}</p>
-                    <p>12.03.2022</p>
+            <section className={styles.userInfo}>
+                <div className={styles.profile}>
+                    <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
+                    <div className={styles.profileInfo__info}>
+                        <h1>{user.displayName}</h1>
+                        <p>{user.email}</p>
+                        <p>12.03.2022</p>
+                    </div>
                 </div>
-            </aside>
 
-            <div className={styles.visits}>
-                <h1>Записи на прием</h1>
-                {/*<Image src={apply_note} width={180} height={180}/>*/}
-                {/*<p>Здесь будут записи на предстоящие приемы</p>*/}
-                {/*/!*<h3>{appointment.fullName}</h3>*!/*/}
-                {/*/!*<h3>{appointment.phone}</h3>*!/*/}
-
-                {appointments.filter((appointment: any) => (user.email === appointment.email)).map((filteredAppointment: any) => (
-                        <div key={filteredAppointment.email} className={styles.visits__info}>
-                            {/*<Image src={apply_note} width={180} height={180}/>*/}
-                            {/*<p>Здесь будут записи на предстоящие приемы</p>*/}
-                            <h3>{filteredAppointment.fullName}</h3>
-                            <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>
-                        </div>
-                    )
-                )}
-
-                {/*{appointments.map((filteredAppointment:any) => (*/}
-                {/*        <div className={styles.visits__info}>*/}
-                {/*            /!*<Image src={apply_note} width={180} height={180}/>*!/*/}
-                {/*            /!*<p>Здесь будут записи на предстоящие приемы</p>*!/*/}
-                {/*            <h3>{filteredAppointment.fullName}</h3>*/}
-                {/*            <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>*/}
-                {/*        </div>*/}
-                {/*    ))}*/}
-            </div>
+                <div className={styles.visits}>
+                    <h1>Записи на прием</h1>
+                    {loading ? <SkeletonAppointmentsComponent/> : (
+                        isAppointments ?
+                            appointments.filter((appointment: any) => (user.email === appointment.email)).map((filteredAppointment: any) => (
+                                    <div key={filteredAppointment.email} className={styles.visits__info}>
+                                        <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>
+                                        <h3>Дата и время приема: _____________________</h3>
+                                    </div>
+                                )
+                            ) : <Image src={applyNote} width={200} height={200}/>
+                    )}
+                </div>
+            </section>
 
             <div className={styles.review}>
                 <h1>Отзывы</h1>
