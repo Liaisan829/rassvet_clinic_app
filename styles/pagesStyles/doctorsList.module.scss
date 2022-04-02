@@ -32,6 +32,17 @@
     justify-content: space-between;
     width: 300px;
 
+    &__price {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      h4 {
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
     p {
       margin-top: 20px;
       @include small-text;

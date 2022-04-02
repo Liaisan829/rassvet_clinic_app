@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, .8);
-  z-index: 4;
+  z-index: 6;
 
   p {
     margin-top: 20px;
@@ -43,7 +43,6 @@
     &__top {
       display: flex;
       justify-content: space-between;
-      //margin-bottom: 30px;
       @include modalText;
     }
   }

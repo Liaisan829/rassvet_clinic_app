@@ -18,6 +18,9 @@ const SkeletonDoctorPage = () => {
                                 <Skeleton duration={1} height={20} width={300}/>
                             </div>
                         </div>
+                        <div className={styles.doctorTitle__info__price}>
+                            <Skeleton duration={1} height={20} width={300}/>
+                        </div>
                         <div>
                             <Skeleton duration={1} height={40} width={200}/>
                         </div>
