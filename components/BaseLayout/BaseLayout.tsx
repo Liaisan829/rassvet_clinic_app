@@ -26,9 +26,8 @@ interface Props {
 const navigation = [
     {id: 1, title: 'Главная', path: '/'},
     {id: 2, title: 'Взрослая клиника', path: '/adultClinic'},
-    {id: 3, title: 'Детская клиника', path: '/childrenClinic'},
-    {id: 4, title: 'Стоматология', path: '/dentistry'},
-    {id: 5, title: 'Стационар', path: '/hospital'},
+    {id: 3, title: 'Стоматология', path: '/dentistry'},
+    {id: 4, title: 'Стационар', path: '/hospital'},
 ]
 
 export const BaseLayout: FC<Props> = ({children, title}) => {

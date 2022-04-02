@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {FC} from "react";
 import cn from "classnames/bind";
 import styles from "./Button.module.scss";
 
@@ -12,18 +12,20 @@ interface ButtonProps {
 const cx = cn.bind(styles);
 
 export const Button: FC<ButtonProps> = ({type, onClick, theme, children, color}) => {
+
     return (
-            <button
-                type={type}
-                onClick={onClick}
-                style={{ "color": `${color}` }}
-                className={cx(styles.button, {
-                    buttonOrange: theme === 'orange',
-                    buttonTransparent: theme === 'transparent',
-                    buttonDefault: theme === ''
-                })}
-            >
-                {children}
-            </button>
+        <button
+            type={type}
+            onClick={onClick}
+            style={{"color": `${color}`}}
+
+            className={cx(styles.button, {
+                buttonOrange: theme === 'orange',
+                buttonTransparent: theme === 'transparent',
+                buttonDefault: theme === ''
+            })}
+        >
+            {children}
+        </button>
     );
 };
