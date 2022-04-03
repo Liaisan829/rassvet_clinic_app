@@ -121,7 +121,7 @@ const MainPage = () => {
                     </div>
                 </section>
 
-                <section className={styles.address}>
+                <section className={styles.address} id={"address"}>
                     <h1>Адрес клиники</h1>
                     <div className={styles.address__info}>
                         <AddressMap/>

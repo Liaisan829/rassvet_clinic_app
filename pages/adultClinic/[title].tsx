@@ -17,6 +17,7 @@ export default function Clinic() {
         };
         getAdultClinics()
     }, [])
+
     return (
         <>
             <BaseLayout title={'Отделение'}>
@@ -24,7 +25,8 @@ export default function Clinic() {
                 {adultClinics.filter((adultClinic:any)=>(query.title===adultClinic.title)).map((filteredClinic:any)=>(
                     <div key={filteredClinic.title} className={styles.clinicPage}>
                         <img src={filteredClinic.inner_url} alt="clinic"/>
-                        <blockquote>{filteredClinic.qoute}</blockquote>
+                        <blockquote className={styles.clinicPage__quote}>{filteredClinic.qoute}</blockquote>
+                        <h2>Что лечат в отделении неврологии</h2>
                     </div>
                 ))}
             </BaseLayout>

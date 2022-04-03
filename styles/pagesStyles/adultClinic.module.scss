@@ -1,13 +1,13 @@
 @import "../mixins";
 
-.clinic{
+.clinic {
 
   &__p {
     @include small-text;
   }
 }
 
-.clinicCards{
+.clinicCards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -15,11 +15,25 @@
   margin-top: 80px;
 }
 
-.clinicPage{
+.clinicPage {
 
-  img{
+  img {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__quote{
+    @include bold-text;
+    margin: 0 auto;
+  }
+
+  &__quote:before {
+    color: $c-orange;
+    content: "\201C";
+    font-size: 50px;
   }
 }

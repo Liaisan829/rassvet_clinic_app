@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {FC, useEffect, useState} from "react";
 import styles from "./CardReview.module.scss";
 
 interface CardProps {

@@ -3,6 +3,7 @@ import {FC, ReactNode} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
+import {Link as ScrollLink} from "react-scroll";
 import {Button} from "../ui/Button/Button";
 import {useAuth} from "../../context/AuthContext";
 import logo from '../../public/header/logo.svg';
@@ -57,7 +58,14 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
 
                         <div className={styles.headerTop__item}>
                             <Image src={location} width={24} height={24}/>
-                            <a>Москва, Столярный переулок, дом 3, корпус 2</a>
+                            <ScrollLink
+                                activeClass="active"
+                                to="address"
+                                smooth={true}
+                                duration={1000}
+                                offset={-120}
+                            >Москва, Столярный переулок, дом 3, корпус 2
+                            </ScrollLink>
                         </div>
                     </div>
                 </section>
