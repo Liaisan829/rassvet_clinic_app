@@ -1,0 +1,13 @@
+.optionsСontainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.optionButton {
+  margin: 5px;
+  border-radius: 25px;
+  padding: 3px;
+  border-color: blue;
+  background: transparent;
+  text-align: center;
+}

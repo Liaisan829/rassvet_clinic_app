@@ -8,12 +8,17 @@ import Link from "next/link";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
+import message from '../public/message.png';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 import {useEffect, useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
 import {database} from "../config/firebase";
+import {Button} from "../components/ui/Button/Button";
+import ChatBot from "../components/ChatbotComp/ChatBot";
+import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 
 const MainPage = () => {
+    const [showChatbotModal, setShowChatbotModal] = useState(false);
 
     // const [reviewsList, setReviewsList] = useState<any>([]);
     // const reviewsCollectionRef = collection(database, "reviews");
@@ -27,10 +32,23 @@ const MainPage = () => {
     //     возможно это стоит вынести в хук, получать массив отзывов, слайсом брать первые два и записать в новый массив и его выводить
     // }, []);
 
+    const openChatbotModal = () => {
+        setShowChatbotModal(true)
+    }
+
     return (
         <>
             <BaseLayout title={"Главная страница"}>
                 <Slider/>
+
+                <button
+                    className={styles.chatButton}
+                    onClick={openChatbotModal}
+                >
+                    <Image src={message} width={30} height={30}/>
+                </button>
+                <ChatbotModal onClose={() => setShowChatbotModal(false)} show={showChatbotModal}/>
+
                 <section className={styles.healthCare}>
                     <h1>Забота о вашем здоровье</h1>
                     <div className={styles.healthCare__item}>

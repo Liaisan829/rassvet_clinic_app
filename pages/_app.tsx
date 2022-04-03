@@ -8,6 +8,7 @@ import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
+import 'react-chatbot-kit/build/main.css';
 
 const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic', '/doctorsList/*']
 

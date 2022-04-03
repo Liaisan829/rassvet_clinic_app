@@ -97,3 +97,17 @@
     margin-bottom: 40px;
   }
 }
+
+.chatButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: $c-orange;
+  color: $c-white;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 6;
+}
