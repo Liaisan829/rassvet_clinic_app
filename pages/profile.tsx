@@ -13,14 +13,16 @@ import styles from "../styles/pagesStyles/profile.module.scss";
 const Profile = () => {
     const {user} = useAuth()
 
-    const [reviewer, setReviewerName] = useState(null);
+    const [reviewer, setReviewerName] = useState("");
     const [reviewText, setReviewText] = useState("");
     const [appointments, setAppointments] = useState<any>([]);
+    const [usersInfo, setUsersInfo] = useState<any>([]);
     const [loading, setLoading] = useState(false);
     const [isAppointments, setIsAppointments] = useState(false)
 
     const databaseRef = collection(database, 'appointments');
     const reviewsCollectionRef = collection(database, "reviews");
+    const usersDatabaseRef = collection(database, 'users');
 
     useEffect(() => {
         setIsAppointments(true)
@@ -28,7 +30,13 @@ const Profile = () => {
             const data = await getDocs(databaseRef);
             setAppointments(data.docs.map((doc) => ({...doc.data()})));
         };
-        getAppointments().then(err => console.log(err))
+        getAppointments().then(err => console.log(err));
+
+        const getUserInfo = async () => {
+            const data = await getDocs(usersDatabaseRef);
+            setUsersInfo(data.docs.map((doc) => ({...doc.data()})))
+        };
+        getUserInfo().then(err => console.log(err));
     }, [])
 
     useEffect(() => {
@@ -45,15 +53,16 @@ const Profile = () => {
             reviewer,
             reviewText
         });
+        await setReviewerName("");
+        await setReviewText("");
+        await alert("отзыв отправлен спасибо")
     }
 
     const setReviewer = (event: any) => {
-        console.log(event.target.value);
         setReviewerName(event.target.value)
     };
 
     const setReview = (event: any) => {
-        console.log(event.target.value);
         setReviewText(event.target.value)
     };
 
@@ -63,9 +72,25 @@ const Profile = () => {
                 <div className={styles.profile}>
                     <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
                     <div className={styles.profileInfo__info}>
-                        <h1>{user.displayName}</h1>
-                        <p>{user.email}</p>
-                        <p>12.03.2022</p>
+
+                        {usersInfo.map((userInfo: any) => (
+                            <>
+                                <p key={userInfo.surname}>{userInfo.surname}</p>
+                                <p key={userInfo.name}>{userInfo.name}</p>
+                                <p key={userInfo.patronymic}>{userInfo.patronymic}</p>
+                                <p key={userInfo.phone}>{userInfo.phone}</p>
+                                <p key={user.email}>{user.email}</p>
+                            </>
+                        ))}
+                        {/*{userInfo ?*/}
+                        {/*    <>*/}
+                        {/*        <p>{userInfo.surname}</p>*/}
+                        {/*        <p>{userInfo.name}</p>*/}
+                        {/*        <p>{userInfo.patronymic}</p>*/}
+                        {/*        <p>{userInfo.phone}</p>*/}
+                        {/*        <p>{user.email}</p>*/}
+                        {/*        <p>12.03.2022</p>*/}
+                        {/*    </> : null}*/}
                     </div>
                 </div>
 

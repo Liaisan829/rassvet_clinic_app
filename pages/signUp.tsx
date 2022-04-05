@@ -11,7 +11,6 @@ import styles from '../styles/pagesStyles/signUpPage.module.scss';
 const SignUp = () => {
     const {user, signup} = useAuth()
     const router = useRouter()
-    console.log(user)
     const [data, setData] = useState({
         name: '',
         surname: '',
@@ -26,12 +25,12 @@ const SignUp = () => {
         e.preventDefault()
 
         try {
-            await signup(data.email, data.password)
-            await router.push('/')
+            await signup(data);
+            await router.push('/');
         } catch (err) {
             console.log(err)
         }
-        console.log(user)
+        console.log(data)
     }
 
     return (
@@ -58,7 +57,11 @@ const SignUp = () => {
 
                     <Formik initialValues={{
                         email: "",
-                        password: ""
+                        password: "",
+                        surname: "",
+                        name: "",
+                        patronymic: "",
+                        phone: ""
                     }}
                             onSubmit={console.log}
                     >

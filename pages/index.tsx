@@ -20,17 +20,24 @@ import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 const MainPage = () => {
     const [showChatbotModal, setShowChatbotModal] = useState(false);
 
-    // const [reviewsList, setReviewsList] = useState<any>([]);
-    // const reviewsCollectionRef = collection(database, "reviews");
-    //
-    // useEffect(() => {
-    //     const getAllReviews = async () => {
-    //         const data = await getDocs(reviewsCollectionRef);
-    //         setReviewsList(data.docs.map((doc) => ({...doc.data()})));
-    //     };
-    //     getAllReviews();
-    //     возможно это стоит вынести в хук, получать массив отзывов, слайсом брать первые два и записать в новый массив и его выводить
-    // }, []);
+    const [reviewsList, setReviewsList] = useState<any>([]);
+    const [twoReviews, setTwoReviews] = useState<any>([]);
+    const reviewsCollectionRef = collection(database, "reviews");
+
+    useEffect(() => {
+        const getAllReviews = async () => {
+            const data = await getDocs(reviewsCollectionRef);
+            setReviewsList(data.docs.map((doc) => ({...doc.data()})));
+        };
+        getAllReviews();
+        //возможно это стоит вынести в хук, получать массив отзывов, слайсом брать первые два и записать в новый массив и его выводить
+    }, []);
+
+    const getTwoReviews = (reviewsList: []) => {
+        const sliced = reviewsList.slice(0, 2);
+        setTwoReviews(sliced);
+        return twoReviews;
+    }
 
     const openChatbotModal = () => {
         setShowChatbotModal(true)
@@ -107,6 +114,15 @@ const MainPage = () => {
                         </Link>
                     </div>
                     <div className={styles.reviews__item}>
+
+                        {/*{getTwoReviews(reviewsList).map((review:any) => (*/}
+                        {/*    <CardReview*/}
+                        {/*        key={review.reviewer}*/}
+                        {/*        fullName={review.reviewer}*/}
+                        {/*        text={review.reviewText}*/}
+                        {/*        date={review.time}*/}
+                        {/*    />*/}
+                        {/*))}*/}
 
                         <CardReview
                             date={"17 ноября  2021"}
