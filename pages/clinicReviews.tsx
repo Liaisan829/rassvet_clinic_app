@@ -3,9 +3,9 @@ import {database} from "../config/firebase";
 import {collection, getDocs} from "@firebase/firestore";
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
-import styles from "../styles/pagesStyles/clinicReviews.module.scss";
-import SkeletonClinicReviews from "../components/Skeleton/SkeletonClinicReviews";
+import SkeletonClinicReviews from "../components/ui/Skeleton/SkeletonClinicReviews";
 import 'react-loading-skeleton/dist/skeleton.css';
+import styles from "../styles/pagesStyles/clinicReviews.module.scss";
 
 const ClinicReviews = () => {
 

@@ -4,7 +4,7 @@ import styles from "../styles/pagesStyles/adultClinic.module.scss";
 import {useEffect, useState} from "react";
 import {collection, getDocs} from "@firebase/firestore";
 import {database} from "../config/firebase";
-import SkeletonClinicsPage from "../components/Skeleton/SkeletonClinicsPage";
+import SkeletonClinicsPage from "../components/ui/Skeleton/SkeletonClinicsPage";
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const AdultClinic = () => {

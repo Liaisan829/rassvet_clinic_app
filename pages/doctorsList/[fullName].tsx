@@ -5,7 +5,7 @@ import {database} from "../../config/firebase";
 import {collection, getDocs} from "@firebase/firestore";
 import {useEffect, useState} from "react";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
-import SkeletonDoctorPage from "../../components/Skeleton/SkeletonDoctorPage";
+import SkeletonDoctorPage from "../../components/ui/Skeleton/SkeletonDoctorPage";
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
 import 'react-loading-skeleton/dist/skeleton.css';

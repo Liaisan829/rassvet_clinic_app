@@ -5,20 +5,22 @@ import {useAuth} from "../context/AuthContext";
 import {database} from "../config/firebase";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {addDoc, collection, getDocs} from "@firebase/firestore";
-import SkeletonAppointmentsComponent from "../components/Skeleton/SkeletonAppointmentsComponent";
+import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
 import photoURL from '../public/profile/profileLogo.svg';
 import applyNote from '../public/profile/applyNote.svg';
 import styles from "../styles/pagesStyles/profile.module.scss";
+import {useRouter} from "next/router";
 
 const Profile = () => {
-    const {user} = useAuth()
+    const {user, logout} = useAuth();
+    const router = useRouter();
 
     const [reviewer, setReviewerName] = useState("");
     const [reviewText, setReviewText] = useState("");
     const [appointments, setAppointments] = useState<any>([]);
     const [usersInfo, setUsersInfo] = useState<any>([]);
     const [loading, setLoading] = useState(false);
-    const [isAppointments, setIsAppointments] = useState(false)
+    const [isAppointments, setIsAppointments] = useState(false);
 
     const databaseRef = collection(database, 'appointments');
     const reviewsCollectionRef = collection(database, "reviews");
@@ -130,6 +132,18 @@ const Profile = () => {
                         onClick={createReview}
                     >Отправить отзыв</Button>
                 </div>
+            </div>
+            <div className={styles.logoutBtn}>
+                <Button
+                    type="button"
+                    onClick={() => {
+                        logout()
+                        router.push('/')
+                    }}
+                    theme="transparent"
+                >
+                    Выход
+                </Button>
             </div>
         </BaseLayout>
     );

@@ -18,7 +18,8 @@
   &Transparent {
     @extend .button;
     color: $c-orange;
-    border: 1px solid $c-orange;
+    font-weight: 200;
+    border: 2px solid $c-orange;
   }
 
   &Default {

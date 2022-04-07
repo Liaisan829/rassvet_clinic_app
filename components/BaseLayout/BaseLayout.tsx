@@ -90,25 +90,16 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     <div className={styles.header__btn}>
                         {user ? (
                             <>
-                                <Button
-                                    type="button"
-                                    onClick={() => {
-                                        router.push('/profile')
-                                    }}
-                                    theme="transparent"
-                                >
-                                    Личный кабинет
-                                </Button>
-                                <Button
-                                    type="button"
-                                    onClick={() => {
-                                        logout()
-                                        router.push('/')
-                                    }}
-                                    theme="transparent"
-                                >
-                                    Выход
-                                </Button>
+                                <Link href={'/profile'}>
+                                    <a className={pathname === '/profile' ? styles.activeBtn : ''}>
+                                        <Button
+                                            type="button"
+                                            theme="transparent"
+                                        >
+                                            Личный кабинет
+                                        </Button>
+                                    </a>
+                                </Link>
                             </>
                         ) : (
                             <>
