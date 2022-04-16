@@ -1,31 +1,12 @@
 import type {AppProps} from 'next/app';
-import { AuthContextProvider } from '../context/AuthContext';
-import {useRouter} from "next/router";
-import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import '../styles/globals.css';
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "/components/Slider/Slider.scss";
 import '/components/DoctorsSlider/DoctorsSlider.scss';
-import 'react-loading-skeleton/dist/skeleton.css';
-import 'react-chatbot-kit/build/main.css';
-
-const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic', '/childrenClinic', '/doctorsList/*']
 
 function MyApp({Component, pageProps}: AppProps) {
-    const router = useRouter()
-    return (
-        <AuthContextProvider>
-            {noAuthRequired.includes(router.pathname) ? (
-                <Component {...pageProps} />
-            ) : (
-                <ProtectedRoute>
-                    <Component {...pageProps} />
-                </ProtectedRoute>
-            )}
-        </AuthContextProvider>
-
-    )
+    return <Component {...pageProps} />
 }
 
 export default MyApp

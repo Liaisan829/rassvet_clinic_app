@@ -1,60 +1,23 @@
+import type {NextPage} from 'next'
 import Image from "next/image";
+import Link from 'next/link'
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
-import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
-import {CardReview} from "../components/Card/CardReview/CardReview";
-import AddressMap from "../components/yandexMap/AddressMap";
-import Link from "next/link";
 import heart from '../public/heart.svg';
 import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
-import message from '../public/message.png';
+import {CardReview} from "../components/Card/CardReview/CardReview";
+import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
+import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
-import {useEffect, useState} from "react";
-import {collection, getDocs} from "@firebase/firestore";
-import {database} from "../config/firebase";
-import {Button} from "../components/ui/Button/Button";
-import ChatBot from "../components/ChatbotComp/ChatBot";
-import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
+import AddressMap from "../components/yandexMap/AddressMap";
 
-const MainPage = () => {
-    const [showChatbotModal, setShowChatbotModal] = useState(false);
-
-    const [reviewsList, setReviewsList] = useState<any>([]);
-    const [twoReviews, setTwoReviews] = useState<any>([]);
-    const reviewsCollectionRef = collection(database, "reviews");
-
-    useEffect(() => {
-        const getAllReviews = async () => {
-            const data = await getDocs(reviewsCollectionRef);
-            setReviewsList(data.docs.map((doc) => ({...doc.data()})));
-        };
-        getAllReviews();
-        //возможно это стоит вынести в хук, получать массив отзывов, слайсом брать первые два и записать в новый массив и его выводить
-    }, []);
-
-    const getTwoReviews = (reviewsList: []) => {
-        const sliced = reviewsList.slice(0, 2);
-        setTwoReviews(sliced);
-        return twoReviews;
-    }
-
-    const openChatbotModal = () => {
-        setShowChatbotModal(true)
-    }
+const Home: NextPage = ({first, second}: any) => {
 
     return (
         <>
             <BaseLayout title={"Главная страница"}>
                 <Slider/>
-
-                <button
-                    className={styles.chatButton}
-                    onClick={openChatbotModal}
-                >
-                    <Image src={message} width={30} height={30}/>
-                </button>
-                <ChatbotModal onClose={() => setShowChatbotModal(false)} show={showChatbotModal}/>
 
                 <section className={styles.healthCare}>
                     <h1>Забота о вашем здоровье</h1>
@@ -104,6 +67,7 @@ const MainPage = () => {
                     </div>
                 </section>
 
+
                 <DoctorsSlider/>
 
                 <section className={styles.reviews}>
@@ -114,25 +78,28 @@ const MainPage = () => {
                         </Link>
                     </div>
                     <div className={styles.reviews__item}>
+                        {/*<CardReview*/}
+                        {/*    date={"17 ноября  2021"}*/}
+                        {/*    fullName={"Александр Иванов"}*/}
+                        {/*    text={"Спасибо вам за клинику, были с женой в субботу у кардиолога, вышли счастливые и вдохновлённые, доктор оценила риски, осмотрела, рассказала, сняла мою тревожность! Спасибо что вы теперь есть у нас пациентов!"}*/}
+                        {/*/>*/}
 
-                        {/*{getTwoReviews(reviewsList).map((review:any) => (*/}
-                        {/*    <CardReview*/}
-                        {/*        key={review.reviewer}*/}
-                        {/*        fullName={review.reviewer}*/}
-                        {/*        text={review.reviewText}*/}
-                        {/*        date={review.time}*/}
-                        {/*    />*/}
-                        {/*))}*/}
+                        {/*<CardReview*/}
+                        {/*    date={"15 февраля  2022"}*/}
+                        {/*    fullName={"Федор Катасонов"}*/}
+                        {/*    text={"Лучшее, что случилось со мной за последнее время в плане медицины. Удобное расположение, сверхпрофессиональные врачи, качественное лечение (даже таких беспокойных пациентов, как я). Узнал об организме много нового, обрадовался. Лишние услуги не навязывают, ненужные приемы не назначают, цена абсолютно адекватна. Рекомендую!"}*/}
+                        {/*/>*/}
 
                         <CardReview
-                            date={"17 ноября  2021"}
-                            fullName={"Александр Иванов"}
-                            text={"Спасибо вам за клинику, были с женой в субботу у кардиолога, вышли счастливые и вдохновлённые, доктор оценила риски, осмотрела, рассказала, сняла мою тревожность! Спасибо что вы теперь есть у нас пациентов!"}
+                            date={first.time}
+                            fullName={first.reviewer}
+                            text={first.reviewText}
                         />
+
                         <CardReview
-                            date={"15 февраля  2022"}
-                            fullName={"Федор Катасонов"}
-                            text={"Лучшее, что случилось со мной за последнее время в плане медицины. Удобное расположение, сверхпрофессиональные врачи, качественное лечение (даже таких беспокойных пациентов, как я). Узнал об организме много нового, обрадовался. Лишние услуги не навязывают, ненужные приемы не назначают, цена абсолютно адекватна. Рекомендую!"}
+                            date={second.time}
+                            fullName={second.reviewer}
+                            text={second.reviewText}
                         />
                     </div>
                 </section>
@@ -162,4 +129,13 @@ const MainPage = () => {
     )
 }
 
-export default MainPage
+export default Home;
+
+export async function getStaticProps() {
+
+    const reviews = await getDocsFromFirebase("reviews");
+    const [first, second, ...other] = reviews;
+    return {
+        props: {first, second}
+    };
+}

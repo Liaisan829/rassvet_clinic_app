@@ -1,53 +1,39 @@
-import {useEffect, useState} from "react";
+
 import Image from "next/image";
-import {Button} from "../components/ui/Button/Button";
-import {useAuth} from "../context/AuthContext";
-import {database} from "../config/firebase";
+import {useState} from "react";
+import {addDoc, collection} from "@firebase/firestore";
+import {toast, ToastContainer} from "react-toastify";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
-import {addDoc, collection, getDocs} from "@firebase/firestore";
-import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
+import {Button} from "../components/ui/Button/Button";
+import {database} from "../config/firebase";
+import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import photoURL from '../public/profile/profileLogo.svg';
 import applyNote from '../public/profile/applyNote.svg';
 import styles from "../styles/pagesStyles/profile.module.scss";
-import {useRouter} from "next/router";
+import 'react-toastify/dist/ReactToastify.css';
 
-const Profile = () => {
-    const {user, logout} = useAuth();
-    const router = useRouter();
-
+const Profile = ({usersInfo, appointments}: any) => {
     const [reviewer, setReviewerName] = useState("");
     const [reviewText, setReviewText] = useState("");
-    const [appointments, setAppointments] = useState<any>([]);
-    const [usersInfo, setUsersInfo] = useState<any>([]);
-    const [loading, setLoading] = useState(false);
-    const [isAppointments, setIsAppointments] = useState(false);
-
-    const databaseRef = collection(database, 'appointments');
     const reviewsCollectionRef = collection(database, "reviews");
-    const usersDatabaseRef = collection(database, 'users');
+    const notifyToast = () => toast("Спасибо, Ваш отзыв отправлен!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        type: "success"
+    })
+    // const [loading, setLoading] = useState(false);
+    //
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const timing = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 2800);
+    //     return () => clearTimeout(timing);
+    // }, []);
 
-    useEffect(() => {
-        setIsAppointments(true)
-        const getAppointments = async () => {
-            const data = await getDocs(databaseRef);
-            setAppointments(data.docs.map((doc) => ({...doc.data()})));
-        };
-        getAppointments().then(err => console.log(err));
-
-        const getUserInfo = async () => {
-            const data = await getDocs(usersDatabaseRef);
-            setUsersInfo(data.docs.map((doc) => ({...doc.data()})))
-        };
-        getUserInfo().then(err => console.log(err));
-    }, [])
-
-    useEffect(() => {
-        setLoading(true);
-        const timing = setTimeout(() => {
-            setLoading(false);
-        }, 2800);
-        return () => clearTimeout(timing);
-    }, []);
 
     const createReview = async () => {
         await addDoc(reviewsCollectionRef, {
@@ -57,7 +43,7 @@ const Profile = () => {
         });
         await setReviewerName("");
         await setReviewText("");
-        await alert("отзыв отправлен спасибо")
+        notifyToast();
     }
 
     const setReviewer = (event: any) => {
@@ -74,40 +60,31 @@ const Profile = () => {
                 <div className={styles.profile}>
                     <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={"image"}/>
                     <div className={styles.profileInfo__info}>
-
                         {usersInfo.map((userInfo: any) => (
                             <>
                                 <p key={userInfo.surname}>{userInfo.surname}</p>
                                 <p key={userInfo.name}>{userInfo.name}</p>
                                 <p key={userInfo.patronymic}>{userInfo.patronymic}</p>
                                 <p key={userInfo.phone}>{userInfo.phone}</p>
-                                <p key={user.email}>{user.email}</p>
+                                {/*<p key={user.email}>{user.email}</p>*/}
                             </>
                         ))}
-                        {/*{userInfo ?*/}
-                        {/*    <>*/}
-                        {/*        <p>{userInfo.surname}</p>*/}
-                        {/*        <p>{userInfo.name}</p>*/}
-                        {/*        <p>{userInfo.patronymic}</p>*/}
-                        {/*        <p>{userInfo.phone}</p>*/}
-                        {/*        <p>{user.email}</p>*/}
-                        {/*        <p>12.03.2022</p>*/}
-                        {/*    </> : null}*/}
                     </div>
                 </div>
 
                 <div className={styles.visits}>
                     <h1>Записи на прием</h1>
-                    {loading ? <SkeletonAppointmentsComponent/> : (
-                        isAppointments ?
-                            appointments.filter((appointment: any) => (user.email === appointment.email)).map((filteredAppointment: any) => (
-                                    <div key={filteredAppointment.email} className={styles.visits__info}>
-                                        <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>
-                                        <h3>Дата и время приема: _____________________</h3>
-                                    </div>
-                                )
-                            ) : <Image src={applyNote} width={200} height={200}/>
-                    )}
+                    <Image src={applyNote} width={200} height={200} alt={"applyNote"}/>
+                    {/*{loading ? <SkeletonAppointmentsComponent/> : (*/}
+                    {/*    isAppointments ?*/}
+                    {/*        appointments.filter((appointment: any) => (user.email === appointment.email)).map((filteredAppointment: any) => (*/}
+                    {/*                <div key={filteredAppointment.email} className={styles.visits__info}>*/}
+                    {/*                    <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>*/}
+                    {/*                    <h3>Дата и время приема: _____________________</h3>*/}
+                    {/*                </div>*/}
+                    {/*            )*/}
+                    {/*        ) : <Image src={applyNote} width={200} height={200} alt={"applyNote"}/>*/}
+                    {/*)}*/}
                 </div>
             </section>
 
@@ -134,19 +111,29 @@ const Profile = () => {
                 </div>
             </div>
             <div className={styles.logoutBtn}>
-                <Button
-                    type="button"
-                    onClick={() => {
-                        logout()
-                        router.push('/')
-                    }}
-                    theme="transparent"
-                >
-                    Выход
-                </Button>
+                {/*<Button*/}
+                {/*    type="button"*/}
+                {/*    onClick={() => {*/}
+                {/*        logout()*/}
+                {/*        router.push('/')*/}
+                {/*    }}*/}
+                {/*    theme="transparent"*/}
+                {/*>*/}
+                {/*    Выход*/}
+                {/*</Button>*/}
             </div>
+            <ToastContainer/>
         </BaseLayout>
     );
 }
+
 export default Profile;
 
+export async function getStaticProps() {
+    const usersInfo = await getDocsFromFirebase("users");
+    const appointments = await getDocsFromFirebase("appointments")
+
+    return {
+        props: {usersInfo, appointments}
+    }
+}

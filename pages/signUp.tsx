@@ -1,16 +1,30 @@
 import {Field, Form, Formik} from "formik";
-import {Button} from "../components/ui/Button/Button";
+import {toast, ToastContainer} from "react-toastify";
 import Image from "next/image";
 import React, {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
-import {useAuth} from "../context/AuthContext";
+import {addDoc, collection} from "@firebase/firestore";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import {auth, database} from "../config/firebase";
+import {Button} from "../components/ui/Button/Button";
 import logo from "../public/header/logo.svg";
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/pagesStyles/signUpPage.module.scss';
+import {useStores} from "../utils/use-stores-hook";
 
 const SignUp = () => {
-    const {user, signup} = useAuth()
+    const {userStore:{currentUser, signUp}} = useStores();
     const router = useRouter()
+    const usersDatabaseRef = collection(database, 'users');
+    const notifyToast = () => toast("Вы успешно зарегистрированы!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        type: "success"
+    })
     const [data, setData] = useState({
         name: '',
         surname: '',
@@ -21,16 +35,33 @@ const SignUp = () => {
         phone: ''
     })
 
+    // const handleSignup = async (e: any) => {
+    //     e.preventDefault()
+    //
+    //     await createUserWithEmailAndPassword(auth, data.email, data.password)
+    //         .then((registeredUser) => {
+    //             addDoc(usersDatabaseRef, {
+    //                 uid: registeredUser.user.uid,
+    //                 surname: data.surname,
+    //                 name: data.name,
+    //                 patronymic: data.patronymic,
+    //                 phone: data.phone,
+    //                 photoURL: registeredUser.user.photoURL
+    //             })
+    //                 .then(res => console.log(res));
+    //             localStorage.setItem("user", data.name);
+    //             notifyToast();
+    //             setTimeout(() => {
+    //                 router.push("/")
+    //             }, 3500);
+    //
+    //         })
+    // }
+
     const handleSignup = async (e: any) => {
         e.preventDefault()
 
-        try {
-            await signup(data);
-            await router.push('/');
-        } catch (err) {
-            console.log(err)
-        }
-        console.log(data)
+        // await signUp(data);
     }
 
     return (
@@ -124,6 +155,7 @@ const SignUp = () => {
                     </Formik>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
 
     )

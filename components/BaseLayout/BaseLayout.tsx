@@ -5,7 +5,6 @@ import Head from "next/head";
 import Image from "next/image";
 import {Link as ScrollLink} from "react-scroll";
 import {Button} from "../ui/Button/Button";
-import {useAuth} from "../../context/AuthContext";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
@@ -32,7 +31,6 @@ const navigation = [
 ]
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
-    const {user, logout} = useAuth()
     const {pathname} = useRouter();
     const router = useRouter();
 
@@ -88,41 +86,59 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                     </nav>
 
                     <div className={styles.header__btn}>
-                        {user ? (
-                            <>
-                                <Link href={'/profile'}>
-                                    <a className={pathname === '/profile' ? styles.activeBtn : ''}>
-                                        <Button
-                                            type="button"
-                                            theme="transparent"
-                                        >
-                                            Личный кабинет
-                                        </Button>
-                                    </a>
-                                </Link>
-                            </>
-                        ) : (
-                            <>
-                                <Button
-                                    type="button"
-                                    onClick={() => {
-                                        router.push('/signUp')
-                                    }}
-                                    theme="transparent"
-                                >
-                                    Регистрация
-                                </Button>
-                                <Button
-                                    type="button"
-                                    onClick={() => {
-                                        router.push('/signIn')
-                                    }}
-                                    theme="transparent"
-                                >
-                                    Вход
-                                </Button>
-                            </>
-                        )}
+                        <Button
+                            type="button"
+                            onClick={() => {
+                                router.push('/signUp')
+                            }}
+                            theme="transparent"
+                        >
+                            Регистрация
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={() => {
+                                router.push('/signIn')
+                            }}
+                            theme="transparent"
+                        >
+                            Вход
+                        </Button>
+                        {/*{user ? (*/}
+                        {/*    <>*/}
+                        {/*        <Link href={'/profile'}>*/}
+                        {/*            <a className={pathname === '/profile' ? styles.activeBtn : ''}>*/}
+                        {/*                <Button*/}
+                        {/*                    type="button"*/}
+                        {/*                    theme="transparent"*/}
+                        {/*                >*/}
+                        {/*                    Личный кабинет*/}
+                        {/*                </Button>*/}
+                        {/*            </a>*/}
+                        {/*        </Link>*/}
+                        {/*    </>*/}
+                        {/*) : (*/}
+                        {/*    <>*/}
+                        {/*        <Button*/}
+                        {/*            type="button"*/}
+                        {/*            onClick={() => {*/}
+                        {/*                router.push('/signUp')*/}
+                        {/*            }}*/}
+                        {/*            theme="transparent"*/}
+                        {/*        >*/}
+                        {/*            Регистрация*/}
+                        {/*        </Button>*/}
+                        {/*        <Button*/}
+                        {/*            type="button"*/}
+                        {/*            onClick={() => {*/}
+                        {/*                router.push('/signIn')*/}
+                        {/*            }}*/}
+                        {/*            theme="transparent"*/}
+                        {/*        >*/}
+                        {/*            Вход*/}
+                        {/*        </Button>*/}
+                        {/*    </>*/}
+                        {/*)}*/}
                     </div>
                 </section>
             </header>
