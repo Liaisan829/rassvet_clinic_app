@@ -14,7 +14,6 @@ import styles from '../styles/pagesStyles/signUpPage.module.scss';
 import {useStores} from "../utils/use-stores-hook";
 
 const SignUp = () => {
-    const {userStore:{currentUser, signUp}} = useStores();
     const router = useRouter()
     const usersDatabaseRef = collection(database, 'users');
     const notifyToast = () => toast("Вы успешно зарегистрированы!", {
