@@ -1,9 +1,13 @@
 import {createChatBotMessage} from "react-chatbot-kit";
 import Options from "../components/ChatbotComp/Options/Options";
 import Quiz from "../components/ChatbotComp/Quiz/Quiz";
+import BotAvatar from "../components/ChatbotComp/BotAvatar/BotAvatar";
 
 const config = {
     botName: "Rassvet",
+    customComponents: {
+        botAvatar: (props:any) => <BotAvatar {...props}/>
+    },
     initialMessages: [
         createChatBotMessage(`Добро пожаловать в чатбот клиники "Рассвет"! Что вас интересует?`, {
             widget: "options",

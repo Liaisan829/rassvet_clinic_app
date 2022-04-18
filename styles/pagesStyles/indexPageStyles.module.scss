@@ -1,18 +1,18 @@
 @import "styles/mixins";
 
+.doctorsSliderMobile {
+  display: none;
+}
+
 .healthCare {
   background: $c-light-gray;
   margin-top: 60px;
 
-  &__item {
-    display: flex;
-    flex-direction: row;
+  li {
     margin-bottom: 15px;
-    p {
-      @include average-text;
-      margin-left: 10px;
-    }
+    @include average-text;
   }
+
   h1 {
     margin-bottom: 20px;
   }
@@ -23,21 +23,14 @@
   &__description {
     display: flex;
     flex-direction: row;
-    &__item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-left: 45px;
-      margin-bottom: 15px;
-      p {
-        @include average-text;
-        margin-left: 10px;
-      }
-    }
   }
   &__list {
     display: flex;
     flex-direction: column;
+  }
+  li {
+    @include average-text;
+    margin-bottom: 13px;
   }
   h1 {
     margin-bottom: 20px;
@@ -111,3 +104,29 @@
   right: 20px;
   z-index: 6;
 }
+
+@media screen and (max-width: 1250px){
+  .chatButton {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .healthCare {
+    margin-top: 50px;
+    li {
+      font-size: 17px;
+    }
+  }
+  .legendaryDoctors {
+    margin-bottom: 50px;
+    li {
+      font-size: 16px;
+    }
+  }
+
+
+}
+
+
+

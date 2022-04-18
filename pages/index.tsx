@@ -3,38 +3,47 @@ import Image from "next/image";
 import Link from 'next/link'
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
-import heart from '../public/heart.svg';
-import sun from '../public/footer/sun.svg';
 import doctorLogo from '../public/doctorLogo.svg';
+import message from '../public/message.png';
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 import AddressMap from "../components/yandexMap/AddressMap";
+import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
+import {useState} from "react";
 
 const Home: NextPage = ({first, second}: any) => {
+    const [showChatbotModal, setShowChatbotModal] = useState(false);
+
+    const openChatbotModal = () => {
+        setShowChatbotModal(true)
+    }
+
 
     return (
         <>
             <BaseLayout title={"Главная страница"}>
                 <Slider/>
 
+                <button
+                    className={styles.chatButton}
+                    onClick={openChatbotModal}
+                >
+                    <Image src={message} width={30} height={30}/>
+                </button>
+                <ChatbotModal onClose={() => setShowChatbotModal(false)} show={showChatbotModal}/>
+
+
                 <section className={styles.healthCare}>
                     <h1>Забота о вашем здоровье</h1>
-                    <div className={styles.healthCare__item}>
-                        <Image src={heart} width={40} height={40}/>
-                        <p>Мы видим себя ярким экспертным проектом на рынке медицинских услуг и рынке комплексных услуг
-                            по сохранению и улучшению качества жизни людей.</p>
-                    </div>
-                    <div className={styles.healthCare__item}>
-                        <Image src={heart} width={30} height={30}/>
-                        <p>Мы видим себя проводником и популяризатором доказательной медицины мирового уровня.</p>
-                    </div>
-                    <div className={styles.healthCare__item}>
-                        <Image src={heart} width={40} height={40}/>
-                        <p>Мы считаем, что вправе формировать стандарты диагностики и лечения, на которые будут
-                            ориентироваться врачи и образованные пациенты в России.</p>
-                    </div>
+                    <ul>
+                        <li>Мы видим себя ярким экспертным проектом на рынке медицинских услуг и рынке комплексных услуг
+                            по сохранению и улучшению качества жизни людей.</li>
+                        <li>Мы видим себя проводником и популяризатором доказательной медицины мирового уровня.</li>
+                        <li>Мы считаем, что вправе формировать стандарты диагностики и лечения, на которые будут
+                            ориентироваться врачи и образованные пациенты в России.</li>
+                    </ul>
                 </section>
 
                 <section className={styles.legendaryDoctors}>
@@ -43,32 +52,23 @@ const Home: NextPage = ({first, second}: any) => {
                     </div>
 
                     <div className={styles.legendaryDoctors__description}>
-                        <Image src={doctorLogo} width={200} height={200}/>
+                        <Image src={doctorLogo} className={styles.doctorAvatar}/>
 
                         <div className={styles.healthCare__list}>
-                            <div className={styles.legendaryDoctors__description__item}>
-                                <Image src={sun} width={40} height={40}/>
-                                <p>У нас есть любовь к делу и преданность ему.</p>
-                            </div>
-                            <div className={styles.legendaryDoctors__description__item}>
-                                <Image src={sun} width={42} height={42}/>
-                                <p>У нас есть специалисты, самые значимые в здравоохранении.</p>
-                            </div>
-                            <div className={styles.legendaryDoctors__description__item}>
-                                <Image src={sun} width={40} height={40}/>
-                                <p>У нас есть идеология, принятая в цивилизованном, развитом мире, где
-                                    люди живут дольше.</p>
-                            </div>
-                            <div className={styles.legendaryDoctors__description__item}>
-                                <Image src={sun} width={40} height={40}/>
-                                <p>У нас есть воля и средства объединить это.</p>
-                            </div>
+                            <ul>
+                                <li>У нас есть любовь к делу и преданность ему.</li>
+                                <li>У нас есть специалисты, самые значимые в здравоохранении.</li>
+                                <li>У нас есть идеология, принятая в цивилизованном, развитом мире, где
+                                    люди живут дольше.</li>
+                                <li>У нас есть воля и средства объединить это.</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
 
-
-                <DoctorsSlider/>
+                <div className={styles.doctorsSlider}>
+                    <DoctorsSlider/>
+                </div>
 
                 <section className={styles.reviews}>
                     <div className={styles.reviews__title}>
@@ -78,18 +78,6 @@ const Home: NextPage = ({first, second}: any) => {
                         </Link>
                     </div>
                     <div className={styles.reviews__item}>
-                        {/*<CardReview*/}
-                        {/*    date={"17 ноября  2021"}*/}
-                        {/*    fullName={"Александр Иванов"}*/}
-                        {/*    text={"Спасибо вам за клинику, были с женой в субботу у кардиолога, вышли счастливые и вдохновлённые, доктор оценила риски, осмотрела, рассказала, сняла мою тревожность! Спасибо что вы теперь есть у нас пациентов!"}*/}
-                        {/*/>*/}
-
-                        {/*<CardReview*/}
-                        {/*    date={"15 февраля  2022"}*/}
-                        {/*    fullName={"Федор Катасонов"}*/}
-                        {/*    text={"Лучшее, что случилось со мной за последнее время в плане медицины. Удобное расположение, сверхпрофессиональные врачи, качественное лечение (даже таких беспокойных пациентов, как я). Узнал об организме много нового, обрадовался. Лишние услуги не навязывают, ненужные приемы не назначают, цена абсолютно адекватна. Рекомендую!"}*/}
-                        {/*/>*/}
-
                         <CardReview
                             date={first.time}
                             fullName={first.reviewer}

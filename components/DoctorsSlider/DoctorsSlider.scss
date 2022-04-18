@@ -46,15 +46,35 @@
   display: none;
 }
 
-.slide {
-  height: 450px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  padding: 0 130px;
-  h2 {
-    color: $c-white;
-    font-size: 50px;
-    font-weight: bold;
+@media screen and (max-width: 1250px){
+  .slider {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1050px){
+  .slider {
+    width: 800px;
+    .navigation {
+      top: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 850px){
+  .slider {
+    width: 600px;
+    .navigation {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 420px){
+  .slider {
+    width: 350px;
+    .navigation {
+      display: initial;
+    }
   }
 }

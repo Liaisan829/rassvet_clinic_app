@@ -62,3 +62,54 @@
 .slide4 {
   background: url("../../public/slider/slide4.svg");
 }
+
+@media screen and (max-width: 1250px){
+  .slide1, .slide2, .slide3, .slide4 {
+    width: 1000px;
+  }
+  .slide {
+    h2 {
+      font-size: 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px){
+  .slide1, .slide2, .slide3, .slide4 {
+    width: 800px;
+  }
+  .slide {
+    h2 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 850px){
+  .slider {
+    margin-top: 0;
+  }
+  .slide1, .slide2, .slide3, .slide4 {
+    width: 600px;
+    height: 350px;
+  }
+  .slide {
+    h2 {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px){
+  .slider {
+    margin-top: 0;
+  }
+  .slide1, .slide2, .slide3, .slide4 {
+    width: 350px;
+  }
+  .slide {
+    h2 {
+      font-size: 30px;
+    }
+  }
+}

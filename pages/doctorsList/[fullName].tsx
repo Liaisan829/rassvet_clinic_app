@@ -21,6 +21,7 @@ export default function Doctor() {
     const [loading, setLoading] = useState(false);
     const [reviews, setReviews] = useState<any>([]);
 
+
     const openAppointmentModal = () => {
         setShowModal(true)
     }

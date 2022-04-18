@@ -1,11 +1,11 @@
 @import "styles/mixins";
 
-.app{
+.app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 
-  footer{
+  footer {
     margin-top: auto;
   }
 }
@@ -22,6 +22,7 @@
 .link {
   @include bold-text;
   margin-left: 23px;
+
   a {
     color: $c-black;
     margin-right: 20px;
@@ -29,10 +30,11 @@
     &:hover {
       color: $c-orange;
     }
+
     &.active {
       color: $c-orange;
-      border-bottom: 3px solid $c-orange;
-      padding-bottom: 38px;
+      //border-bottom: 3px solid $c-orange;
+      //padding-bottom: 38px;
     }
   }
 }
@@ -53,6 +55,11 @@
     padding: 16px;
     cursor: pointer;
     @include regular-text;
+
+    &__img {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   a {
@@ -72,6 +79,13 @@
   &__navbar {
     display: flex;
     align-items: center;
+
+    &__img {
+      display: flex;
+      align-items: center;
+      width: 150px;
+      height: 96px;
+    }
   }
 
   &__btn {
@@ -79,6 +93,21 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     min-width: 360px;
+  }
+}
+
+.mobileHeader {
+  display: none;
+  border-bottom: 3px solid $c-light-gray;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: $c-white;
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -165,3 +194,111 @@
   border-radius: 20px;
   box-shadow: 0 0 8px $c-orange;
 }
+
+@media screen and (max-width: 1250px) {
+  .container {
+    max-width: 1000px;
+  }
+  .link {
+    @include small-text;
+    font-weight: bold;
+  }
+  .header {
+    &__btn {
+      min-width: 320px;
+    }
+  }
+  .main {
+    &__container {
+      max-width: 1000px;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    max-width: 800px;
+  }
+  .headerTop {
+    &__item {
+      font-size: 13px;
+      padding: 12px;
+    }
+  }
+  .header {
+    &__btn {
+      min-width: 250px;
+    }
+
+    &__navbar {
+      &__img {
+        width: 130px;
+        height: 76px;
+      }
+    }
+  }
+  .link {
+    font-size: 13px;
+
+    a {
+      margin-right: 10px;
+    }
+  }
+  .main {
+    &__container {
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 35px;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    max-width: 600px;
+  }
+  .headerTop {
+    &__hidden {
+      display: none;
+    }
+  }
+  .header {
+    display: none;
+  }
+  .mobileHeader {
+    display: initial;
+  }
+
+  .main {
+    &__container {
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    max-width: 350px;
+  }
+  .headerTop {
+    display: none;
+  }
+  .mobileHeader {
+    display: initial;
+  }
+
+  .main {
+    &__container {
+      max-width: 350px;
+    }
+  }
+}
+
+
+

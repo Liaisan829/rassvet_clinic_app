@@ -28,3 +28,23 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 1250px){
+  .button {
+    min-width: 155px;
+  }
+}
+
+
+@media screen and (max-width: 1050px){
+  .button {
+    min-width: 110px;
+    padding: 8px 25px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .button {
+    padding: 5px 20px;
+  }
+}

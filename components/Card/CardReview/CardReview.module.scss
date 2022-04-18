@@ -26,3 +26,28 @@
     margin-bottom: 10px;
   }
 }
+
+@media screen and (max-width: 1250px){
+  .section {
+    width: 490px;
+  }
+}
+
+@media screen and (max-width: 1050px){
+  .section {
+    width: 390px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .section {
+    width: 290px;
+    p {
+      @include regular-text;
+    }
+    h4 {
+      @include small-text;
+      font-weight: bold;
+    }
+  }
+}
