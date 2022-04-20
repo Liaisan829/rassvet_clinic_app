@@ -1,8 +1,8 @@
+import { useRouter } from 'next/router';
 import { BaseLayout } from '../components/BaseLayout/BaseLayout';
 import { ClinicCard } from '../components/Card/ClinicCard/ClinicCard';
 import { getDocsFromFirebase } from '../utils/getDocsFromFirebase';
 import styles from '../styles/pagesStyles/adultClinic.module.scss';
-import { useRouter } from 'next/router';
 
 const AdultClinic = ({ adultClinics}: any) => {
   const router = useRouter();

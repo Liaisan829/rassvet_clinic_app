@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
+import ReactDOM from "react-dom";
 import ChatBot from "../../ChatbotComp/ChatBot";
 import {Button} from "../../ui/Button/Button";
-import ReactDOM from "react-dom";
 import styles from "./ChatbotModal.module.scss";
 
 interface ModalProps {

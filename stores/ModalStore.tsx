@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { MainStore } from "./MainStore";
 
-
 export class ModalStore {
     currentModal = null;
 

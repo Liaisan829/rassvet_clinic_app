@@ -1,14 +1,13 @@
 import {Field, Form, Formik} from "formik";
 import Link from "next/link";
-import {Button} from "../components/ui/Button/Button";
 import Image from "next/image";
 import {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import {Button} from "../components/ui/Button/Button";
+import { signIn } from '../config/auth';
 import logo from '../public/header/logo.svg';
 import styles from '../styles/pagesStyles/signInPage.module.scss';
-import {signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../config/firebase";
 
 const SignIn = () => {
     const router = useRouter()
@@ -19,11 +18,8 @@ const SignIn = () => {
 
     const handleLogin = async (e: any) => {
         e.preventDefault()
-        await signInWithEmailAndPassword(auth, data.email, data.password)
-            .then(() => {
-                localStorage.setItem("user", data.email);
-                router.push("/profile")
-            })
+        await signIn(data.email, data.password);
+        await router.push("/");
     }
 
     return (

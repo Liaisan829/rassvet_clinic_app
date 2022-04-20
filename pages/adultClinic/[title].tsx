@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { getDocsFromFirebase } from '../../utils/getDocsFromFirebase';
 import { BaseLayout } from '../../components/BaseLayout/BaseLayout';
-import styles from '../../styles/pagesStyles/adultClinic.module.scss';
 import { CardSlider } from '../../components/Card/CardSlider/CardSlider';
+import styles from '../../styles/pagesStyles/adultClinic.module.scss';
 
 export default function Clinic({ doctors, adultClinics }: any) {
   const { query } = useRouter();

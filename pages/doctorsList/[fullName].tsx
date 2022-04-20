@@ -1,7 +1,7 @@
+import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
-import {useEffect, useState} from "react";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
 import SkeletonDoctorPage from "../../components/ui/Skeleton/SkeletonDoctorPage";
 import { getDocsFromFirebase } from '../../utils/getDocsFromFirebase';

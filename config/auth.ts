@@ -7,11 +7,9 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection } from '@firebase/firestore';
 import { auth, database, storage } from './firebase';
-import profileLogo from '../public/profile/profileLogo.svg';
 import { useEffect, useState } from 'react';
 import { getDownloadURL, ref, uploadBytes } from '@firebase/storage';
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
+import profileLogo from '../public/profile/profileLogo.svg';
 
 const usersDatabaseRef = collection(database, 'users');
 

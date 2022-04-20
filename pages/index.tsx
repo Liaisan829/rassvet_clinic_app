@@ -1,17 +1,17 @@
 import type {NextPage} from 'next'
 import Image from "next/image";
+import {useState} from "react";
 import Link from 'next/link'
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
-import doctorLogo from '../public/doctorLogo.svg';
-import message from '../public/message.png';
 import {CardReview} from "../components/Card/CardReview/CardReview";
+import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
-import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 import AddressMap from "../components/yandexMap/AddressMap";
-import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
-import {useState} from "react";
+import doctorLogo from '../public/doctorLogo.svg';
+import message from '../public/message.png';
+import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
 
 const Home: NextPage = ({first, second}: any) => {
     const [showChatbotModal, setShowChatbotModal] = useState(false);

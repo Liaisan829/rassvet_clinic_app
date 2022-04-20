@@ -1,6 +1,5 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode, FC} from 'react';
 import ReactDOM from "react-dom";
-import {FC} from 'react';
 import {useState, useEffect} from "react";
 import Image from "next/image";
 import {Button} from "../../ui/Button/Button";

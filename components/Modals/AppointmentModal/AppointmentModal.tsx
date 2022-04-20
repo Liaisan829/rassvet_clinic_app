@@ -1,7 +1,7 @@
+import {addDoc, collection} from "@firebase/firestore";
+import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
-import {FC, useState} from "react";
-import {addDoc, collection} from "@firebase/firestore";
 import {database} from "../../../config/firebase";
 
 interface Props {

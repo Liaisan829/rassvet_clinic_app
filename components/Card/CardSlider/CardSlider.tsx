@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Image from "next/image";
-import styles from "./CardSlider.module.scss";
 import Link from "next/link";
+import styles from "./CardSlider.module.scss";
 
 interface CardProps {
     img: any,
