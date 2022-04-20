@@ -1,26 +1,20 @@
 import {useRouter} from "next/router";
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
-import {database} from "../../config/firebase";
-import {collection, getDocs} from "@firebase/firestore";
 import {useEffect, useState} from "react";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
 import SkeletonDoctorPage from "../../components/ui/Skeleton/SkeletonDoctorPage";
+import { getDocsFromFirebase } from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '../../styles/pagesStyles/doctorsList.module.scss';
 
-export default function Doctor() {
+export default function Doctor({doctors, doctorReviews}: any) {
     const {query} = useRouter();
-    const databaseRef = collection(database, 'doctors');
-    const dbDoctorReviewsRef = collection(database, 'doctorReviews');
-    const [doctors, setDoctors] = useState<any>([]);
     const [showModal, setShowModal] = useState(false);
     const [showReviewModal, setShowReviewModal] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [reviews, setReviews] = useState<any>([]);
-
 
     const openAppointmentModal = () => {
         setShowModal(true)
@@ -31,29 +25,12 @@ export default function Doctor() {
     }
 
     useEffect(() => {
-        const getDoctors = async () => {
-            const data = await getDocs(databaseRef);
-            setDoctors(data.docs.map((doc) => ({...doc.data()})));
-        };
-        getDoctors()
-    }, [])
-
-    useEffect(() => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
         }, 5000);
         return () => clearTimeout(timing);
     }, []);
-
-    useEffect(() => {
-        const getDoctorReviews = async () => {
-            const data = await getDocs(dbDoctorReviewsRef);
-            setReviews(data.docs.map((doc) => ({...doc.data()})))
-        };
-        getDoctorReviews()
-
-    }, [])
 
     return (
         <BaseLayout title={'Специалист'}>
@@ -110,7 +87,7 @@ export default function Doctor() {
 
                             <section className={styles.doctorReview}>
                                 <h2>Отзывы</h2>
-                                {reviews.filter((review: any) => (filteredDoctor.fullName === review.specialist)).map((filteredReview: any) => {
+                                {doctorReviews.filter((review: any) => (filteredDoctor.fullName === review.specialist)).map((filteredReview: any) => {
                                     return (
                                         <CardReview
                                             key={filteredReview.name}
@@ -137,4 +114,23 @@ export default function Doctor() {
             }
         </BaseLayout>
     );
+}
+
+export async function getStaticProps() {
+    const doctors = await getDocsFromFirebase("doctors");
+    const doctorReviews = await getDocsFromFirebase("doctorReviews");
+
+    return {
+        props: {doctors, doctorReviews}
+    };
+}
+
+export async function getStaticPaths() {
+    const doctors = await getDocsFromFirebase("doctors");
+
+    const paths = doctors.map((doctor: any) => ({
+        params: {fullName: doctor.fullName}
+    }))
+
+    return {paths, fallback: true}
 }

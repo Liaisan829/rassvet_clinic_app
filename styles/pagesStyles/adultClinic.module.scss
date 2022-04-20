@@ -1,12 +1,5 @@
 @import "../mixins";
 
-.clinic {
-
-  &__p {
-    @include small-text;
-  }
-}
-
 .clinicCards {
   display: flex;
   flex-direction: row;
@@ -30,7 +23,7 @@
     align-items: center;
   }
 
-  &__quote{
+  &__quote {
     @include bold-text;
     margin: 0 auto;
   }

@@ -27,15 +27,3 @@ export const ClinicCard: FC<CardProps> = ({img, title}) => {
         </>
     );
 };
-
-// missing key
-// const[adultCards, setAdultCards] = useState([
-//     <ClinicCard img={therapy} title="Терапия"/>,
-//     <ClinicCard img={cardiology} title="Кардиология"/>,
-//     <ClinicCard img={dermatology} title="Дерматология"/>,
-//     <ClinicCard img={nevrology} title="Неврология"/>,
-//     <ClinicCard img={psicology} title="Психология"/>,
-//     <ClinicCard img={revmatology} title="Ревматология"/>,
-//     <ClinicCard img={ultrasound} title="УЗИ"/>,
-//     <ClinicCard img={endoscopia} title="Эндоскопия"/>
-// ])
