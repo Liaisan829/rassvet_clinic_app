@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react';
-import {useAuth} from "../../context/AuthContext";
 import {useRouter} from "next/router";
+import { useAuth } from '../../config/auth';
 
 const ProtectedRoute = ({children}: {children: React.ReactNode}) => {
-    const {user} = useAuth()
+    const currentUser = useAuth()
     const router = useRouter()
 
     useEffect(() => {
-        if (!user) {
+        if (!currentUser) {
             router.push('/signIn')
         }
-    }, [router, user])
+    }, [router, currentUser])
 
     return (
         <>
-            {user ? children : null}
+            {currentUser ? children : null}
         </>
     );
 };

@@ -1,12 +1,26 @@
-import type {AppProps} from 'next/app';
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
 import '../styles/globals.css';
-import "swiper/scss";
-import "swiper/scss/navigation";
-import "/components/Slider/Slider.scss";
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import '/components/Slider/Slider.scss';
 import '/components/DoctorsSlider/DoctorsSlider.scss';
 
-function MyApp({Component, pageProps}: AppProps) {
-    return <Component {...pageProps} />
+const noAuthRequired = ['/', '/signIn', '/signUp', '/adultClinic'];
+
+function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  return (
+    <>
+      {noAuthRequired.includes(router.pathname) ? (
+        <Component {...pageProps} />
+      ) : (
+        <ProtectedRoute>
+          <Component {...pageProps} />
+        </ProtectedRoute>
+      )}
+    </>);
 }
 
-export default MyApp
+export default MyApp;
