@@ -22,7 +22,7 @@ const SignIn = () => {
         await signInWithEmailAndPassword(auth, data.email, data.password)
             .then(() => {
                 localStorage.setItem("user", data.email);
-                router.push("/")
+                router.push("/profile")
             })
     }
 

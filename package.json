@@ -5,22 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "lint": "eslint --ext .ts,.tsx components --fix",
     "start": "next start",
     "svg": "node generate-svgs.js"
   },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 100
-  },
   "dependencies": {
     "classnames": "^2.3.1",
-    "eslint-config-react-app": "^7.0.0",
-    "express": "^4.17.3",
     "firebase": "^9.6.9",
     "formik": "^2.2.9",
-    "mobx": "^6.5.0",
-    "mobx-react": "^7.3.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-chatbot-kit": "^2.0.1",
@@ -39,21 +30,7 @@
     "@types/react": "17.0.40",
     "@types/react-dom": "^17.0.14",
     "@types/react-scroll": "^1.8.3",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
-    "eslint": "^8.10.0",
-    "eslint-config-next": "12.1.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
-    "msw": "^0.39.2",
-    "prettier": "^2.6.2",
     "svgstore": "^3.0.1",
     "typescript": "4.6.2"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }
