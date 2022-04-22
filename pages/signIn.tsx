@@ -21,7 +21,6 @@ const SignIn = () => {
     e.preventDefault();
     await signIn(data.email, data.password);
     await router.push('/');
-    console.log(user);
   };
 
   return (

@@ -66,6 +66,7 @@
   &__reviewText {
     @extend .review__reviewName;
     height: 150px;
+    resize: vertical;
   }
 }
 
