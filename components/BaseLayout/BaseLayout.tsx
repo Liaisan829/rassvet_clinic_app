@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll';
 import { Button } from '../ui/Button/Button';
-import { useAuth } from '../../config/auth';
+import { logOut, useAuth } from '../../config/auth';
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
@@ -36,6 +36,7 @@ export const BaseLayout: FC<Props> = ({ children, title }) => {
   const { pathname } = useRouter();
   const router = useRouter();
   const currentUser = useAuth();
+  console.log(currentUser);
 
   return (
     <>
@@ -104,6 +105,16 @@ export const BaseLayout: FC<Props> = ({ children, title }) => {
                       </Button>
                     </a>
                   </Link>
+                  <Button
+                    type='button'
+                    onClick={() => {
+                      logOut();
+                      router.push('/');
+                    }}
+                    theme='transparent'
+                  >
+                    Выход
+                  </Button>
                 </>
               ) : (
                 <>

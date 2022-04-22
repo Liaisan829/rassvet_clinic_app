@@ -40,11 +40,13 @@ export function logOut() {
 }
 
 export function useAuth() {
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<any>('');
 
   useEffect(() => {
+    // при изменении состояния юзера перезаписывает его
     const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
     return unsub;
+
   }, []);
 
   return currentUser;

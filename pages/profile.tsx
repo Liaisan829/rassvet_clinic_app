@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Profile = ({ usersInfo, appointments }: any) => {
   const router = useRouter();
   const currentUser = useAuth();
+  console.log(currentUser);
   const [userInfo, setUserInfo] = useState<any>([]);
   const [reviewer, setReviewerName] = useState('');
   const [reviewText, setReviewText] = useState('');
@@ -30,10 +31,11 @@ const Profile = ({ usersInfo, appointments }: any) => {
   });
 
   useEffect(() => {
+    console.log(currentUser);// null in profile
     let user = usersInfo.findIndex(function(user: any) {
       // TODO
       //ругается что currentUser.uid is null
-      return user.uid === currentUser.uid;
+      return user.email === currentUser.email;
     });
 
     let ans = usersInfo[user];
@@ -133,16 +135,16 @@ const Profile = ({ usersInfo, appointments }: any) => {
         </div>
       </div>
       <div className={styles.logoutBtn}>
-        <Button
-          type='button'
-          onClick={() => {
-            logOut();
-            router.push('/');
-          }}
-          theme='transparent'
-        >
-          Выход
-        </Button>
+        {/*<Button*/}
+        {/*  type='button'*/}
+        {/*  onClick={() => {*/}
+        {/*    logOut();*/}
+        {/*    router.push('/');*/}
+        {/*  }}*/}
+        {/*  theme='transparent'*/}
+        {/*>*/}
+        {/*  Выход*/}
+        {/*</Button>*/}
       </div>
       <ToastContainer />
     </BaseLayout>
