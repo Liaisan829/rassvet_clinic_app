@@ -23,16 +23,20 @@ export function signUp(data: any) {
                 patronymic: data.patronymic,
                 email: data.email,
                 phone: data.phone,
-                photoURL: profileLogo
+                photoURL: profileLogo,
+                role: "user"
             })
                 .then((res) => {
-                    console.log(res);
+                    window.localStorage.setItem("user", data.email);
                 });
         });
 }
 
 export function signIn(email: any, password: any) {
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password)
+        .then(res => {
+            window.localStorage.setItem("user", email);
+        });
 }
 
 export function logOut() {
@@ -44,7 +48,9 @@ export function useAuth() {
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
+            if (auth.currentUser) {
+                setCurrentUser(user);
+            }
         });
         return unsub;
 
@@ -52,7 +58,6 @@ export function useAuth() {
 
     return currentUser;
 }
-
 
 export async function uploadUserPhoto(file: any, currentUser: any, setLoading: any) {
     const fileRef = ref(storage, currentUser.uid + '.png');

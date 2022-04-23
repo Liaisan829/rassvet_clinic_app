@@ -15,10 +15,12 @@
   border: 1px $c-dark-gray solid;
   border-radius: 20px;
   margin-right: 70px;
-  &__photo{
+
+  img {
     width: 150px;
     height: 150px;
   }
+
   &__info {
     display: flex;
     flex-direction: column;

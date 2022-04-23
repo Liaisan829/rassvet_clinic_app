@@ -33,8 +33,8 @@ const Profile = ({usersInfo, appointments}: any) => {
     });
 
     useEffect(() => {
-        console.log(currentUser);
         let user = usersInfo.findIndex(function (user: any) {
+            console.log(user.photoURL);
             return user.email === currentUser.email;
         });
 
@@ -75,7 +75,8 @@ const Profile = ({usersInfo, appointments}: any) => {
         <BaseLayout title='Профиль'>
             <section className={styles.userInfo}>
                 <div className={styles.profile}>
-                    <Image className={styles.profile__photo} src={photoURL} width={120} height={120} alt={'image'}/>
+                    <img src={userInfo.photoURL} alt="avatar"/>
+
                     <div className={styles.profileInfo__info}>
                         <p>{userInfo.surname}</p>
                         <p>{userInfo.name}</p>
