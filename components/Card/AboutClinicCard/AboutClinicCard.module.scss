@@ -1,0 +1,23 @@
+@import "styles/mixins";
+
+.clinicCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 310px;
+
+  a {
+    background: $c-orange;
+    color: $c-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 34px;
+    cursor: pointer;
+  }
+
+  &__img {
+    border: 1px solid $c-dark-gray;
+    margin-top: 20px;
+  }
+}

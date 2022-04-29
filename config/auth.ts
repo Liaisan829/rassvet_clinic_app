@@ -23,7 +23,7 @@ export function signUp(data: any) {
                 patronymic: data.patronymic,
                 email: data.email,
                 phone: data.phone,
-                photoURL: profileLogo,
+                photoURL: data.photoURL,
                 role: "user"
             })
                 .then((res) => {
@@ -47,26 +47,23 @@ export function useAuth() {
     const [currentUser, setCurrentUser] = useState<any>(auth.currentUser);
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, (user) => {
+        return onAuthStateChanged(auth, (user) => {
             if (auth.currentUser) {
                 setCurrentUser(user);
             }
         });
-        return unsub;
-
     }, []);
 
     return currentUser;
 }
 
-export async function uploadUserPhoto(file: any, currentUser: any, setLoading: any) {
-    const fileRef = ref(storage, currentUser.uid + '.png');
-    setLoading(true);
-    const snapshot = await uploadBytes(fileRef, file);
-    const photoURL = await getDownloadURL(fileRef);
+export async function uploadUserPhoto(file:any, currentUser:any, setLoading:any){
+    const fileRef = ref(storage, currentUser.uid + '.png')
+    setLoading(true)
+    const snapshot = await uploadBytes(fileRef, file)
+    const photoURL = await getDownloadURL(fileRef)
 
-    await updateProfile(currentUser, {photoURL});
+    await updateProfile(currentUser, {photoURL})
 
-    setLoading(false);
-    alert('Uploaded file');
+    setLoading(false)
 }

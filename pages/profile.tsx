@@ -8,11 +8,10 @@ import {Button} from '../components/ui/Button/Button';
 import {database} from '../config/firebase';
 import {logOut, useAuth} from '../config/auth';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
-import photoURL from '../public/profile/profileLogo.svg';
-import applyNote from '../public/profile/applyNote.svg';
 import styles from '../styles/pagesStyles/profile.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
+import {ImageUpload} from "../components/ImageUpload/ImageUpload";
 
 const Profile = ({usersInfo, appointments}: any) => {
     const router = useRouter();
@@ -75,15 +74,14 @@ const Profile = ({usersInfo, appointments}: any) => {
         <BaseLayout title='Профиль'>
             <section className={styles.userInfo}>
                 <div className={styles.profile}>
-                    <img src={userInfo.photoURL} alt="avatar"/>
-
-                    <div className={styles.profileInfo__info}>
-                        <p>{userInfo.surname}</p>
-                        <p>{userInfo.name}</p>
-                        <p>{userInfo.patronymic}</p>
-                        <p>{userInfo.phone}</p>
-                        <p>{userInfo.email}</p>
-                    </div>
+                    <ImageUpload>
+                        <div className={styles.profileInfo__info}>
+                            <p>{userInfo.surname} {userInfo.name} {userInfo.patronymic}</p>
+                            <h3>Контактные данные:</h3>
+                            <p>{userInfo.phone}</p>
+                            <p>{userInfo.email}</p>
+                        </div>
+                    </ImageUpload>
                 </div>
                 <div className={styles.visits}>
                     <h1>Записи на прием</h1>

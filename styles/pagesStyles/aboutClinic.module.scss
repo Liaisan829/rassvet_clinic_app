@@ -1,0 +1,9 @@
+@import "styles/mixins";
+
+.aboutClinic {
+  display: flex;
+  flex-direction: row;
+  column-gap: 120px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}

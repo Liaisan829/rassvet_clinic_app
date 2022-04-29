@@ -12,18 +12,22 @@
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px $c-dark-gray solid;
   border-radius: 20px;
   margin-right: 70px;
 
-  img {
-    width: 150px;
-    height: 150px;
-  }
-
   &__info {
     display: flex;
     flex-direction: column;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 1px solid $c-black;
   }
 }
 
