@@ -2,7 +2,7 @@ import {addDoc, collection} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
-import {database} from "../../../config/firebase";
+import {firestore} from "../../../config/firebase";
 
 interface Props {
     showModal: any,
@@ -14,7 +14,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
     const [fullUserName, setFullUserName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const databaseRef = collection(database, 'appointments');
+    const databaseRef = collection(firestore, 'appointments');
 
     const sendAppointment = async () => {
         await addDoc(databaseRef, {fullName: fullUserName, phone: phone, email: email, specialist: specialistName})

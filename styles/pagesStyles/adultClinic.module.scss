@@ -25,7 +25,9 @@
 
   &__quote {
     @include bold-text;
-    margin: 0 auto;
+    margin: 20px auto 40px;
+    width: 100%;
+    max-width: 900px;
   }
 
   &__quote:before {

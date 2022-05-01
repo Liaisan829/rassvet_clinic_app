@@ -3,7 +3,7 @@ import {addDoc, collection} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
-import {database} from "../../../config/firebase";
+import {firestore} from "../../../config/firebase";
 
 interface Props {
     showModal: any,
@@ -15,7 +15,7 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [textReview, setTextReview] = useState('');
-    const dbDoctorReviewsRef = collection(database, 'doctorReviews');
+    const dbDoctorReviewsRef = collection(firestore, 'doctorReviews');
 
     const notifyToast = () => toast("Спасибо, Ваш отзыв отправлен!", {
         position: "top-center",

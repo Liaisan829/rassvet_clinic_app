@@ -6,12 +6,12 @@ import {
     updateProfile
 } from 'firebase/auth';
 import {addDoc, collection} from '@firebase/firestore';
-import {auth, database, storage} from './firebase';
+import {auth, firestore, storage} from './firebase';
 import {useEffect, useState} from 'react';
 import {getDownloadURL, ref, uploadBytes} from '@firebase/storage';
 import profileLogo from '../public/profile/profileLogo.svg';
 
-const usersDatabaseRef = collection(database, 'users');
+const usersDatabaseRef = collection(firestore, 'users');
 
 export function signUp(data: any) {
     return createUserWithEmailAndPassword(auth, data.email, data.password)

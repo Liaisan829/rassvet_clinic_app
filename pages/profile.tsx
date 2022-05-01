@@ -5,7 +5,7 @@ import {addDoc, collection} from '@firebase/firestore';
 import {toast, ToastContainer} from 'react-toastify';
 import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import {Button} from '../components/ui/Button/Button';
-import {database} from '../config/firebase';
+import {firestore} from '../config/firebase';
 import {logOut, useAuth} from '../config/auth';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
 import styles from '../styles/pagesStyles/profile.module.scss';
@@ -21,7 +21,7 @@ const Profile = ({usersInfo, appointments}: any) => {
     const [reviewer, setReviewerName] = useState('');
     const [reviewText, setReviewText] = useState('');
     const [isAppointments, setIsAppointments] = useState(false);
-    const reviewsCollectionRef = collection(database, 'reviews');
+    const reviewsCollectionRef = collection(firestore, 'reviews');
     const notifyToast = () => toast('Спасибо, Ваш отзыв отправлен!', {
         position: 'top-center',
         autoClose: 3000,
@@ -33,23 +33,26 @@ const Profile = ({usersInfo, appointments}: any) => {
 
     useEffect(() => {
         let user = usersInfo.findIndex(function (user: any) {
-            console.log(user.photoURL);
             return user.email === currentUser.email;
         });
 
         let ans = usersInfo[user];
 
         setUserInfo(ans);
+
+        if(ans.role === "admin"){
+            router.push("/admin")
+        }
     }, []);
 
 
-    useEffect(() => {
-        setLoading(true);
-        const timing = setTimeout(() => {
-            setLoading(false);
-        }, 2800);
-        return () => clearTimeout(timing);
-    }, []);
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const timing = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 2800);
+    //     return () => clearTimeout(timing);
+    // }, []);
 
 
     const createReview = async () => {

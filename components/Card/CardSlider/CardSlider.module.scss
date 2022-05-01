@@ -4,20 +4,25 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 400px;
+
   &__info {
     margin: 0 auto;
     text-align: center;
     cursor: pointer;
   }
+
   h4 {
     @include bold-text;
     margin-bottom: 10px;
   }
+
   p {
     @include regular-text;
     font-weight: bold;
     color: $c-gray;
   }
+
   h6 {
     @include small-text;
     font-weight: bold;
@@ -26,7 +31,7 @@
   }
 }
 
-@media screen and (max-width: 1050px){
+@media screen and (max-width: 1050px) {
   .section {
     &__info {
       h4, h6 {
@@ -36,7 +41,7 @@
   }
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 850px) {
   .section {
     &__info {
       h4, h6, p {

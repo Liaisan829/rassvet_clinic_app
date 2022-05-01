@@ -35,7 +35,7 @@ const AboutClinicCard: FC<Props> = ({title, img, href}) => {
                     setShowModal={setShowModal}
                 />
             </div>
-            <a href={href} download>Загрузить файл <Image src={download} width={23} height={23}/></a>
+            <a href={href} download>Скачать файл <Image src={download} width={23} height={23}/></a>
         </div>
     );
 };

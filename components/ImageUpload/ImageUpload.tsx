@@ -1,5 +1,6 @@
 import {FC, ReactNode, useEffect, useState} from "react";
 import {uploadUserPhoto, useAuth} from "../../config/auth";
+import Image from "next/image";
 import {Button} from "../ui/Button/Button";
 import {toast} from "react-toastify";
 import avatar from '../../public/profile/profileLogo.svg';
@@ -46,7 +47,7 @@ export const ImageUpload: FC<Props> = ({children}) => {
     return (
         <div className={styles.imageUpload}>
 
-            <img src={photoURL} alt="avatar" width="50" height="50"/>
+            <Image src={photoURL} alt={"avatar"} width={"50"} height={"50"}/>
 
             {children}
 

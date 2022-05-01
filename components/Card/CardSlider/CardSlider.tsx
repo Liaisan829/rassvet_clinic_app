@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./CardSlider.module.scss";
 
 interface CardProps {
-    img: any,
+    img: string,
     fullName: string,
     speciality: string,
     price: string
@@ -16,7 +16,7 @@ export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price}) =>
         <>
             <div className={styles.section}>
                 <Link href={`/doctorsList/${fullName}`}>
-                    <a><Image src={img} width={400} height={380}/></a>
+                    <a><Image src={img} width={400} height={380} alt={'тут должно быть фото но с Image не работает'}/></a>
                 </Link>
                 <Link href={`/doctorsList/${fullName}`}>
                     <a>
