@@ -3,7 +3,6 @@ import {uploadUserPhoto, useAuth} from "../../config/auth";
 import Image from "next/image";
 import {Button} from "../ui/Button/Button";
 import {toast} from "react-toastify";
-import avatar from '../../public/profile/profileLogo.svg';
 import styles from './ImageUpload.module.scss'
 
 interface Props {
@@ -14,7 +13,7 @@ export const ImageUpload: FC<Props> = ({children}) => {
     const currentUser = useAuth()
     const [photo, setPhoto] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [photoURL, setPhotoURL] = useState(avatar)
+    const [photoURL, setPhotoURL] = useState(currentUser.photoURL)
     const notifyToast = () => toast('Новое фото профиля успешно загружено!', {
         position: 'top-center',
         autoClose: 3000,
@@ -47,7 +46,7 @@ export const ImageUpload: FC<Props> = ({children}) => {
     return (
         <div className={styles.imageUpload}>
 
-            <Image src={photoURL} alt={"avatar"} width={"50"} height={"50"}/>
+            <img src={photoURL} alt={"avatar"} width={"50"} height={"50"}/>
 
             {children}
 

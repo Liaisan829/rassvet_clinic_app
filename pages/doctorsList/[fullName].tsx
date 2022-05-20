@@ -65,6 +65,7 @@ export default function Doctor({doctors, doctorReviews}: any) {
                                             showModal={showModal}
                                             setShowModal={setShowModal}
                                             specialistName={filteredDoctor.fullName}
+
                                         />
                                         <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                     </div>
@@ -129,7 +130,7 @@ export async function getStaticPaths() {
     const doctors = await getDocsFromFirebase("doctors");
 
     const paths = doctors.map((doctor: any) => ({
-        params: {fullName: doctor.fullName}
+        params: JSON.parse(JSON.stringify({fullName: doctor.fullName}))
     }))
 
     return {paths, fallback: true}

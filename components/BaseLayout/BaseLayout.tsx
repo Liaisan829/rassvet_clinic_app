@@ -76,7 +76,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                 <header className={styles.header}>
                     <section className={styles.container}>
                         <nav className={styles.header__navbar}>
-                            <Link href='/'>
+                            <Link href='/' passHref>
                                 <a className={styles.header__navbar__img}>
                                     <Image src={logo} alt='logo'/>
                                 </a>
@@ -104,16 +104,16 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                             </Button>
                                         </a>
                                     </Link>
-                                    {/*<Button*/}
-                                    {/*    type='button'*/}
-                                    {/*    onClick={() => {*/}
-                                    {/*        logOut();*/}
-                                    {/*        router.push('/');*/}
-                                    {/*    }}*/}
-                                    {/*    theme='transparent'*/}
-                                    {/*>*/}
-                                    {/*    Выход*/}
-                                    {/*</Button>*/}
+                                    <Button
+                                        type='button'
+                                        onClick={() => {
+                                            logOut();
+                                            router.push('/');
+                                        }}
+                                        theme='transparent'
+                                    >
+                                        Выход
+                                    </Button>
                                 </>
                             ) : (
                                 <>

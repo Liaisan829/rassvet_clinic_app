@@ -33,6 +33,10 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
             <input type="text" name="email" placeholder="Ваш email"
                    onChange={(event: any) => setEmail(event.target.value)}/>
             <input type="text" name="specialist" value={"Специалист: " + specialistName} readOnly={true}/>
+
+            <select>
+                <option disabled selected>Выберите дат и время приема</option>
+            </select>
             {/*<input type='datetime-local'/>*/}
 
             <Button
