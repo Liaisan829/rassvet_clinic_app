@@ -12,9 +12,9 @@ interface Props {
 
 export const ImageUpload: FC<Props> = ({children}) => {
     const currentUser = useAuth()
-    const [photo, setPhoto] = useState(null)
+    const [photo, setPhoto] = useState(currentUser.photoURL)
     const [loading, setLoading] = useState(false)
-    const [photoURL, setPhotoURL] = useState(avatar)
+    // const [photoURL, setPhotoURL] = useState(avatar)
     const notifyToast = () => toast('Новое фото профиля успешно загружено!', {
         position: 'top-center',
         autoClose: 3000,
@@ -32,22 +32,24 @@ export const ImageUpload: FC<Props> = ({children}) => {
 
     function handleClick() {
         uploadUserPhoto(photo, currentUser, setLoading)
-            .then()
-        notifyToast()
-        window.location.reload()
+            .then();
+        notifyToast();
+        console.log(photo);
+        console.log(currentUser.photoURL);
+        window.location.reload();
     }
 
-    useEffect(() => {
-        if (currentUser?.photoURL) {
-            setPhotoURL(currentUser.photoURL)
-        }
-    }, [currentUser])
+    // useEffect(() => {
+    //     if (currentUser?.photoURL) {
+    //         setPhotoURL(currentUser.photoURL)
+    //     }
+    // }, [currentUser])
 
 
     return (
         <div className={styles.imageUpload}>
 
-            <Image src={photoURL} alt={"avatar"} width={"50"} height={"50"}/>
+            <img src={currentUser.photoURL} alt={"avatar"} width={"50"} height={"50"}/>
 
             {children}
 
