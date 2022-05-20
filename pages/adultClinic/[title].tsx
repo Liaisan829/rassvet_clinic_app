@@ -1,7 +1,7 @@
 import {useRouter} from 'next/router';
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {BaseLayout} from '../../components/BaseLayout/BaseLayout';
-import {CardSlider} from '../../components/Card/CardSlider/CardSlider';
+import {DoctorCard} from "../../components/Card/CardSlider/DoctorCard";
 import styles from '../../styles/pagesStyles/adultClinic.module.scss';
 
 export default function Clinic({doctors, adultClinics}: any) {
@@ -19,15 +19,14 @@ export default function Clinic({doctors, adultClinics}: any) {
                     </div>
                 ))}
 
-                <p>Врачи отделения</p>
+                <h3>Врачи отделения</h3>
                 {doctors.filter((doctor: any) => (doctor.department === (query.title)))
                     .map((filteredDoctor: any) => (
-                        <CardSlider
+                        <DoctorCard
                             key={filteredDoctor.fullName}
                             img={filteredDoctor.url}
                             fullName={filteredDoctor.fullName}
                             speciality={filteredDoctor.speciality}
-                            price={filteredDoctor.price}
                         />
                     ))}
             </BaseLayout>

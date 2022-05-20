@@ -6,6 +6,15 @@
   justify-content: center;
   max-width: 400px;
 
+  img {
+    width: 300px;
+    height: 280px;
+  }
+
+  a {
+    margin: 0 auto;
+  }
+
   &__info {
     margin: 0 auto;
     text-align: center;
