@@ -8,6 +8,7 @@ import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
 import Link from "next/link";
 import logo from '../public/header/logo.svg';
+import avatar from '../public/profile/profileLogo.svg';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/pagesStyles/signUpPage.module.scss';
 
@@ -29,7 +30,7 @@ const SignUp = () => {
     phone: '',
     password: '',
     repassword: '',
-    photoURL: null
+    photoURL: avatar
   });
 
   const handleSignup = async (e: any) => {

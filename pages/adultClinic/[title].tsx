@@ -1,4 +1,5 @@
 import {useRouter} from 'next/router';
+import Image from "next/image";
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {BaseLayout} from '../../components/BaseLayout/BaseLayout';
 import {DoctorCard} from "../../components/Card/CardSlider/DoctorCard";
@@ -13,7 +14,7 @@ export default function Clinic({doctors, adultClinics}: any) {
                 <h1>{query.title}</h1>
                 {adultClinics.filter((adultClinic: any) => (query.title === adultClinic.title)).map((filteredClinic: any) => (
                     <div key={filteredClinic.title} className={styles.clinicPage}>
-                        <img src={filteredClinic.inner_url} alt='clinic'/>
+                        <Image src={filteredClinic.inner_url} alt='clinic' width={900} height={442}/>
                         <blockquote className={styles.clinicPage__quote}>{filteredClinic.quote}</blockquote>
                         <p>{filteredClinic.description}</p>
                     </div>

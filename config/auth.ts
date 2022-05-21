@@ -14,6 +14,7 @@ import profileLogo from '../public/profile/profileLogo.svg';
 const usersDatabaseRef = collection(firestore, 'users');
 
 export function signUp(data: any) {
+    console.log(data.photoURL);
     return createUserWithEmailAndPassword(auth, data.email, data.password)
         .then((registeredUser) => {
             addDoc(usersDatabaseRef, {

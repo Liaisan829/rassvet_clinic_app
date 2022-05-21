@@ -33,6 +33,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
 
 
     useEffect(() => {
+        console.log(currentUser.photoURL);
         let user = usersInfo.findIndex(function (user: any) {
             return user.email === currentUser.email;
         });
