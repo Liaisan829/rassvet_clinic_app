@@ -1,23 +1,23 @@
-import Image from 'next/image';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
-import {addDoc, collection} from '@firebase/firestore';
+import {addDoc, collection, deleteDoc, doc} from '@firebase/firestore';
 import {toast, ToastContainer} from 'react-toastify';
+import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
 import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import {Button} from '../components/ui/Button/Button';
 import {firestore} from '../config/firebase';
 import {logOut, useAuth} from '../config/auth';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
-import styles from '../styles/pagesStyles/profile.module.scss';
+import styles from '/styles/pagesStyles/profile.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
-import {ImageUpload} from "../components/ImageUpload/ImageUpload";
+import UserCard from "../components/Card/UserCard/UserCard";
 
-const Profile = ({usersInfo, appointments}: any) => {
+const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const router = useRouter();
     const currentUser = useAuth();
     const [loading, setLoading] = useState(false);
-    const [userInfo, setUserInfo] = useState<any>([]);
+    const [userInfo, setUserInfo] = useState<any>([usersInfo]);
+    const [doctors, setDoctors] = useState<any>([doctorsList]);
     const [reviewer, setReviewerName] = useState('');
     const [reviewText, setReviewText] = useState('');
     const [isAppointments, setIsAppointments] = useState(false);
@@ -31,6 +31,7 @@ const Profile = ({usersInfo, appointments}: any) => {
         type: 'success'
     });
 
+
     useEffect(() => {
         let user = usersInfo.findIndex(function (user: any) {
             return user.email === currentUser.email;
@@ -40,10 +41,16 @@ const Profile = ({usersInfo, appointments}: any) => {
 
         setUserInfo(ans);
 
-        if(ans.role === "admin"){
-            router.push("/admin")
-        }
+
     }, []);
+
+    const onDelete = async (shortName: string) => {
+        const docRef = doc(firestore, "doctors", shortName);
+        if (window.confirm("Удалить специалиста?")) {
+            await deleteDoc(docRef);
+        }
+        await alert("deleted");
+    }
 
 
     // useEffect(() => {
@@ -76,16 +83,8 @@ const Profile = ({usersInfo, appointments}: any) => {
     return (
         <BaseLayout title='Профиль'>
             <section className={styles.userInfo}>
-                <div className={styles.profile}>
-                    <ImageUpload>
-                        <div className={styles.profileInfo__info}>
-                            <p>{userInfo.surname} {userInfo.name} {userInfo.patronymic}</p>
-                            <h3>Контактные данные:</h3>
-                            <p>{userInfo.phone}</p>
-                            <p>{userInfo.email}</p>
-                        </div>
-                    </ImageUpload>
-                </div>
+                <UserCard user={usersInfo}/>
+
                 <div className={styles.visits}>
                     <h1>Записи на прием</h1>
                     {/*<Image src={applyNote} width={200} height={200} alt={'applyNote'}/>*/}
@@ -102,6 +101,76 @@ const Profile = ({usersInfo, appointments}: any) => {
                         ))}
                 </div>
             </section>
+
+            {/*{admin &&*/}
+            {/*    <>*/}
+            {/*        <h1>Администратор клиники &quot;Рассвет&quot;</h1>*/}
+            {/*        <section className={styles.admin__info}>*/}
+            {/*            <p>{admin.surname}</p>*/}
+            {/*            <p>{admin.name}</p>*/}
+            {/*            <p>{admin.patronymic}</p>*/}
+            {/*            <p>{admin.email}</p>*/}
+            {/*        </section>*/}
+
+            {/*        <table className={styles.styled_table}>*/}
+            {/*            <thead>*/}
+            {/*            <tr>*/}
+            {/*                <th className={styles.styled_table__head}>Полное имя</th>*/}
+            {/*                <th className={styles.styled_table__head}>Специальность</th>*/}
+            {/*                <th className={styles.styled_table__head}>Опыть работы</th>*/}
+            {/*                <th className={styles.styled_table__head}>Действие</th>*/}
+            {/*            </tr>*/}
+            {/*            </thead>*/}
+            {/*            <tbody>*/}
+            {/*            {doctors?.map((doctor: any) => {*/}
+            {/*                return (*/}
+            {/*                    <tr key={doctor.id}>*/}
+            {/*                        <td>{doctor.fullName}</td>*/}
+            {/*                        <td>{doctor.speciality}</td>*/}
+            {/*                        <td>{doctor.experience}</td>*/}
+            {/*                        <td>*/}
+            {/*                            <Link href={'/admin/addEdit'}>*/}
+            {/*                                <button*/}
+            {/*                                    className={styles.styled_table__btn}*/}
+            {/*                                    type={"button"}*/}
+            {/*                                >*/}
+            {/*                                    Редактировать*/}
+            {/*                                </button>*/}
+            {/*                            </Link>*/}
+            {/*                            <button*/}
+            {/*                                onClick={() => onDelete(doctor.shortName)}*/}
+            {/*                                className={styles.styled_table__btn}*/}
+            {/*                                type={"button"}*/}
+            {/*                            >*/}
+            {/*                                Удалить*/}
+            {/*                            </button>*/}
+            {/*                            <button*/}
+            {/*                                onClick={() => {*/}
+            {/*                                    router.push(`/doctorsList/${doctor.fullName}`)*/}
+            {/*                                }}*/}
+            {/*                                className={styles.styled_table__btn}*/}
+            {/*                                type={"button"}*/}
+            {/*                            >*/}
+            {/*                                Посмотреть*/}
+            {/*                            </button>*/}
+            {/*                        </td>*/}
+            {/*                    </tr>*/}
+            {/*                )*/}
+            {/*            })}*/}
+            {/*            </tbody>*/}
+            {/*        </table>*/}
+            {/*        <Link href={'/admin/addEdit'}>*/}
+            {/*            <a>*/}
+            {/*                <Button*/}
+            {/*                    type={"button"}*/}
+            {/*                    theme={"transparent"}*/}
+            {/*                >*/}
+            {/*                    Добавить специалиста*/}
+            {/*                </Button>*/}
+            {/*            </a>*/}
+            {/*        </Link>*/}
+            {/*    </>*/}
+            {/*}*/}
 
             <div className={styles.review}>
                 <h1>Отзывы</h1>
@@ -147,8 +216,9 @@ export default Profile;
 export async function getStaticProps() {
     const usersInfo = await getDocsFromFirebase('users');
     const appointments = await getDocsFromFirebase('appointments');
+    const doctorsList = await getDocsFromFirebase('doctors');
 
     return {
-        props: {usersInfo, appointments}
+        props: {usersInfo, appointments, doctorsList}
     };
 }

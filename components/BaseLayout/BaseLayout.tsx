@@ -94,8 +94,8 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                         <div className={styles.header__btn}>
                             {currentUser ? (
                                 <>
-                                    <Link href={'/profile'}>
-                                        <a className={pathname === '/profile' ? styles.activeBtn : ''}>
+                                    <Link href={'/profileNew'}>
+                                        <a className={pathname === '/profileNew' ? styles.activeBtn : ''}>
                                             <Button
                                                 type='button'
                                                 theme='transparent'

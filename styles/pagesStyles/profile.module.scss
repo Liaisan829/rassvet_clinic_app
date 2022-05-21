@@ -1,47 +1,24 @@
-@import "../mixins";
+@import "/styles/mixins.scss";
 
 .userInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 50px;
-}
 
-.profile {
-  width: 500px;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px $c-dark-gray solid;
-  border-radius: 20px;
-  margin-right: 70px;
 
-  &__info {
-    display: flex;
-    flex-direction: column;
-  }
+  &__visits {
+    background-color: $c-light-yellow;
+    padding: 10px 0 10px 10px;
+    width: 700px;
+    min-height: 300px;
 
-  img {
-    width: 150px;
-    height: 150px;
-    border-radius: 100px;
-    border: 1px solid $c-black;
-  }
-}
-
-.visits {
-  background-color: $c-light-yellow;
-  padding: 10px 0 10px 10px;
-  width: 700px;
-  min-height: 300px;
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 40px;
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 40px;
+    }
   }
 }
 
