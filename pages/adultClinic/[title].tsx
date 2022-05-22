@@ -19,16 +19,18 @@ export default function Clinic({doctors, adultClinics}: any) {
                     </div>
                 ))}
 
-                <h3>Врачи отделения</h3>
-                {doctors.filter((doctor: any) => (doctor.department === (query.title)))
-                    .map((filteredDoctor: any) => (
-                        <DoctorCard
-                            key={filteredDoctor.fullName}
-                            img={filteredDoctor.url}
-                            fullName={filteredDoctor.fullName}
-                            speciality={filteredDoctor.speciality}
-                        />
-                    ))}
+                <div className={styles.clinicPage__doctors}>
+                    <h3>Врачи отделения</h3>
+                    {doctors.filter((doctor: any) => (doctor.department === (query.title)))
+                        .map((filteredDoctor: any) => (
+                            <DoctorCard
+                                key={filteredDoctor.fullName}
+                                img={filteredDoctor.url}
+                                fullName={filteredDoctor.fullName}
+                                speciality={filteredDoctor.speciality}
+                            />
+                        ))}
+                </div>
             </BaseLayout>
         </>
     );

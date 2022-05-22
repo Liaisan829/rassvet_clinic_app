@@ -24,13 +24,13 @@ export default function Doctor({doctors, doctorReviews}: any) {
         setShowReviewModal(true)
     }
 
-    useEffect(() => {
-        setLoading(true);
-        const timing = setTimeout(() => {
-            setLoading(false);
-        }, 5000);
-        return () => clearTimeout(timing);
-    }, []);
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const timing = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 5000);
+    //     return () => clearTimeout(timing);
+    // }, []);
 
     return (
         <BaseLayout title={'Специалист'}>
@@ -41,12 +41,12 @@ export default function Doctor({doctors, doctorReviews}: any) {
                             <div className={styles.doctorTitle}>
                                 <img src={filteredDoctor.url} alt="doct"/>
                                 <div className={styles.doctorTitle__info}>
-                                    <div className={styles.doctorTitle__info__block}>
-                                        <div>
+                                    <div>
+                                        <div className={styles.doctorTitle__info__item}>
                                             <h6>Должность:</h6>
                                             <h5>{filteredDoctor.speciality}</h5>
                                         </div>
-                                        <div>
+                                        <div className={styles.doctorTitle__info__item}>
                                             <h6>Стаж работы по специальности:</h6>
                                             <h5>{filteredDoctor.experience}</h5>
                                         </div>
@@ -55,7 +55,7 @@ export default function Doctor({doctors, doctorReviews}: any) {
                                         <h6>Первичный прием:</h6>
                                         <h4>{filteredDoctor.price}</h4>
                                     </div>
-                                    <div>
+                                    <div className={styles.doctorTitle__info__recording}>
                                         <Button
                                             type="submit"
                                             theme="orange"

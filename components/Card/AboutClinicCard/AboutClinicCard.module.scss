@@ -20,4 +20,10 @@
     border: 1px solid $c-dark-gray;
     margin-top: 20px;
   }
+
+  @include phone {
+    &:last-child {
+      margin-top: 25px;
+    }
+  }
 }

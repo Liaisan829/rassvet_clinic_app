@@ -7,16 +7,21 @@ interface CardProps {
     img: string,
     fullName: string,
     speciality: string,
-    price: string
+    price: string,
+    width?: number
 }
 
-export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price}) => {
+export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price, width}) => {
 
     return (
         <>
             <div className={styles.section}>
                 <Link href={`/doctorsList/${fullName}`}>
-                    <a><Image src={img} width={400} height={380} alt={'тут должно быть фото но с Image не работает'}/></a>
+                    <a>
+                        <div className={styles.section__img}>
+                            <Image src={img} width={width} height={380}/>
+                        </div>
+                    </a>
                 </Link>
                 <Link href={`/doctorsList/${fullName}`}>
                     <a>

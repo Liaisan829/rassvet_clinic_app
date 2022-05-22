@@ -35,7 +35,8 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
             specialist: specialistName
         })
         await setShowModal(false)
-        notifyToast()
+        await notifyToast()
+        window.location.reload()
     }
 
     return (
@@ -56,7 +57,7 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
                 >Отправить</Button>
 
             </Modal>
-            <ToastContainer/>
+            {/*<ToastContainer/>*/}
         </>
     )
 };

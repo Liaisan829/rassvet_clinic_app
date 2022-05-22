@@ -50,7 +50,9 @@ const SignUp = () => {
           <link rel='icon' href={'/header/logo.svg'}/>
         </Head>
         <div className={styles.loginPage__login}>
-          <Image src={logo} width={180} height={110} alt='logo'/>
+          <div className={styles.loginPage__login__img}>
+            <Image src={logo} alt='logo'/>
+          </div>
           <div className={styles.loginPage__popup}>
             <div className={styles.loginPage__popup__top}>
               <h2>Регистрация</h2>

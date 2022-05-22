@@ -6,16 +6,32 @@
   justify-content: center;
   max-width: 400px;
 
-  img {
-    width: 300px;
-    height: 280px;
+  @include phone {
+    align-items: center;
   }
 
-  a {
-    margin: 0 auto;
+  //a {
+  //  margin: 0 auto;
+  //  @include phone {
+  //    margin-top: -70px;
+  //  }
+  //}
+
+  &__img {
+    margin-top: -70px;
+    margin-bottom: -120px;
   }
 
   &__info {
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
+    @include phone {
+      margin-top: 55px;
+    }
+  }
+
+  &__items {
     margin: 0 auto;
     text-align: center;
     cursor: pointer;
@@ -24,12 +40,20 @@
   h4 {
     @include bold-text;
     margin-bottom: 10px;
+
+    @include phone {
+      @include regular-text;
+      font-weight: bold;
+    }
   }
 
   p {
     @include regular-text;
     font-weight: bold;
     color: $c-gray;
+    @include phone {
+      font-weight: normal;
+    }
   }
 
   h6 {
@@ -38,24 +62,32 @@
     color: $c-dark-gray;
     margin-top: 20px;
   }
-}
 
-@media screen and (max-width: 1050px) {
-  .section {
-    &__info {
-      h4, h6 {
-        font-size: 15px;
-      }
+  img {
+    @include phone {
+      width: 250px;
+      height: 250px;
     }
   }
+
 }
 
-@media screen and (max-width: 850px) {
-  .section {
-    &__info {
-      h4, h6, p {
-        font-size: 12px;
-      }
-    }
-  }
-}
+//@media screen and (max-width: 1050px) {
+//  .section {
+//    &__info {
+//      h4, h6 {
+//        font-size: 15px;
+//      }
+//    }
+//  }
+//}
+//
+//@media screen and (max-width: 850px) {
+//  .section {
+//    &__info {
+//      h4, h6, p {
+//        font-size: 12px;
+//      }
+//    }
+//  }
+//}

@@ -6,6 +6,11 @@
     font-weight: bold;
     color: $c-gray;
     margin-bottom: 10px;
+    @include phone {
+      @include regular-text;
+      margin: 0;
+      padding-right: 10px;
+    }
   }
 
   h5 {
@@ -21,9 +26,20 @@
   justify-content: space-evenly;
   margin-top: 50px;
 
+  @include phone {
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+  }
+
   img {
     width: 400px;
     height: 400px;
+
+    @include phone {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   &__info {
@@ -32,24 +48,50 @@
     justify-content: space-between;
     width: 300px;
 
+    &__item {
+      @include phone {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: -20px;
+      }
+    }
+
     &__price {
       display: flex;
       flex-direction: row;
       align-items: center;
 
+      @include phone {
+        margin-top: 20px;
+      }
+
       h4 {
         margin-left: 10px;
         margin-bottom: 10px;
+        @include phone {
+          margin: 0;
+        }
       }
+    }
+
+    &__recording {
+      margin-top: 40px;
     }
 
     p {
       margin-top: 20px;
       @include small-text;
       color: $c-gray;
+
+      @include phone {
+        font-size: 12px;
+        color: $c-gray;
+      }
     }
 
   }
+
 }
 
 .doctorDescription {
@@ -58,8 +100,26 @@
   justify-content: space-between;
   margin-top: 100px;
 
+  @include phone {
+    margin-top: 50px;
+
+    p {
+      @include small-text;
+    }
+
+    h6 {
+      font-weight: bold;
+      color: $c-gray;
+      margin-bottom: 10px;
+    }
+  }
+
   &__block {
     margin-bottom: 40px;
+
+    @include phone {
+      margin-bottom: 20px;
+    }
   }
 }
 

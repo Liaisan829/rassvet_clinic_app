@@ -5,9 +5,9 @@ import {useState} from 'react';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
-import {signIn, useAuth} from '../config/auth';
+import {signIn} from '../config/auth';
 import logo from '../public/header/logo.svg';
-import styles from '../styles/pagesStyles/signInPage.module.scss';
+import styles from '../styles/pagesStyles/signUpPage.module.scss';
 
 const SignIn = () => {
     const router = useRouter();
@@ -30,7 +30,9 @@ const SignIn = () => {
                 <link rel='icon' href={'/header/logo.svg'}/>
             </Head>
             <div className={styles.loginPage__login}>
-                <Image src={logo} width={180} height={110} alt='logo'/>
+                <div className={styles.loginPage__login__img}>
+                    <Image src={logo} alt='logo'/>
+                </div>
                 <div className={styles.loginPage__popup}>
                     <div className={styles.loginPage__popup__top}>
                         <h2>Вход</h2>

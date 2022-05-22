@@ -1,5 +1,16 @@
 @import "../mixins";
 
+.clinicInfo {
+  @include phone {
+    max-width: 300px;
+    margin: 0 auto;
+    p {
+      @include small-text;
+    }
+  }
+}
+
+
 .clinicCards {
   display: flex;
   flex-direction: row;
@@ -9,6 +20,10 @@
 
   &__item {
     margin-bottom: 80px;
+  }
+
+  @include phone {
+    flex-direction: column;
   }
 }
 
@@ -28,12 +43,30 @@
     margin: 20px auto 40px;
     width: 100%;
     max-width: 900px;
+    @include phone {
+      @include small-text;
+      font-weight: bold;
+    }
+  }
+
+  p {
+    @include phone {
+      @include small-text;
+    }
   }
 
   &__quote:before {
     color: $c-orange;
     content: "\201C";
     font-size: 50px;
+  }
+
+  &__doctors {
+    h3 {
+      @include phone {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
