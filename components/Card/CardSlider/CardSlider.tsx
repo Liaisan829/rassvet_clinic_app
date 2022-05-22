@@ -17,16 +17,20 @@ export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price, wid
         <>
             <div className={styles.section}>
                 <Link href={`/doctorsList/${fullName}`}>
-                    <div className={styles.section__img}>
-                        <Image src={img} width={width} height={380}/>
-                    </div>
+                    <a>
+                        <div className={styles.section__img}>
+                            <Image src={img} width={width} height={380}/>
+                        </div>
+                    </a>
                 </Link>
                 <Link href={`/doctorsList/${fullName}`}>
-                    <div className={styles.section__info}>
-                        <h4>{fullName}</h4>
-                        <p>{speciality}</p>
-                        <h6>{price}</h6>
-                    </div>
+                    <a>
+                        <div className={styles.section__info}>
+                            <h4>{fullName}</h4>
+                            <p>{speciality}</p>
+                            <h6>{price}</h6>
+                        </div>
+                    </a>
                 </Link>
             </div>
         </>

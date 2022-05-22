@@ -10,12 +10,12 @@
     align-items: center;
   }
 
-  a {
-    margin: 0 auto;
-    @include phone {
-      margin-top: -70px;
-    }
-  }
+  //a {
+  //  margin: 0 auto;
+  //  @include phone {
+  //    margin-top: -70px;
+  //  }
+  //}
 
   &__img {
     margin-top: -70px;
@@ -27,8 +27,14 @@
     text-align: center;
     cursor: pointer;
     @include phone {
-      margin-top: 70px;
+      margin-top: 55px;
     }
+  }
+
+  &__items {
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
   }
 
   h4 {
