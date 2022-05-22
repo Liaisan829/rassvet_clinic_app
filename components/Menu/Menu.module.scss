@@ -1,0 +1,51 @@
+@import "styles/mixins";
+
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 70px;
+  right: 0;
+  transform: translateX(-130%);
+  transition: 0.2s;
+
+  &__blur {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+  }
+
+  &__content {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: 0.4s;
+
+
+    &__bottom {
+      font-size: 1.2rem;
+      padding: 10px;
+      color: $c-orange;
+      border-top: 1px solid $c-gray;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    a {
+      color: $c-gray;
+      @include small-text;
+      font-weight: bold;
+      padding-top: 20px;
+    }
+  }
+}
+
+.active {
+  transform: translateX(0);
+}

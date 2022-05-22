@@ -28,7 +28,7 @@ export const Modal: FC<ModalProps> = ({title, onClose, children, show}) => {
         <div className={styles.overlay}>
             <div className={styles.overlay__popup}>
                 <div className={styles.overlay__popup__top}>
-                    {title}
+                    <h5>{title}</h5>
                     <Button
                         type="button"
                         theme=""

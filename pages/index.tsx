@@ -12,6 +12,7 @@ import AddressMap from "../components/yandexMap/AddressMap";
 import doctorLogo from '../public/doctorLogo.svg';
 import message from '../public/message.png';
 import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import {MobileDoctorsSlider} from "../components/DoctorsSlider/MobileDoctorsSlider";
 
 const Home: NextPage = ({first, second}: any) => {
     const [showChatbotModal, setShowChatbotModal] = useState(false);
@@ -19,7 +20,6 @@ const Home: NextPage = ({first, second}: any) => {
     const openChatbotModal = () => {
         setShowChatbotModal(true)
     }
-
 
     return (
         <>
@@ -52,7 +52,7 @@ const Home: NextPage = ({first, second}: any) => {
                     </div>
 
                     <div className={styles.legendaryDoctors__description}>
-                        <Image src={doctorLogo} className={styles.doctorAvatar}/>
+                        <Image src={doctorLogo} width={150} height={150}/>
 
                         <div className={styles.healthCare__list}>
                             <ul>
@@ -67,7 +67,12 @@ const Home: NextPage = ({first, second}: any) => {
                 </section>
 
                 <div className={styles.doctorsSlider}>
-                    <DoctorsSlider/>
+                    <div className={styles.doctorsSlider__standard}>
+                        <DoctorsSlider/>
+                    </div>
+                    <div className={styles.doctorsSlider__mobile}>
+                        <MobileDoctorsSlider/>
+                    </div>
                 </div>
 
                 <section className={styles.reviews}>
