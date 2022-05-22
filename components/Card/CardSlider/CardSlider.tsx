@@ -8,7 +8,7 @@ interface CardProps {
     fullName: string,
     speciality: string,
     price: string,
-    width: number
+    width?: number
 }
 
 export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price, width}) => {
