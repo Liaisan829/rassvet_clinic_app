@@ -1,5 +1,5 @@
 import SkeletonCardReview from "./SkeletonCardReview";
-import styles from "../../../styles/pagesStyles/clinicReviews.module.scss";
+import styles from "/styles/pagesStyles/clinicReviews.module.scss";
 
 const SkeletonClinicReviews = () => {
     return (

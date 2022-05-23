@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useRouter} from "next/router";
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
@@ -8,7 +8,7 @@ import { getDocsFromFirebase } from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
 import 'react-loading-skeleton/dist/skeleton.css';
-import styles from '../../styles/pagesStyles/doctorsList.module.scss';
+import styles from '/styles/pagesStyles/doctorsList.module.scss';
 import {useAuth} from "../../config/auth";
 
 export default function Doctor({doctors, doctorReviews, users}: any) {

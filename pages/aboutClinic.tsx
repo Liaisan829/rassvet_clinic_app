@@ -2,7 +2,7 @@ import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import AboutClinicCard from "../components/Card/AboutClinicCard/AboutClinicCard";
 import statement from '../public/statement.jpg';
 import statement2 from '../public/statement2.jpg';
-import styles from '../styles/pagesStyles/aboutClinic.module.scss';
+import styles from '/styles/pagesStyles/aboutClinic.module.scss';
 
 const AboutClinic = () => {
     return (

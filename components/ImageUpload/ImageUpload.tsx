@@ -1,6 +1,5 @@
 import {FC, ReactNode, useEffect, useState} from "react";
 import {uploadUserPhoto, useAuth} from "../../config/auth";
-import Image from "next/image";
 import {Button} from "../ui/Button/Button";
 import {toast} from "react-toastify";
 import styles from './ImageUpload.module.scss'

@@ -1,4 +1,4 @@
-import {addDoc, collection, doc, setDoc} from "@firebase/firestore";
+import {addDoc, collection} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";

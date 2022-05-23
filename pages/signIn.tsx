@@ -6,8 +6,8 @@ import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signIn} from '../config/auth';
-import logo from '../public/header/logo.svg';
-import styles from '../styles/pagesStyles/signUpPage.module.scss';
+import logo from '/public/header/logo.svg';
+import styles from '/styles/pagesStyles/signUpPage.module.scss';
 
 const SignIn = () => {
     const router = useRouter();

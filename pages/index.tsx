@@ -9,9 +9,9 @@ import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import AddressMap from "../components/yandexMap/AddressMap";
-import doctorLogo from '../public/doctorLogo.svg';
-import message from '../public/message.png';
-import styles from '../styles/pagesStyles/indexPageStyles.module.scss';
+import doctorLogo from '/public/doctorLogo.svg';
+import message from '/public/message.png';
+import styles from '/styles/pagesStyles/indexPageStyles.module.scss';
 import {MobileDoctorsSlider} from "../components/DoctorsSlider/MobileDoctorsSlider";
 
 const Home: NextPage = ({first, second}: any) => {

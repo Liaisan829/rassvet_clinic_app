@@ -1,7 +1,7 @@
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {CardReview} from "../components/Card/CardReview/CardReview";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
-import styles from "../styles/pagesStyles/clinicReviews.module.scss";
+import styles from "/styles/pagesStyles/clinicReviews.module.scss";
 
 const ClinicReviews = ({reviews}: any) => {
 

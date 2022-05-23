@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {addDoc} from 'firebase/firestore';
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
-import styles from "../../styles/pagesStyles/signUpPage.module.scss";
+import styles from "/styles/pagesStyles/signUpPage.module.scss";
 import {collection} from "@firebase/firestore";
 import {firestore} from "../../config/firebase";
 import useRouter from "next/router";
@@ -11,7 +11,6 @@ import useRouter from "next/router";
 const AddEdit = () => {
     const doctorsDatabaseRef = collection(firestore, "doctors");
     const router = useRouter;
-    const [updateData, setUpdateData] = useState({});
     const [data, setData] = useState({
         fullName: "",
         shortName: "",
@@ -27,7 +26,7 @@ const AddEdit = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        await addDoc(doctorsDatabaseRef, {
+        await addDoc(doctorsDatabaseRef,{
             fullName: data.fullName,
             shortName: data.shortName,
             experience: data.experience,

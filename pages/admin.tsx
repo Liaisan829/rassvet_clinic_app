@@ -7,7 +7,7 @@ import {logOut, useAuth} from "../config/auth";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Button} from "../components/ui/Button/Button";
 import {firestore} from "../config/firebase";
-import styles from "../styles/pagesStyles/adminPage.module.scss";
+import styles from "/styles/pagesStyles/adminPage.module.scss";
 
 const Admin = ({usersInfo, doctors}: any) => {
     const currentUser = useAuth();

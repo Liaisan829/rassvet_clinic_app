@@ -7,12 +7,12 @@ import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
 import Link from "next/link";
-import logo from '../public/header/logo.svg';
-import avatar from '../public/profile/profileLogo.svg';
+import logo from '/public/header/logo.svg';
+import avatar from '/public/profile/profileLogo.svg';
 import show from "/public/show.png";
 import dontshow from "/public/dontshow.png";
 import 'react-toastify/dist/ReactToastify.css';
-import styles from '../styles/pagesStyles/signUpPage.module.scss';
+import styles from '/styles/pagesStyles/signUpPage.module.scss';
 
 const SignUp = () => {
     const [seePass, setSeePass] = useState<boolean>(false);
@@ -50,29 +50,6 @@ const SignUp = () => {
         }, 3500);
     };
 
-  return (
-      <div className={styles.loginPage}>
-        <Head>
-          <title>Регистрация | Клиника Рассвет</title>
-          {/*туть потом надо сделать др картинку*/}
-          <link rel='icon' href={'/header/logo.svg'}/>
-        </Head>
-        <div className={styles.loginPage__login}>
-          <div className={styles.loginPage__login__img}>
-            <Image src={logo} alt='logo'/>
-          </div>
-          <div className={styles.loginPage__popup}>
-            <div className={styles.loginPage__popup__top}>
-              <h2>Регистрация</h2>
-              <Button
-                  type='button'
-                  theme=''
-                  color={'#000000'}
-                  onClick={() => {
-                    router.push('/');
-                  }}
-              ><h2>X</h2></Button>
-            </div>
     return (
         <div className={styles.loginPage}>
             <Head>
@@ -81,7 +58,9 @@ const SignUp = () => {
                 <link rel='icon' href={'/header/logo.svg'}/>
             </Head>
             <div className={styles.loginPage__login}>
-                <Image src={logo} width={180} height={110} alt='logo'/>
+                <div className={styles.loginPage__login__img}>
+                    <Image src={logo} alt='logo'/>
+                </div>
                 <div className={styles.loginPage__popup}>
                     <div className={styles.loginPage__popup__top}>
                         <h2>Регистрация</h2>
@@ -151,7 +130,8 @@ const SignUp = () => {
                                     theme={""}
                                 >
                                     {seePass ?
-                                        <Image src={dontshow} width={20} height={20} alt={"показать пароль"}/>
+                                        <Image src={dontshow} width={20} height={20}
+                                               alt={"показать пароль"}/>
                                         :
                                         <Image src={show} width={20} height={20} alt={"показать пароль"}/>
                                     }
@@ -169,7 +149,8 @@ const SignUp = () => {
                                     theme={""}
                                 >
                                     {seePass ?
-                                        <Image src={dontshow} width={20} height={20} alt={"показать пароль"}/>
+                                        <Image src={dontshow} width={20} height={20}
+                                               alt={"показать пароль"}/>
                                         :
                                         <Image src={show} width={20} height={20} alt={"показать пароль"}/>
                                     }
@@ -188,7 +169,6 @@ const SignUp = () => {
             </div>
             <ToastContainer/>
         </div>
-
     );
 };
 

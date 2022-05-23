@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {useState, useEffect} from "react";
 import Image from "next/image";
 import {Button} from "../../ui/Button/Button";
-import close from '../../../public/close.svg';
+import close from '/public/close.svg';
 import styles from './Modal.module.scss';
 
 interface ModalProps {

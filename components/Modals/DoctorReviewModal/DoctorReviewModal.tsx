@@ -1,4 +1,4 @@
-import {toast, ToastContainer} from "react-toastify";
+import {toast} from "react-toastify";
 import {addDoc, collection} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
