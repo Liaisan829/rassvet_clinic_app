@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import {FC, ReactNode} from 'react';
+import {FC, ReactNode, useState} from 'react';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import {Link as ScrollLink} from 'react-scroll';
 import {Button} from '../ui/Button/Button';
 import {logOut, useAuth} from '../../config/auth';
+import Menu from "../Menu/Menu";
 import logo from '../../public/header/logo.svg';
 import phone from '../../public/header/phone.svg';
 import email from '../../public/header/email.svg';
@@ -17,7 +18,7 @@ import youtube from '../../public/footer/youtube.svg';
 import visa from '../../public/footer/visa.svg';
 import mastercard from '../../public/footer/mastercard.svg';
 import mir from '../../public/footer/mir.svg';
-import burger from '../../public/burger-menu.svg';
+import burger from '../../public/menu-burger.svg';
 import styles from './BaseLayout.module.scss';
 
 interface Props {
@@ -33,6 +34,7 @@ const navigation = [
 ];
 
 export const BaseLayout: FC<Props> = ({children, title}) => {
+    const [menuActive, setMenuActive] = useState(false)
     const {pathname} = useRouter();
     const router = useRouter();
     const currentUser = useAuth();
@@ -138,45 +140,22 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                 </>
                             )}
                         </div>
-                    </section>
-                </header>
-
-                <header className={styles.mobileHeader}>
-                    <section className={styles.container}>
-
-                        <Link href={'/'}>
-                            <Image src={logo} width={100} height={70}/>
-                        </Link>
-
-                        <div className={styles.mobileHeader__actions}>
-                            <div className={styles.header__btn}>
-                                <Button
-                                    type='button'
-                                    onClick={() => {
-                                        router.push('/signUp');
-                                    }}
-                                    theme='transparent'
-                                >
-                                    Регистрация
-                                </Button>
-                                <Button
-                                    type='button'
-                                    onClick={() => {
-                                        router.push('/signIn');
-                                    }}
-                                    theme='transparent'
-                                >
-                                    Вход
-                                </Button>
-                            </div>
-
+                        <div className={styles.header__burgerMenu}>
                             <Button
                                 type={'button'}
                                 theme={''}
+                                onClick={() => setMenuActive(!menuActive)}
                             >
                                 <Image src={burger}/>
                             </Button>
                         </div>
+                        <Menu active={menuActive} setActive={setMenuActive}>
+                            {navigation.map(({id, title, path}) => (
+                                <Link key={id} href={path}>
+                                    <a className={pathname === path ? styles.active : ''}>{title}</a>
+                                </Link>
+                            ))}
+                        </Menu>
                     </section>
                 </header>
 

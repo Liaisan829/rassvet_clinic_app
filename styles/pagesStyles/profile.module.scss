@@ -1,4 +1,4 @@
-@import "/styles/mixins.scss";
+@import "../mixins";
 
 .userInfo {
   display: flex;
@@ -6,6 +6,38 @@
   justify-content: space-between;
   margin-top: 50px;
 
+  @include phone {
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+
+.profile {
+  width: 500px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px $c-dark-gray solid;
+  border-radius: 20px;
+  margin-right: 70px;
+
+  @include phone {
+    width: 320px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 1px solid $c-black;
+  }
 }
 
 .visits {
@@ -13,6 +45,11 @@
   padding: 10px 0 10px 10px;
   width: 700px;
   min-height: 300px;
+
+  @include phone {
+    width: 320px;
+    margin-top: 30px;
+  }
 
   &__info {
     display: flex;
@@ -22,11 +59,13 @@
   }
 }
 
-
 .review {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
+  @include phone {
+    margin-top: 40px;
+  }
 
   &__button {
     width: 350px;
@@ -38,6 +77,9 @@
 
   p {
     margin-bottom: 35px;
+    @include phone {
+      @include small-text;
+    }
   }
 
   &__reviewName {
@@ -45,6 +87,9 @@
     margin-bottom: 15px;
     border: 1px solid $c-gray;
     border-radius: 4px;
+    @include phone {
+      max-width: 320px;
+    }
   }
 
   &__reviewText {
@@ -65,4 +110,7 @@
 .logoutBtn {
   float: right;
   margin-top: 70px;
+  @include phone {
+    padding-right: 20px;
+  }
 }

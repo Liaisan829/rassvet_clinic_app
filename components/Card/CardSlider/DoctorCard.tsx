@@ -18,7 +18,7 @@ export const DoctorCard: FC<CardProps> = ({img, fullName, speciality}) => {
                 </Link>
                 <Link href={`/doctorsList/${fullName}`}>
                     <a>
-                        <div className={styles.section__info}>
+                        <div className={styles.section__items}>
                             <h4>{fullName}</h4>
                             <p>{speciality}</p>
                         </div>

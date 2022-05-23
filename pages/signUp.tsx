@@ -50,6 +50,29 @@ const SignUp = () => {
         }, 3500);
     };
 
+  return (
+      <div className={styles.loginPage}>
+        <Head>
+          <title>Регистрация | Клиника Рассвет</title>
+          {/*туть потом надо сделать др картинку*/}
+          <link rel='icon' href={'/header/logo.svg'}/>
+        </Head>
+        <div className={styles.loginPage__login}>
+          <div className={styles.loginPage__login__img}>
+            <Image src={logo} alt='logo'/>
+          </div>
+          <div className={styles.loginPage__popup}>
+            <div className={styles.loginPage__popup__top}>
+              <h2>Регистрация</h2>
+              <Button
+                  type='button'
+                  theme=''
+                  color={'#000000'}
+                  onClick={() => {
+                    router.push('/');
+                  }}
+              ><h2>X</h2></Button>
+            </div>
     return (
         <div className={styles.loginPage}>
             <Head>

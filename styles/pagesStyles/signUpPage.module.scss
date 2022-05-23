@@ -13,6 +13,19 @@
     align-items: center;
     width: 50vw;
     margin-top: -50px;
+
+    @include phone {
+      margin-top: -50px;
+    }
+
+    &__img {
+      width: 180px;
+      height: 110px;
+      @include phone {
+        width: 120px;
+        height: 50px;
+      }
+    }
   }
 
   &__popup {
@@ -26,6 +39,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin-top: 30px;
 
+    @include phone {
+      max-width: 350px;
+    }
+
     input {
       height: 50px;
       width: 380px;
@@ -33,6 +50,10 @@
       border: 1px solid $c-dark-gray;
       margin-bottom: 15px;
       padding-left: 16px;
+
+      @include phone {
+        width: 250px;
+      }
     }
 
     input:first-child {
@@ -51,6 +72,12 @@
       flex-direction: row;
       justify-content: space-between;
       margin-top: 25px;
+
+      p {
+        @include phone {
+          font-size: 12px;
+        }
+      }
     }
 
   }

@@ -1,7 +1,15 @@
-@import "/styles/mixins";
+@import "../mixins";
 
-.hospitalCards{
-  margin-top: 50px;
+.hospital {
+  &__cards {
+    margin-top: 50px;
+  }
+
+  @include phone {
+    p {
+      @include small-text;
+    }
+  }
 }
 
 .clinic{
