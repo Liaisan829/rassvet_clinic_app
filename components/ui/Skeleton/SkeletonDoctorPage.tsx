@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
-import styles from '../../../styles/pagesStyles/doctorsList.module.scss';
+import styles from '/styles/pagesStyles/doctorsList.module.scss';
 
 const SkeletonDoctorPage = () => {
     return (

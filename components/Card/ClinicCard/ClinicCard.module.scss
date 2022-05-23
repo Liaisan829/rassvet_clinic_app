@@ -1,8 +1,9 @@
-@import "../../../styles/mixins";
+@import "/styles/mixins";
 
 .card{
   border: 1px solid $c-light-gray;
   cursor: pointer;
+  max-width: 285px;
 
   p{
     cursor: pointer;

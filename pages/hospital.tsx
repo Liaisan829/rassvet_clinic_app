@@ -1,7 +1,7 @@
 import { BaseLayout } from '../components/BaseLayout/BaseLayout';
-import { ClinicCard } from '../components/Card/ClinicCard/ClinicCard';
-import hospital from '../public/hospital.svg';
-import styles from '../styles/pagesStyles/hospital.module.scss';
+import hospital from '/public/hospital.svg';
+import styles from '/styles/pagesStyles/hospital.module.scss';
+import {HospitalCard} from "../components/Card/HospitalCard/HospitalCard";
 
 const Hospital = () => {
   return (
@@ -14,7 +14,7 @@ const Hospital = () => {
                 хирургическое
                 лечение, введение сильнодействующих препаратов, при большом объеме обследований, в&nbsp;том числе инвазивных.</p>
             <section className={styles.hospital__cards}>
-                <ClinicCard
+                <HospitalCard
                     title={'Палаты'}
                     img={hospital}
                 />

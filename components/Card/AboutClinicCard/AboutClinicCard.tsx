@@ -2,7 +2,7 @@ import {FC, useState} from 'react';
 import Image from 'next/image';
 import {Button} from "../../ui/Button/Button";
 import AboutClinicModal from "../../Modals/AboutClinicModal/AboutClinicModal";
-import download from "../../../public/download.png";
+import download from "/public/download.png";
 import styles from './AboutClinicCard.module.scss';
 
 interface Props {

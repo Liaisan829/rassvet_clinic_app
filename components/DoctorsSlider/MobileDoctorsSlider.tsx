@@ -1,12 +1,12 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Navigation, Lazy, Autoplay} from "swiper";
+import SwiperCore, {Navigation, Autoplay} from "swiper";
 import {CardSlider} from "../Card/CardSlider/CardSlider";
-import doc1 from '../../public/doctorsSlider/doc1.svg';
-import doc2 from '../../public/doctorsSlider/doc2.svg';
-import doc3 from '../../public/doctorsSlider/doc3.svg';
-import doc4 from '../../public/doctorsSlider/doc4.svg';
-import doc5 from '../../public/doctorsSlider/doc5.svg';
-import doc6 from '../../public/doctorsSlider/doc6.svg';
+import doc1 from '/public/doctorsSlider/doc1.svg';
+import doc2 from '/public/doctorsSlider/doc2.svg';
+import doc3 from '/public/doctorsSlider/doc3.svg';
+import doc4 from '/public/doctorsSlider/doc4.svg';
+import doc5 from '/public/doctorsSlider/doc5.svg';
+import doc6 from '/public/doctorsSlider/doc6.svg';
 
 export const MobileDoctorsSlider = () => {
 

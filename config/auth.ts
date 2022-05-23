@@ -9,7 +9,6 @@ import {addDoc, collection} from '@firebase/firestore';
 import {auth, firestore, storage} from './firebase';
 import {useEffect, useState} from 'react';
 import {getDownloadURL, ref, uploadBytes} from '@firebase/storage';
-import profileLogo from '../public/profile/profileLogo.svg';
 
 const usersDatabaseRef = collection(firestore, 'users');
 
@@ -57,7 +56,7 @@ export function useAuth() {
     return currentUser;
 }
 
-export async function uploadUserPhoto(file:any, currentUser:any, setLoading:any){
+export async function uploadUserPhoto(file: any, currentUser: any, setLoading: any) {
     const fileRef = ref(storage, currentUser.uid + '.png')
     setLoading(true)
     const snapshot = await uploadBytes(fileRef, file)

@@ -1,0 +1,32 @@
+@import "/styles/mixins.scss";
+
+.profile {
+  width: 500px;
+  min-height: 300px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px $c-dark-gray solid;
+  border-radius: 20px;
+  margin-right: 70px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    &__flex{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 1px solid $c-black;
+  }
+}

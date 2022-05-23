@@ -7,17 +7,26 @@ import {firestore} from "../../../config/firebase";
 interface Props {
     showModal: any,
     setShowModal: any,
-    specialistName: string
+    specialistName: string,
+    users: any
 }
 
-export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialistName}) => {
+export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialistName, users}) => {
     const [fullUserName, setFullUserName] = useState('');
+    const [user, setUser] = useState<any>(null);
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const databaseRef = collection(firestore, 'appointments');
 
+    const getUser = (email: string) => {
+        users.filter((user: any) => (user.email === email)).map((filteredUser: any) => (
+            setUser(filteredUser)
+        ))
+    }
+
     const sendAppointment = async () => {
-        await addDoc(databaseRef, {fullName: fullUserName, phone: phone, email: email, specialist: specialistName})
+        await addDoc(databaseRef, {fullName: fullUserName, phone: phone, email: email, specialist: specialistName});
+        await getUser(email)
         await setShowModal(false)
     }
 

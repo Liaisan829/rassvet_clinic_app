@@ -1,11 +1,16 @@
 import {Field, Form, Formik} from 'formik';
 import React, {useState} from 'react';
-import styles from "../../styles/pagesStyles/signUpPage.module.scss";
+import {addDoc} from 'firebase/firestore';
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
+import styles from "/styles/pagesStyles/signUpPage.module.scss";
+import {collection} from "@firebase/firestore";
+import {firestore} from "../../config/firebase";
+import useRouter from "next/router";
 
 const AddEdit = () => {
-
+    const doctorsDatabaseRef = collection(firestore, "doctors");
+    const router = useRouter;
     const [data, setData] = useState({
         fullName: "",
         shortName: "",
@@ -18,10 +23,24 @@ const AddEdit = () => {
         speciality: "",
         work: ""
     });
-    const [updateData, setUpdateData] = useState({});
-    const handleSubmit = () => {
 
-    }
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        await addDoc(doctorsDatabaseRef,{
+            fullName: data.fullName,
+            shortName: data.shortName,
+            experience: data.experience,
+            department: data.department,
+            education: data.education,
+            interests: data.interests,
+            price: data.price,
+            url: data.url,
+            speciality: data.speciality,
+            work: data.work
+        }).then(() => {
+            router.push("/profile")
+        })
+    };
 
     return (
         <BaseLayout title={"Администратор"}>
@@ -41,7 +60,7 @@ const AddEdit = () => {
                     onSubmit={console.log}
             >
                 {() => (
-                    <Form className={styles.modal_container}>
+                    <Form className={styles.modal_container} onSubmit={handleSubmit}>
                         <Field
                             name='fullName'
                             value={data.fullName}
@@ -74,14 +93,12 @@ const AddEdit = () => {
                         />
                         <Field
                             name='interests'
-                            type='password'
                             value={data.interests}
                             placeholder='Интересы'
                             onChange={(e: any) => setData({...data, interests: e.target.value})}
                         />
                         <Field
                             name='price'
-                            type='password'
                             value={data.price}
                             placeholder='Цена первичного приема'
                             onChange={(e: any) => setData({...data, price: e.target.value})}
@@ -95,33 +112,26 @@ const AddEdit = () => {
                         />
                         <Field
                             name='speciality'
-                            type='password'
                             value={data.speciality}
                             placeholder='Специальность'
                             onChange={(e: any) => setData({...data, speciality: e.target.value})}
                         />
                         <Field
                             name='work'
-                            type='password'
                             value={data.work}
                             placeholder='Опыт работы'
                             onChange={(e: any) => setData({...data, work: e.target.value})}
                         />
-
-
                         <Button
-                            type='submit'
-                            theme='orange'
-                        >Зарегистрироваться</Button>
+                            type={"submit"}
+                            theme={"transparent"}
+                        >
+                            Сохранить
+                        </Button>
+
                     </Form>
                 )}
             </Formik>
-            <Button
-                type={"submit"}
-                theme={"transparent"}
-            >
-                Сохранить
-            </Button>
         </BaseLayout>
     );
 };

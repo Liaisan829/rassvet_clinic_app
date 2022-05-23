@@ -1,11 +1,11 @@
-@import "styles/mixins";
+@import "/styles/mixins";
 
 .menu {
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 70px;
-  right: 0;
+  left: 0;
   transform: translateX(-130%);
   transition: 0.2s;
 

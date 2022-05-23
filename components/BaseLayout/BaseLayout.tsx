@@ -7,18 +7,18 @@ import {Link as ScrollLink} from 'react-scroll';
 import {Button} from '../ui/Button/Button';
 import {logOut, useAuth} from '../../config/auth';
 import Menu from "../Menu/Menu";
-import logo from '../../public/header/logo.svg';
-import phone from '../../public/header/phone.svg';
-import email from '../../public/header/email.svg';
-import location from '../../public/header/location.svg';
-import vk from '../../public/footer/vk.svg';
-import facebook from '../../public/footer/facebook.svg';
-import instagram from '../../public/footer/instagram.svg';
-import youtube from '../../public/footer/youtube.svg';
-import visa from '../../public/footer/visa.svg';
-import mastercard from '../../public/footer/mastercard.svg';
-import mir from '../../public/footer/mir.svg';
-import burger from '../../public/menu-burger.svg';
+import logo from '/public/header/logo.svg';
+import phone from '/public/header/phone.svg';
+import email from '/public/header/email.svg';
+import location from '/public/header/location.svg';
+import vk from '/public/footer/vk.svg';
+import facebook from '/public/footer/facebook.svg';
+import instagram from '/public/footer/instagram.svg';
+import youtube from '/public/footer/youtube.svg';
+import visa from '/public/footer/visa.svg';
+import mastercard from '/public/footer/mastercard.svg';
+import mir from '/public/footer/mir.svg';
+import burger from '/public/menu-burger.svg';
 import styles from './BaseLayout.module.scss';
 
 interface Props {
@@ -97,7 +97,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                             {currentUser ? (
                                 <>
                                     <Link href={'/profile'}>
-                                        <a className={pathname === '/profile' ? styles.activeBtn : ''}>
+                                        <a className={pathname === '/profileNew' ? styles.activeBtn : ''}>
                                             <Button
                                                 type='button'
                                                 theme='transparent'

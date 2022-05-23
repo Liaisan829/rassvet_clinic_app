@@ -1,6 +1,5 @@
 import {FC, ReactNode, useEffect, useState} from "react";
 import {uploadUserPhoto, useAuth} from "../../config/auth";
-import Image from "next/image";
 import {Button} from "../ui/Button/Button";
 import {toast} from "react-toastify";
 import styles from './ImageUpload.module.scss'
@@ -13,7 +12,7 @@ export const ImageUpload: FC<Props> = ({children}) => {
     const currentUser = useAuth()
     const [photo, setPhoto] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [photoURL, setPhotoURL] = useState(currentUser.photoURL)
+    const [photoURL, setPhotoURL] = useState(currentUser?.photoURL)
     const notifyToast = () => toast('Новое фото профиля успешно загружено!', {
         position: 'top-center',
         autoClose: 3000,
