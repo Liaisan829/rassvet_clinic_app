@@ -6,21 +6,22 @@
   justify-content: space-between;
   margin-top: 50px;
 
+}
 
-  &__visits {
-    background-color: $c-light-yellow;
-    padding: 10px 0 10px 10px;
-    width: 700px;
-    min-height: 300px;
+.visits {
+  background-color: $c-light-yellow;
+  padding: 10px 0 10px 10px;
+  width: 700px;
+  min-height: 300px;
 
-    &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin-top: 40px;
-    }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 40px;
   }
 }
+
 
 .review {
   margin-top: 100px;

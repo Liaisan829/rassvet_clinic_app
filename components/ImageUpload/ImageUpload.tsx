@@ -13,7 +13,7 @@ export const ImageUpload: FC<Props> = ({children}) => {
     const currentUser = useAuth()
     const [photo, setPhoto] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [photoURL, setPhotoURL] = useState(currentUser.photoURL)
+    const [photoURL, setPhotoURL] = useState(currentUser?.photoURL)
     const notifyToast = () => toast('Новое фото профиля успешно загружено!', {
         position: 'top-center',
         autoClose: 3000,
