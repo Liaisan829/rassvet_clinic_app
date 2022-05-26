@@ -10,6 +10,7 @@ const UserCard = ({user}: any) => {
     return (
         <div className={styles.profile}>
             <ImageUpload>
+            {/*<img src={user?.photoURL} alt="avatar"/>*/}
                 <div className={styles.profile__info}>
                     <p>{user?.surname} {user?.name} {user?.patronymic}</p>
                     {isAdmin() && <p>Администратор</p>}

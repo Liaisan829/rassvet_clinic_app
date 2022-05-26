@@ -7,43 +7,47 @@
   border-radius: 20px;
   padding: 10px 34px;
   cursor: pointer;
-  min-width: 170px;
+  //min-width: 170px;
 
-  &Orange {
+  &__orange {
     @extend .button;
     background: $c-orange;
     color: $c-white;
   }
 
-  &Transparent {
+  &__transparent {
     @extend .button;
     color: $c-orange;
     font-weight: 200;
     border: 2px solid $c-orange;
   }
 
-  &Default {
+  &__default {
     @extend .button;
     color: $c-orange;
     padding: 0;
   }
+
+  &__wide {
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: 1250px){
+@media screen and (max-width: 1250px) {
   .button {
     min-width: 155px;
   }
 }
 
 
-@media screen and (max-width: 1050px){
+@media screen and (max-width: 1050px) {
   .button {
     min-width: 110px;
     padding: 8px 25px;
   }
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 850px) {
   .button {
     padding: 5px 20px;
   }

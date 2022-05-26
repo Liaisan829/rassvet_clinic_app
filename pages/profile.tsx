@@ -34,7 +34,6 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     }, []);
 
     const isAdmin = () => {
-        console.log(user?.role);
         return user?.role === "admin";
     }
 
@@ -83,7 +82,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                             <Button
                                 type={"button"}
                                 theme={"transparent"}
-                                onClick={onAddNew}                            >
+                                onClick={onAddNew}>
                                 add new doctor
                             </Button>
                         </div>
