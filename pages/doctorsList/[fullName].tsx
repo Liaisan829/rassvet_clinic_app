@@ -67,7 +67,6 @@ export default function Doctor({doctors, doctorReviews, users}: any) {
                                             showModal={showModal}
                                             setShowModal={setShowModal}
                                             specialistName={filteredDoctor.fullName}
-                                            users={users}
                                         />
                                         <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                     </div>
