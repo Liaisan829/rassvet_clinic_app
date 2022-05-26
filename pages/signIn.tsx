@@ -9,7 +9,7 @@ import {signIn} from '../config/auth';
 import logo from '/public/header/logo.svg';
 import dontshow from "/public/dontshow.png";
 import show from "/public/show.png";
-import cross from "/public/cross.png";
+import cross from '/public/cross.png';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
 
 const SignIn = () => {
