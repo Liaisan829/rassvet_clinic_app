@@ -17,7 +17,7 @@ export const DoctorsSlider = () => {
 
     return (
         <>
-            <div className="slider">
+            <div className="doctor__slider">
                 <div className="navigation">
                     <div className="swiper-button-prev-custom">
                         <Image src={prevArrow} width={24} height={24}/>
@@ -33,9 +33,12 @@ export const DoctorsSlider = () => {
                         nextEl: ".swiper-button-next-custom"
                     }}
                     loop={true}
+                    width={1200}
                     slidesPerView={3}
-                    onSlideChange={() => {}}
-                    onSwiper={() => {}}
+                    onSlideChange={() => {
+                    }}
+                    onSwiper={() => {
+                    }}
                 >
                     <SwiperSlide>
                         <CardSlider

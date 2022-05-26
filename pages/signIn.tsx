@@ -7,10 +7,14 @@ import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signIn} from '../config/auth';
 import logo from '/public/header/logo.svg';
+import dontshow from "/public/dontshow.png";
+import show from "/public/show.png";
+import cross from "/public/cross.png";
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
 
 const SignIn = () => {
     const router = useRouter();
+    const [seePass, setSeePass] = useState<boolean>(false);
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -21,6 +25,10 @@ const SignIn = () => {
         await signIn(data.email, data.password);
         await router.push('/');
     };
+
+    const onSeePass = () => {
+        setSeePass(!seePass);
+    }
 
     return (
         <div className={styles.loginPage}>
@@ -33,8 +41,8 @@ const SignIn = () => {
                 <div className={styles.loginPage__login__img}>
                     <Image src={logo} alt='logo'/>
                 </div>
-                <div className={styles.loginPage__popup}>
-                    <div className={styles.loginPage__popup__top}>
+                <div className={styles.loginPage__content}>
+                    <div className={styles.loginPage__content__top}>
                         <h2>Вход</h2>
                         <Button
                             type='button'
@@ -43,7 +51,8 @@ const SignIn = () => {
                             onClick={() => {
                                 router.push('/');
                             }}
-                        ><h2>X</h2></Button>
+                        ><Image src={cross} width={20} height={20} alt={"закрыть"}/>
+                        </Button>
                     </div>
 
                     <Formik initialValues={{
@@ -53,28 +62,45 @@ const SignIn = () => {
                             onSubmit={console.log}
                     >
                         {() => (
-                            <Form className={styles.modal_container} onSubmit={handleLogin}>
+                            <Form className={styles.loginPage__content__form} onSubmit={handleLogin}>
                                 <Field
                                     name='email'
                                     value={data.email}
                                     placeholder='Ваша почта'
                                     onChange={(e: any) => setData({...data, email: e.target.value})}
                                 />
-                                <Field
-                                    name='password'
-                                    type='password'
-                                    value={data.password}
-                                    placeholder='Пароль'
-                                    onChange={(e: any) => setData({...data, password: e.target.value})}
-                                />
+                                <div className={styles.loginPage__content__form__passwordline}>
+                                    <Field
+                                        name='password'
+                                        type={seePass ? "text" : "password"} value={data.password}
+                                        placeholder='Пароль'
+                                        onChange={(e: any) => setData({...data, password: e.target.value})}
+                                    />
+                                    <Button
+                                        type={"button"}
+                                        onClick={onSeePass}
+                                        theme={""}
+                                        className={styles.loginPage__content__form__passwordline__btn}
+                                    >
+                                        {seePass ?
+                                            <Image src={dontshow} width={20} height={20}
+                                                   alt={"показать пароль"}/>
+                                            :
+                                            <Image src={show} width={20} height={20} alt={"показать пароль"}/>
+                                        }
+                                    </Button>
+                                </div>
+
                                 <Button
                                     type='submit'
                                     theme='orange'
+                                    wide={true}
+                                    className={styles.loginPage__content__form__btn}
                                 >Войти</Button>
                             </Form>
                         )}
                     </Formik>
-                    <div className={styles.loginPage__popup__bottom}>
+                    <div className={styles.loginPage__content__bottom}>
                         <p>Вы у нас впервые? <Link href={'/signUp'}><a>Зарегистрируйтесь</a></Link></p>
                     </div>
                 </div>

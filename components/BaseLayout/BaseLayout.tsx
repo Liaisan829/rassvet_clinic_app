@@ -96,21 +96,20 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                         <div className={styles.header__btn}>
                             {currentUser ? (
                                 <>
-                                    <Link href={'/profile'}>
-                                        <a className={pathname === '/profileNew' ? styles.activeBtn : ''}>
-                                            <Button
-                                                type='button'
-                                                theme='transparent'
-                                            >
-                                                Личный кабинет
-                                            </Button>
-                                        </a>
-                                    </Link>
+                                    <a className={pathname === '/profile' ? styles.activeBtn : ''}>
+                                        <Button
+                                            type='button'
+                                            theme='transparent'
+                                            onClick={() => router.push("/profile")}
+                                        >
+                                            Личный кабинет
+                                        </Button>
+                                    </a>
                                     <Button
                                         type='button'
                                         onClick={() => {
-                                            logOut();
-                                            router.push('/');
+                                            logOut()
+                                                .then(() => router.push('/'))
                                         }}
                                         theme='transparent'
                                     >
@@ -121,19 +120,19 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                 <>
                                     <Button
                                         type='button'
+                                        theme='transparent'
                                         onClick={() => {
                                             router.push('/signUp');
                                         }}
-                                        theme='transparent'
                                     >
                                         Регистрация
                                     </Button>
                                     <Button
                                         type='button'
+                                        theme='transparent'
                                         onClick={() => {
                                             router.push('/signIn');
                                         }}
-                                        theme='transparent'
                                     >
                                         Вход
                                     </Button>

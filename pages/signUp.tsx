@@ -8,14 +8,13 @@ import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
 import Link from "next/link";
 import logo from '/public/header/logo.svg';
-import avatar from '/public/profile/profileLogo.svg';
-import show from "/public/show.png";
-import dontshow from "/public/dontshow.png";
+import cross from "/public/cross.png";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
+import usePasswordToggle from "../utils/usePasswordToggle";
 
 const SignUp = () => {
-    const [seePass, setSeePass] = useState<boolean>(false);
+    const [passwordInputType, toggleIcon] = usePasswordToggle();
     const router = useRouter();
     const notifyToast = () => toast('Вы успешно зарегистрированы!', {
         position: 'top-center',
@@ -33,12 +32,8 @@ const SignUp = () => {
         phone: '',
         password: '',
         repassword: '',
-        photoURL: avatar
+        photoURL: "https://firebasestorage.googleapis.com/v0/b/rassvet-87044.appspot.com/o/avatar.png?alt=media&token=d38cd8c1-47b5-4f0d-9152-0a1dda1919ef"
     });
-
-    const onSeePass = () => {
-        setSeePass(!seePass);
-    }
 
     const handleSignup = async (e: any) => {
         e.preventDefault();
@@ -61,8 +56,8 @@ const SignUp = () => {
                 <div className={styles.loginPage__login__img}>
                     <Image src={logo} alt='logo'/>
                 </div>
-                <div className={styles.loginPage__popup}>
-                    <div className={styles.loginPage__popup__top}>
+                <div className={styles.loginPage__content}>
+                    <div className={styles.loginPage__content__top}>
                         <h2>Регистрация</h2>
                         <Button
                             type='button'
@@ -71,7 +66,8 @@ const SignUp = () => {
                             onClick={() => {
                                 router.push('/');
                             }}
-                        ><h2>X</h2></Button>
+                        ><Image src={cross} width={20} height={20} alt={"закрыть"}/>
+                        </Button>
                     </div>
 
                     <Formik initialValues={{
@@ -85,7 +81,7 @@ const SignUp = () => {
                             onSubmit={console.log}
                     >
                         {() => (
-                            <Form className={styles.modal_container} onSubmit={handleSignup}>
+                            <Form className={styles.loginPage__content__form} onSubmit={handleSignup}>
                                 <Field
                                     name='surname'
                                     value={data.surname}
@@ -116,53 +112,41 @@ const SignUp = () => {
                                     placeholder='Ваш телефон'
                                     onChange={(e: any) => setData({...data, phone: e.target.value})}
                                 />
+                                <div className={styles.loginPage__content__form__passwordline}>
+                                    <Field
+                                        name='password'
+                                        type={passwordInputType}
+                                        value={data.password}
+                                        placeholder='Пароль'
+                                        onChange={(e: any) => setData({...data, password: e.target.value})}
+                                    />
 
-                                <Field
-                                    name='password'
-                                    type={seePass ? "text" : "password"}
-                                    value={data.password}
-                                    placeholder='Пароль'
-                                    onChange={(e: any) => setData({...data, password: e.target.value})}
-                                />
-                                <Button
-                                    type={"button"}
-                                    onClick={onSeePass}
-                                    theme={""}
-                                >
-                                    {seePass ?
-                                        <Image src={dontshow} width={20} height={20}
-                                               alt={"показать пароль"}/>
-                                        :
-                                        <Image src={show} width={20} height={20} alt={"показать пароль"}/>
-                                    }
-                                </Button>
-                                <Field
-                                    name='repassword'
-                                    type={seePass ? "text" : "password"}
-                                    value={data.repassword}
-                                    placeholder='Повторите пароль'
-                                    onChange={(e: any) => setData({...data, repassword: e.target.value})}
-                                />
-                                <Button
-                                    type={"button"}
-                                    onClick={onSeePass}
-                                    theme={""}
-                                >
-                                    {seePass ?
-                                        <Image src={dontshow} width={20} height={20}
-                                               alt={"показать пароль"}/>
-                                        :
-                                        <Image src={show} width={20} height={20} alt={"показать пароль"}/>
-                                    }
-                                </Button>
+                                    <span>{toggleIcon}</span>
+
+                                </div>
+
+                                <div className={styles.loginPage__content__form__passwordline}>
+                                    <Field
+                                        name='repassword'
+                                        type={passwordInputType}
+                                        value={data.repassword}
+                                        placeholder='Повторите пароль'
+                                        onChange={(e: any) => setData({...data, repassword: e.target.value})}
+                                    />
+
+                                    <span>{toggleIcon}</span>
+
+                                </div>
+
                                 <Button
                                     type='submit'
                                     theme='orange'
+                                    className={styles.loginPage__content__form__btn}
                                 >Зарегистрироваться</Button>
                             </Form>
                         )}
                     </Formik>
-                    <div className={styles.loginPage__popup__bottom}>
+                    <div className={styles.loginPage__content__bottom}>
                         <p><Link href={'/signIn'}><a>Я уже зарегистрировался(-ась)</a></Link></p>
                     </div>
                 </div>

@@ -4,15 +4,26 @@ import styles from "./Button.module.scss";
 
 interface ButtonProps {
     type: any,
+    wide?: boolean,
     onClick?: any,
     theme: string,
     color?: string,
-    disabled?: any
+    disabled?: any,
+    className?: any
 }
 
 const cx = cn.bind(styles);
 
-export const Button: FC<ButtonProps> = ({type, onClick, theme, children, color, disabled}) => {
+export const Button: FC<ButtonProps> = ({
+                                            type,
+                                            wide,
+                                            onClick,
+                                            theme,
+                                            children,
+                                            color,
+                                            disabled,
+                                            className
+                                        }) => {
 
     return (
         <button
@@ -20,10 +31,11 @@ export const Button: FC<ButtonProps> = ({type, onClick, theme, children, color, 
             onClick={onClick}
             disabled={disabled}
             style={{"color": `${color}`}}
-            className={cx(styles.button, {
-                buttonOrange: theme === 'orange',
-                buttonTransparent: theme === 'transparent',
-                buttonDefault: theme === ''
+            className={cx(styles.button, className, {
+                button__orange: theme === 'orange',
+                button__transparent: theme === 'transparent',
+                button__default: theme === '',
+                button__wide: wide
             })}
         >
             {children}
