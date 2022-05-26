@@ -8,7 +8,7 @@ import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
 import Link from "next/link";
 import logo from '/public/header/logo.svg';
-import cross from "/public/cross.png";
+import cross from '/public/cross.png';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
 import usePasswordToggle from "../utils/usePasswordToggle";
