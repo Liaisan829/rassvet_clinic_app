@@ -34,6 +34,11 @@
   font-size: 14px;
 }
 
+@mixin standard-text {
+  @include regular-style;
+  font-size: 12px;
+}
+
 @mixin modalText{
   font-family: Inter, sans-serif;
   font-style: normal;
@@ -46,6 +51,37 @@
   font-size: 25px;
   font-weight: 400;
 }
+
+@mixin laptop1250 {
+  @media(max-width: 1250px) {
+    @content
+  }
+}
+
+@mixin laptop1050 {
+  @media(max-width: 1050px) {
+    @content
+  }
+}
+
+@mixin tablet850{
+  @media(max-width: 850px){
+    @content
+  }
+}
+
+@mixin tablet720{
+  @media(max-width: 720px){
+    @content
+  }
+}
+
+@mixin tablet620{
+  @media (max-width: 620px) {
+    @content
+  }
+}
+
 
 @mixin phone {
   @media(max-width: 420px) {

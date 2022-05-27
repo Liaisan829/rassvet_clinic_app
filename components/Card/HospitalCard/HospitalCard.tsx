@@ -9,7 +9,6 @@ interface CardProps {
 }
 
 export const HospitalCard: FC<CardProps> = ({img, title}) => {
-
     return (
         <>
             <div className={styles.card}>

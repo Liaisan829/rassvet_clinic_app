@@ -1,5 +1,10 @@
 @import "styles/mixins";
 
+.indexPage {
+  display: flex;
+  flex-direction: column;
+}
+
 .doctorsSliderMobile {
   display: none;
 }

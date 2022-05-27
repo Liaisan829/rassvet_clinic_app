@@ -1,12 +1,14 @@
 @import "../mixins";
 
 .clinicInfo {
-  @include phone {
-    max-width: 300px;
-    margin: 0 auto;
+  @include tablet850 {
     p {
       @include small-text;
     }
+  }
+  @include phone {
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 
@@ -16,6 +18,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   margin-top: 50px;
 
   &__item {

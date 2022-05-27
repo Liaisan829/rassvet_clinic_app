@@ -16,12 +16,21 @@
     cursor: pointer;
   }
 
+  h4 {
+    @include regular-text;
+    font-weight: 600;
+  }
+
   &__img {
     border: 1px solid $c-dark-gray;
     margin-top: 20px;
   }
 
-  @include phone {
+  @include tablet850 {
+    width: 270px;
+  }
+
+  @include tablet720 {
     &:last-child {
       margin-top: 25px;
     }

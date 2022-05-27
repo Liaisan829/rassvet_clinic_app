@@ -159,7 +159,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                 </header>
 
                 <main className={styles.main}>
-                    <section className={styles.main__container}>
+                    <section className={styles.container}>
                         {children}
                     </section>
                 </main>
