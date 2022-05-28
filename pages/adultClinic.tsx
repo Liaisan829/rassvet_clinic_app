@@ -2,8 +2,20 @@ import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import {ClinicCard} from '../components/Card/ClinicCard/ClinicCard';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
 import styles from '/styles/pagesStyles/adultClinic.module.scss';
+import {useEffect, useState} from "react";
+import SkeletonClinicsPage from "../components/ui/Skeleton/SkeletonClinicsPage";
 
 const AdultClinic = ({adultClinics}: any) => {
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 3700);
+        return () => clearTimeout(timing);
+    }, []);
+
     return (
         <BaseLayout title={'Взрослая клиника'}>
             <div className={styles.clinicInfo}>
@@ -13,13 +25,15 @@ const AdultClinic = ({adultClinics}: any) => {
                     жизненного пути&nbsp;&mdash; от&nbsp;беременности и
                     новорожденности до&nbsp;реабилитации и&nbsp;возвращения работоспособности пожилым пациентам.</p>
                 <section className={styles.clinicCards}>
-                    {adultClinics.map((adultClinic: any) => (
-                        <ClinicCard
-                            key={adultClinic.title}
-                            title={adultClinic.title}
-                            img={adultClinic.url}
-                        />
-                    ))}
+                    {loading ? <SkeletonClinicsPage/> :
+                        adultClinics.map((adultClinic: any)=>(
+                            <ClinicCard
+                                key={adultClinic.title}
+                                title={adultClinic.title}
+                                img={adultClinic.url}
+                            />
+                        ))
+                    }
                 </section>
             </div>
         </BaseLayout>
