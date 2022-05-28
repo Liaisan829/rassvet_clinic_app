@@ -39,7 +39,7 @@ export default function Doctor({doctors, doctorReviews, users}: any) {
             <div>
                 <h1>{query.fullName}</h1>
                 {loading ? <SkeletonDoctorPage/> :
-                    doctors.filter((doctor: any) => (query.fullName === doctor.fullName)).map((filteredDoctor: any) => (
+                    doctors?.filter((doctor: any) => (query.fullName === doctor.fullName)).map((filteredDoctor: any) => (
                             <div key={filteredDoctor.fullName} className={styles.doctorPage}>
                                 <div className={styles.doctorTitle}>
                                     <img src={filteredDoctor.url} alt="doct"/>
