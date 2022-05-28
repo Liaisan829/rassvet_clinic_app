@@ -52,6 +52,21 @@
       flex-direction: column;
       justify-content: center;
 
+      &__error {
+        color: red;
+        margin-top: 5px;
+        white-space: pre-line;
+        width: 380px;
+
+        @include tablet620 {
+          width: 300px;
+        }
+
+        @include phone {
+          width: 250px;
+        }
+      }
+
       &__passwordline{
         display: flex;
         flex-direction: row;

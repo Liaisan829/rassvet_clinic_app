@@ -1,14 +1,12 @@
-import {Field, Form, Formik} from 'formik';
+import * as Yup from "yup";
+import {Field, Form, Formik, FormikValues, useFormik} from 'formik';
 import Link from 'next/link';
 import Image from 'next/image';
-import {useState} from 'react';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signIn} from '../config/auth';
 import logo from '/public/header/logo.svg';
-import dontshow from "/public/dontshow.png";
-import show from "/public/show.png";
 import cross from '/public/cross.png';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
 import usePasswordToggle from "../utils/usePasswordToggle";
@@ -16,16 +14,32 @@ import usePasswordToggle from "../utils/usePasswordToggle";
 const SignIn = () => {
     const [passwordInputType, toggleIcon] = usePasswordToggle();
     const router = useRouter();
-    const [data, setData] = useState({
-        email: '',
-        password: ''
-    });
 
-    const handleLogin = async (e: any) => {
-        e.preventDefault();
-        await signIn(data.email, data.password);
+    const handleLogin = async (values: FormikValues) => {
+        await signIn(values.email, values.password);
         await router.push('/');
     };
+
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
+        },
+        validationSchema: Yup.object().shape({
+            email: Yup.string()
+                .required("Введите вашу почту")
+                .matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    "Неверный формат почты"),
+            password: Yup.string()
+                .required("Введите пароль")
+                .matches(/^(?=.*[0-9])(?=.*[a-z]).{3,10}$/g,
+                    "Пароль должен содержать строчные латинские  буквы, а также цифру")
+                .min(3, "Минимальная длина пароля 3 символа"),
+        }),
+        onSubmit: (values) => {
+            handleLogin(values);
+        }
+    });
 
     return (
         <div className={styles.loginPage}>
@@ -59,23 +73,32 @@ const SignIn = () => {
                             onSubmit={console.log}
                     >
                         {() => (
-                            <Form className={styles.loginPage__content__form} onSubmit={handleLogin}>
+                            <Form className={styles.loginPage__content__form} onSubmit={formik.handleSubmit}>
                                 <Field
                                     name='email'
-                                    value={data.email}
+                                    value={formik.values.email}
                                     placeholder='Ваша почта'
-                                    onChange={(e: any) => setData({...data, email: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.email && formik.touched.email ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.email}</div>
+                                ) : null}
+
                                 <div className={styles.loginPage__content__form__passwordline}>
                                     <Field
                                         name='password'
                                         type={passwordInputType}
-                                        value={data.password}
+                                        value={formik.values.password}
                                         placeholder='Пароль'
-                                        onChange={(e: any) => setData({...data, password: e.target.value})}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                     />
                                     <span>{toggleIcon}</span>
                                 </div>
+                                {formik.errors.password && formik.touched.password ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.password}</div>
+                                ) : null}
 
                                 <Button
                                     type='submit'
