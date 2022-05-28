@@ -12,7 +12,7 @@ export default function Clinic({doctors, adultClinics}: any) {
             <BaseLayout title={query.title as string}>
                 <div className={styles.department}>
                     <h1>{query.title}</h1>
-                    {adultClinics.filter((adultClinic: any) => (query.title === adultClinic.title)).map((filteredClinic: any) => (
+                    {adultClinics?.filter((adultClinic: any) => (query.title === adultClinic.title)).map((filteredClinic: any) => (
                         <div key={filteredClinic.title} className={styles.clinicPage}>
                             <img src={filteredClinic.inner_url} alt='clinic'/>
                             <blockquote className={styles.clinicPage__quote}>{filteredClinic.quote}</blockquote>
@@ -22,7 +22,7 @@ export default function Clinic({doctors, adultClinics}: any) {
 
                     <div className={styles.clinicPage__doctors}>
                         <h3>Врачи отделения</h3>
-                        {doctors.filter((doctor: any) => (doctor.department === (query.title)))
+                        {doctors?.filter((doctor: any) => (doctor.department === (query.title)))
                             .map((filteredDoctor: any) => (
                                 <DoctorCard
                                     key={filteredDoctor.fullName}
