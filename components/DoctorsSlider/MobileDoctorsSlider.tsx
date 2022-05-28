@@ -15,7 +15,7 @@ export const MobileDoctorsSlider = () => {
 
     return (
         <>
-            <div className="slider">
+            <div className="doctor__slider">
                 <Swiper
                     navigation={{
                         prevEl: ".swiper-button-prev-custom",

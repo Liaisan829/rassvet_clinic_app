@@ -5,12 +5,22 @@
 
   @include laptop1250 {
     width: 1000px;
-    margin-top: 60px;
-    display: none;
   }
 
-  @include phone {
-    width: 350px;
+  @include laptop1050{
+    width: 810px;
+  }
+
+  @include tablet850{
+    width: 670px;
+  }
+
+  @include tablet720{
+    width: 520px;
+  }
+
+  @include tablet620{
+    width: 420px;
   }
 
   .navigation {
@@ -21,9 +31,31 @@
     top: 200px;
     z-index: 4;
     cursor: pointer;
-    //@include laptop1250 {
-    //  display: none;
-    //}
+
+    @include laptop1250{
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    @include laptop1050{
+      width: 780px;
+      margin: 0;
+    }
+
+    @include tablet850{
+      width: 662px;
+      top: 180px;
+    }
+
+    @include tablet720{
+      width: 520px;
+      top: 150px;
+    }
+
+    @include tablet620{
+      width: 430px;
+      top: 130px;
+    }
   }
 }
 
@@ -59,34 +91,3 @@
 .swiper-button-prev::after, .swiper-button-next::after {
   display: none;
 }
-
-//@media screen and (min-width: 1420px){
-//  .doctor__slider {
-//    width: 1420px;
-//  }
-//}
-//
-//@media screen and (min-width: 1250px){
-//  .doctor__slider {
-//    width: 1250px;
-//  }
-//}
-//
-//@media screen and (min-width: 1050px){
-//  .doctor__slider {
-//    width: 1050px;
-//  }
-//}
-//
-//@media screen and (min-width: 850px){
-//  .doctor__slider {
-//    width: 850px;
-//  }
-//}
-//
-//
-//@media screen and (min-width: 720px){
-//  .doctor__slider {
-//    width: 720px;
-//  }
-//}
