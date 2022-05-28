@@ -1,5 +1,5 @@
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Navigation} from "swiper";
+import SwiperCore, {Autoplay, Navigation} from "swiper";
 import Image from "next/image";
 import {CardSlider} from "../Card/CardSlider/CardSlider";
 import prevArrow from '/public/slider/prev-arrow.svg';
@@ -14,6 +14,7 @@ import doc6 from '/public/doctorsSlider/doc6.svg';
 export const DoctorsSlider = () => {
 
     SwiperCore.use([Navigation]);
+    SwiperCore.use([Autoplay]);
 
     return (
         <>
@@ -33,12 +34,35 @@ export const DoctorsSlider = () => {
                         nextEl: ".swiper-button-next-custom"
                     }}
                     loop={true}
+                    autoplay={true}
                     width={1200}
                     slidesPerView={3}
                     onSlideChange={() => {
                     }}
                     onSwiper={() => {
                     }}
+                    // breakpoints={{
+                    //     1420: {
+                    //         width: 1420,
+                    //         slidesPerView: 3
+                    //     },
+                    //     1250: {
+                    //         width: 1250,
+                    //         slidesPerView: 3
+                    //     },
+                    //     1050: {
+                    //         width: 1050,
+                    //         slidesPerView: 2
+                    //     },
+                    //     850: {
+                    //         width: 850,
+                    //         slidesPerView: 2
+                    //     },
+                    //     720: {
+                    //         width: 720,
+                    //         slidesPerView: 2
+                    //     }
+                    // }}
                 >
                     <SwiperSlide>
                         <CardSlider

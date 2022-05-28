@@ -1,5 +1,6 @@
 @import "styles/mixins";
 
+
 .doctorsSliderMobile {
   display: none;
 }
@@ -23,7 +24,7 @@
   &__description {
     display: flex;
     flex-direction: row;
-    @include phone {
+    @include tablet620 {
       flex-direction: column;
     }
   }
@@ -50,12 +51,14 @@
     display: none;
     @include phone {
       display: initial;
+      padding-right: 20px;
     }
   }
 }
 
 .reviews {
   margin-top: 60px;
+
   h5 {
     @include regular-text;
     color: $c-orange;
@@ -75,7 +78,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    @include phone {
+    @include tablet620 {
       flex-direction: column;
       align-items: center;
     }
@@ -91,7 +94,7 @@
     display: flex;
     flex-direction: row;
 
-    @include phone {
+    @include tablet620 {
       flex-direction: column;
       align-items: center;
     }
@@ -101,7 +104,7 @@
       flex-direction: column;
       margin-left: 140px;
 
-      @include phone {
+      @include tablet620 {
         padding-top: 30px;
         text-align: center;
         margin: 0 auto;
@@ -143,15 +146,13 @@
   bottom: 20px;
   right: 20px;
   z-index: 6;
-}
 
-@media screen and (max-width: 1250px){
-  .chatButton {
+  @include laptop1250 {
     display: none;
   }
 }
 
-@media screen and (max-width: 850px){
+@include tablet850 {
   .healthCare {
     margin-top: 50px;
     li {
@@ -164,8 +165,6 @@
       font-size: 16px;
     }
   }
-
-
 }
 
 

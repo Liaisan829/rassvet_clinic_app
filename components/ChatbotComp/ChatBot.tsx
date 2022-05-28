@@ -6,14 +6,14 @@ import 'react-chatbot-kit/build/main.css';
 
 const ChatBot = () => {
     return (
-        <>
+        <div>
             <Chatbot
                 // @ts-ignore
                 config={config}
                 actionProvider={ActionProvider}
                 messageParser={MessageParser}
             />
-        </>
+        </div>
     );
 };
 

@@ -7,7 +7,19 @@
   border-radius: 20px;
   padding: 10px 34px;
   cursor: pointer;
-  //min-width: 170px;
+
+  @include laptop1250 {
+    min-width: 140px;
+  }
+
+  @include laptop1050 {
+    min-width: 110px;
+    padding: 8px 20px;
+  }
+
+  @include tablet850 {
+    padding: 5px 12px;
+  }
 
   &__orange {
     @extend .button;
@@ -30,25 +42,5 @@
 
   &__wide {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 1250px) {
-  .button {
-    min-width: 155px;
-  }
-}
-
-
-@media screen and (max-width: 1050px) {
-  .button {
-    min-width: 110px;
-    padding: 8px 25px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .button {
-    padding: 5px 20px;
   }
 }

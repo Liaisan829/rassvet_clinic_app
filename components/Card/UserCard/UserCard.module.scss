@@ -11,6 +11,31 @@
   border: 1px $c-dark-gray solid;
   border-radius: 20px;
   margin-right: 70px;
+  padding-bottom: 20px;
+
+  @include laptop1250 {
+    width: 400px;
+  }
+
+  @include laptop1050 {
+    width: 330px;
+  }
+
+  @include tablet850 {
+    width: 270px;
+  }
+
+  @include tablet720 {
+    width: 400px;
+  }
+
+  @include tablet620 {
+    width: 350px;
+  }
+
+  @include phone {
+    width: 270px;
+  }
 
   &__info {
     display: flex;
@@ -28,5 +53,10 @@
     height: 150px;
     border-radius: 100px;
     border: 1px solid $c-black;
+
+    @include tablet850 {
+      width: 100px;
+      height: 100px;
+    }
   }
 }

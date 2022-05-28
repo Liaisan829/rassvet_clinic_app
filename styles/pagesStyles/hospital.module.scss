@@ -1,19 +1,24 @@
 @import "../mixins";
 
 .hospital {
+
   &__cards {
     margin-top: 50px;
   }
 
-  @include phone {
-    p {
-      @include small-text;
+  p {
+    @include laptop1050 {
+      @include bold-text;
+      font-weight: normal;
+    }
+
+    @include tablet620 {
+      @include regular-text;
     }
   }
 }
 
 .clinic{
-
   p{
     margin-bottom: 20px;
   }

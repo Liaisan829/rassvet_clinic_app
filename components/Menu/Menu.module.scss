@@ -4,7 +4,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 70px;
+  top: 80px;
   left: 0;
   transform: translateX(-130%);
   transition: 0.2s;
@@ -25,7 +25,6 @@
     align-items: center;
     padding: 20px;
     transition: 0.4s;
-
 
     &__bottom {
       font-size: 1.2rem;

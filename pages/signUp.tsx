@@ -1,17 +1,17 @@
-import {Field, Form, Formik} from 'formik';
+import * as Yup from "yup";
+import {Field, Form, Formik, FormikValues, useFormik} from 'formik';
 import {toast, ToastContainer} from 'react-toastify';
 import Image from 'next/image';
-import {useState} from 'react';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
 import Link from "next/link";
+import usePasswordToggle from "../utils/usePasswordToggle";
 import logo from '/public/header/logo.svg';
 import cross from '/public/cross.png';
-import 'react-toastify/dist/ReactToastify.css';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
-import usePasswordToggle from "../utils/usePasswordToggle";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
     const [passwordInputType, toggleIcon] = usePasswordToggle();
@@ -24,26 +24,57 @@ const SignUp = () => {
         pauseOnHover: true,
         type: 'success'
     });
-    const [data, setData] = useState({
-        name: '',
-        surname: '',
-        patronymic: '',
-        email: '',
-        phone: '',
-        password: '',
-        repassword: '',
-        photoURL: "https://firebasestorage.googleapis.com/v0/b/rassvet-87044.appspot.com/o/avatar.png?alt=media&token=d38cd8c1-47b5-4f0d-9152-0a1dda1919ef"
-    });
 
-    const handleSignup = async (e: any) => {
-        e.preventDefault();
-        await signUp(data);
-        await localStorage.setItem('user', data.name);
+    const handleSignup = async (values: FormikValues) => {
+        await signUp(values);
+        await localStorage.setItem('user', values.name);
         await notifyToast();
         await setTimeout(() => {
             router.push('/');
         }, 3500);
     };
+
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            surname: "",
+            patronymic: "",
+            email: "",
+            phone: "",
+            password: "",
+            repassword: "",
+            photoURL: "https://firebasestorage.googleapis.com/v0/b/rassvet-87044.appspot.com/o/avatar.png?alt=media&token=d38cd8c1-47b5-4f0d-9152-0a1dda1919ef"
+        },
+        validationSchema: Yup.object().shape({
+            surname: Yup.string()
+                .required("Введите вашу фамилию")
+                .min(2, "Минимальная длина 2 символа"),
+            name: Yup.string()
+                .required("Введите ваше имя")
+                .min(2, "Минимальная длина 2 символа"),
+            patronymic: Yup.string()
+                .required("Введите ваше отчество")
+                .min(2, "Минимальная длина 2 символа"),
+            email: Yup.string()
+                .required("Введите вашу почту")
+                .matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    "Неверный формат почты"),
+            phone: Yup.string()
+                .required("Введите номер телефона")
+                .matches(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/g,
+                    "Неверный формат номера"),
+            password: Yup.string()
+                .required("Введите пароль")
+                .matches(/^(?=.*[0-9])(?=.*[a-z]).{3,10}$/g,
+                    "Пароль должен содержать строчные латинские  буквы, а также цифру")
+                .min(3, "Минимальная длина пароля 3 символа"),
+            repassword: Yup.string().required("Повторите пароль")
+                .oneOf([Yup.ref("password"), null], "Пароли НЕ совпадают!")
+        }),
+        onSubmit: (values) => {
+            handleSignup(values);
+        }
+    });
 
     return (
         <div className={styles.loginPage}>
@@ -71,72 +102,98 @@ const SignUp = () => {
                     </div>
 
                     <Formik initialValues={{
-                        email: '',
-                        password: '',
-                        surname: '',
-                        name: '',
-                        patronymic: '',
-                        phone: ''
+                        name: "",
+                        surname: "",
+                        patronymic: "",
+                        email: "",
+                        phone: "",
+                        password: "",
+                        repassword: ""
                     }}
                             onSubmit={console.log}
                     >
                         {() => (
-                            <Form className={styles.loginPage__content__form} onSubmit={handleSignup}>
+                            <Form className={styles.loginPage__content__form} onSubmit={formik.handleSubmit}>
                                 <Field
                                     name='surname'
-                                    value={data.surname}
+                                    value={formik.values.surname}
                                     placeholder='Фамилия'
-                                    onChange={(e: any) => setData({...data, surname: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.surname && formik.touched.surname ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.surname}</div>
+                                ) : null}
                                 <Field
                                     name='name'
-                                    value={data.name}
+                                    value={formik.values.name}
                                     placeholder='Имя'
-                                    onChange={(e: any) => setData({...data, name: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.name && formik.touched.name ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.name}</div>
+                                ) : null}
                                 <Field
-                                    name='name'
-                                    value={data.patronymic}
+                                    name='patronymic'
+                                    value={formik.values.patronymic}
                                     placeholder='Отчество'
-                                    onChange={(e: any) => setData({...data, patronymic: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.patronymic && formik.touched.patronymic ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.patronymic}</div>
+                                ) : null}
                                 <Field
                                     name='email'
-                                    value={data.email}
+                                    value={formik.values.email}
                                     placeholder='Ваша почта'
-                                    onChange={(e: any) => setData({...data, email: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.email && formik.touched.email ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.email}</div>
+                                ) : null}
                                 <Field
-                                    name='email'
-                                    value={data.phone}
+                                    name='phone'
+                                    value={formik.values.phone}
                                     placeholder='Ваш телефон'
-                                    onChange={(e: any) => setData({...data, phone: e.target.value})}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {formik.errors.phone && formik.touched.phone ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.phone}</div>
+                                ) : null}
+
                                 <div className={styles.loginPage__content__form__passwordline}>
                                     <Field
                                         name='password'
                                         type={passwordInputType}
-                                        value={data.password}
+                                        value={formik.values.password}
                                         placeholder='Пароль'
-                                        onChange={(e: any) => setData({...data, password: e.target.value})}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                     />
-
                                     <span>{toggleIcon}</span>
-
                                 </div>
+                                {formik.errors.password && formik.touched.password ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.password}</div>
+                                ) : null}
 
                                 <div className={styles.loginPage__content__form__passwordline}>
                                     <Field
                                         name='repassword'
                                         type={passwordInputType}
-                                        value={data.repassword}
+                                        value={formik.values.repassword}
                                         placeholder='Повторите пароль'
-                                        onChange={(e: any) => setData({...data, repassword: e.target.value})}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                     />
-
                                     <span>{toggleIcon}</span>
-
                                 </div>
+                                {formik.errors.repassword && formik.touched.repassword ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.repassword}</div>
+                                ) : null}
 
                                 <Button
                                     type='submit'

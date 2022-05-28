@@ -7,17 +7,19 @@ const ClinicReviews = ({reviews}: any) => {
 
     return (
         <BaseLayout title={"Отзывы"}>
-            <h1>Отзывы о клинике &quot;Рассвет&quot;</h1>
-            <div className={styles.allReviews}>
-                {reviews.map((review: any) => (
-                        <CardReview
-                            key={review.reviewer}
-                            date={review.time}
-                            fullName={review.reviewer}
-                            text={review.reviewText}
-                        />
-                    )
-                )}
+            <div>
+                <h1>Отзывы о клинике &quot;Рассвет&quot;</h1>
+                <div className={styles.allReviews}>
+                    {reviews.map((review: any) => (
+                            <CardReview
+                                key={review.reviewer}
+                                date={review.time}
+                                fullName={review.reviewer}
+                                text={review.reviewText}
+                            />
+                        )
+                    )}
+                </div>
             </div>
         </BaseLayout>
     );

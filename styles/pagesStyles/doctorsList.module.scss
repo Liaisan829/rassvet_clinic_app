@@ -12,7 +12,6 @@
       padding-right: 10px;
     }
   }
-
   h5 {
     @include regular-text;
     font-weight: bold;
@@ -26,7 +25,7 @@
   justify-content: space-evenly;
   margin-top: 50px;
 
-  @include phone {
+  @include tablet620 {
     flex-direction: column;
     align-items: center;
     margin-top: -10px;
@@ -36,7 +35,7 @@
     width: 400px;
     height: 400px;
 
-    @include phone {
+    @include tablet850 {
       width: 300px;
       height: 300px;
     }
@@ -48,19 +47,46 @@
     justify-content: space-between;
     width: 300px;
 
+    @include tablet850 {
+      width: 250px;
+      margin-left: 20px;
+    }
+
+    @include tablet620 {
+      margin-top: 20px;
+    }
+
     &__item {
-      @include phone {
+      margin-bottom: 20px;
+
+      &:first-child {
+        margin-bottom: 8px;
+        align-items: baseline;
+      }
+
+      @include tablet620 {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: baseline;
         margin-bottom: -20px;
+        h5, h6 {
+          font-size: 13px;
+        }
       }
+
     }
 
     &__price {
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      @include tablet620 {
+        margin-top: 20px;
+        h5, h6 {
+          font-size: 13px;
+        }
+      }
 
       @include phone {
         margin-top: 20px;
@@ -73,6 +99,7 @@
           margin: 0;
         }
       }
+
     }
 
     &__recording {
@@ -84,7 +111,7 @@
       @include small-text;
       color: $c-gray;
 
-      @include phone {
+      @include tablet850 {
         font-size: 12px;
         color: $c-gray;
       }
@@ -99,6 +126,11 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 100px;
+
+  @include tablet620 {
+    max-width: 350px;
+    margin-top: 50px;
+  }
 
   @include phone {
     margin-top: 50px;
@@ -123,6 +155,13 @@
   }
 }
 
+.doctorReview {
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
 .items {
   margin-bottom: 30px;
 }
+

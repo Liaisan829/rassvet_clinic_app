@@ -21,7 +21,7 @@
     &__img {
       width: 180px;
       height: 110px;
-      @include phone {
+      @include tablet850 {
         width: 120px;
         height: 50px;
       }
@@ -39,6 +39,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin-top: 30px;
 
+    @include tablet620 {
+      max-width: 450px;
+    }
+
     @include phone {
       max-width: 350px;
     }
@@ -47,6 +51,21 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      &__error {
+        color: red;
+        margin-top: 5px;
+        white-space: pre-line;
+        width: 380px;
+
+        @include tablet620 {
+          width: 300px;
+        }
+
+        @include phone {
+          width: 250px;
+        }
+      }
 
       &__passwordline{
         display: flex;
@@ -74,6 +93,10 @@
       border: 1px solid $c-dark-gray;
       margin-top: 20px;
       padding-left: 16px;
+
+      @include tablet620 {
+        width: 300px;
+      }
 
       @include phone {
         width: 250px;
