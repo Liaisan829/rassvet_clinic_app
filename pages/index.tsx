@@ -8,11 +8,11 @@ import {CardReview} from "../components/Card/CardReview/CardReview";
 import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
+import {MobileDoctorsSlider} from "../components/DoctorsSlider/MobileDoctorsSlider";
 import AddressMap from "../components/yandexMap/AddressMap";
 import doctorLogo from '/public/doctorLogo.svg';
 import message from '/public/message.png';
 import styles from '/styles/pagesStyles/indexPageStyles.module.scss';
-import {MobileDoctorsSlider} from "../components/DoctorsSlider/MobileDoctorsSlider";
 
 const Home: NextPage = ({first, second}: any) => {
     const [showChatbotModal, setShowChatbotModal] = useState(false);
@@ -24,8 +24,7 @@ const Home: NextPage = ({first, second}: any) => {
     return (
         <>
             <BaseLayout title={"Главная страница"}>
-                <div className={styles.indexPage}>
-
+                <div className={styles.index}>
                     <Slider/>
 
                     <button

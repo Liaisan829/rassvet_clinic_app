@@ -3,6 +3,16 @@
 .doctor__slider {
   width: 1200px;
 
+  @include laptop1250 {
+    width: 1000px;
+    margin-top: 60px;
+    display: none;
+  }
+
+  @include phone {
+    width: 350px;
+  }
+
   .navigation {
     display: flex;
     justify-content: space-between;
@@ -11,6 +21,9 @@
     top: 200px;
     z-index: 4;
     cursor: pointer;
+    //@include laptop1250 {
+    //  display: none;
+    //}
   }
 }
 
@@ -47,35 +60,33 @@
   display: none;
 }
 
-@media screen and (max-width: 1250px){
-  .slider {
-    width: 1000px;
-  }
-}
-
-@media screen and (max-width: 1050px){
-  .slider {
-    width: 800px;
-    .navigation {
-      top: 150px;
-    }
-  }
-}
-
-@media screen and (max-width: 850px){
-  .slider {
-    width: 600px;
-    .navigation {
-      display: none;
-    }
-  }
-}
-
-@media screen and (max-width: 420px){
-  .slider {
-    width: 350px;
-    .navigation {
-      display: initial;
-    }
-  }
-}
+//@media screen and (min-width: 1420px){
+//  .doctor__slider {
+//    width: 1420px;
+//  }
+//}
+//
+//@media screen and (min-width: 1250px){
+//  .doctor__slider {
+//    width: 1250px;
+//  }
+//}
+//
+//@media screen and (min-width: 1050px){
+//  .doctor__slider {
+//    width: 1050px;
+//  }
+//}
+//
+//@media screen and (min-width: 850px){
+//  .doctor__slider {
+//    width: 850px;
+//  }
+//}
+//
+//
+//@media screen and (min-width: 720px){
+//  .doctor__slider {
+//    width: 720px;
+//  }
+//}

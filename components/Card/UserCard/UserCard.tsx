@@ -1,8 +1,13 @@
 import React from 'react';
 import styles from "./UserCard.module.scss";
 import {ImageUpload} from "../../ImageUpload/ImageUpload";
+import {logOut} from "../../../config/auth";
+import {Button} from "../../ui/Button/Button";
+import {useRouter} from "next/router";
 
 const UserCard = ({user}: any) => {
+    const router = useRouter();
+
     const isAdmin = () => {
         return user?.role === "admin";
     }
@@ -21,6 +26,16 @@ const UserCard = ({user}: any) => {
                     </div>
                 </div>
             </ImageUpload>
+            <Button
+                type='button'
+                onClick={() => {
+                    logOut()
+                        .then(() => router.push('/'))
+                }}
+                theme='orange'
+            >
+                Выход
+            </Button>
         </div>
     );
 };

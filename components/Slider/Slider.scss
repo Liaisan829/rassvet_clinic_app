@@ -3,8 +3,26 @@
 .slider {
   width: 1200px;
   margin-top: 50px;
-  @include phone {
+
+  @include laptop1250 {
+    width: 1000px;
+  }
+
+  @include laptop1050 {
+    width: 800px;
     margin-top: 0;
+  }
+
+  @include tablet850 {
+    width: 650px;
+  }
+
+  @include tablet720 {
+    width: 550px;
+  }
+
+  @include tablet620 {
+    width: 400px;
   }
 }
 
@@ -47,7 +65,7 @@
   align-items: center;
   text-align: center;
   padding: 0 130px;
-  @include phone {
+  @include tablet620 {
     height: 300px;
     padding: 0 20px;
   }
@@ -55,7 +73,11 @@
     color: $c-white;
     font-size: 50px;
     font-weight: bold;
-    @include phone {
+    @include laptop1050 {
+      @include header-text;
+      color: $c-white;
+    }
+    @include tablet620 {
       @include header-text-adaptive;
       color: $c-white;
     }
@@ -75,59 +97,23 @@
   background: url("../../public/slider/slide4.svg");
 }
 
-@include phone {
-  .slide1, .slide2, .slide3, .slide4 {
+.slide1, .slide2, .slide3, .slide4 {
+  @include laptop1250 {
+    width: 1000px;
+  }
+  @include laptop1050 {
+    width: 800px;
+  }
+  @include tablet850 {
+    width: 650px;
+  }
+  @include tablet720 {
+    width: 550px;
+  }
+  @include tablet620 {
+    width: 400px;
+  }
+  @include phone {
     width: 350px;
   }
 }
-
-//@media screen and (max-width: 1250px){
-//  .slide1, .slide2, .slide3, .slide4 {
-//    width: 1000px;
-//  }
-//  .slide {
-//    h2 {
-//      font-size: 45px;
-//    }
-//  }
-//}
-//
-//@media screen and (max-width: 1050px){
-//  .slide1, .slide2, .slide3, .slide4 {
-//    width: 800px;
-//  }
-//  .slide {
-//    h2 {
-//      font-size: 40px;
-//    }
-//  }
-//}
-//
-//@media screen and (max-width: 850px){
-//  .slider {
-//    margin-top: 0;
-//  }
-//  .slide1, .slide2, .slide3, .slide4 {
-//    width: 600px;
-//    height: 350px;
-//  }
-//  .slide {
-//    h2 {
-//      font-size: 30px;
-//    }
-//  }
-//}
-
-//@media screen and (max-width: 420px){
-//  .slider {
-//    margin-top: 0;
-//  }
-//  .slide1, .slide2, .slide3, .slide4 {
-//    width: 350px;
-//  }
-//  .slide {
-//    h2 {
-//      font-size: 30px;
-//    }
-//  }
-//}

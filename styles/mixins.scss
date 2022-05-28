@@ -52,6 +52,7 @@
   font-weight: 400;
 }
 
+
 @mixin laptop1250 {
   @media(max-width: 1250px) {
     @content

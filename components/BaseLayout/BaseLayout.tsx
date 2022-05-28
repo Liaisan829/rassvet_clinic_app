@@ -105,22 +105,23 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                             Личный кабинет
                                         </Button>
                                     </a>
-                                    <Button
-                                        type='button'
-                                        onClick={() => {
-                                            logOut()
-                                                .then(() => router.push('/'))
-                                        }}
-                                        theme='transparent'
-                                    >
-                                        Выход
-                                    </Button>
+                                    {/*<Button*/}
+                                    {/*    type='button'*/}
+                                    {/*    onClick={() => {*/}
+                                    {/*        logOut()*/}
+                                    {/*            .then(() => router.push('/'))*/}
+                                    {/*    }}*/}
+                                    {/*    theme='transparent'*/}
+                                    {/*>*/}
+                                    {/*    Выход*/}
+                                    {/*</Button>*/}
                                 </>
                             ) : (
                                 <>
                                     <Button
                                         type='button'
                                         theme='transparent'
+                                        className={styles.header__btn__login}
                                         onClick={() => {
                                             router.push('/signUp');
                                         }}

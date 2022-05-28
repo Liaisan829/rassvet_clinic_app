@@ -148,8 +148,10 @@
     justify-content: space-between;
     min-width: 300px;
 
-    @include laptop1250 {
-
+    &__login {
+      @include tablet850 {
+        display: none;
+      }
     }
 
     @include laptop1050 {
@@ -157,9 +159,7 @@
     }
 
     @include tablet850 {
-      flex-direction: column;
       min-width: 100px;
-      min-height: 65px;
     }
 
     @include tablet720 {
@@ -178,6 +178,7 @@
 .main {
   margin-top: 20px;
   margin-bottom: 30px;
+
   h1 {
     @include header-text;
     margin-bottom: 40px;
@@ -194,6 +195,9 @@
 
   p {
     @include average-text;
+    @include tablet850 {
+      @include small-text;
+    }
   }
 }
 

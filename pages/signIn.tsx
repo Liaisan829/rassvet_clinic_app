@@ -11,10 +11,11 @@ import dontshow from "/public/dontshow.png";
 import show from "/public/show.png";
 import cross from '/public/cross.png';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
+import usePasswordToggle from "../utils/usePasswordToggle";
 
 const SignIn = () => {
+    const [passwordInputType, toggleIcon] = usePasswordToggle();
     const router = useRouter();
-    const [seePass, setSeePass] = useState<boolean>(false);
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -25,10 +26,6 @@ const SignIn = () => {
         await signIn(data.email, data.password);
         await router.push('/');
     };
-
-    const onSeePass = () => {
-        setSeePass(!seePass);
-    }
 
     return (
         <div className={styles.loginPage}>
@@ -72,23 +69,12 @@ const SignIn = () => {
                                 <div className={styles.loginPage__content__form__passwordline}>
                                     <Field
                                         name='password'
-                                        type={seePass ? "text" : "password"} value={data.password}
+                                        type={passwordInputType}
+                                        value={data.password}
                                         placeholder='Пароль'
                                         onChange={(e: any) => setData({...data, password: e.target.value})}
                                     />
-                                    <Button
-                                        type={"button"}
-                                        onClick={onSeePass}
-                                        theme={""}
-                                        className={styles.loginPage__content__form__passwordline__btn}
-                                    >
-                                        {seePass ?
-                                            <Image src={dontshow} width={20} height={20}
-                                                   alt={"показать пароль"}/>
-                                            :
-                                            <Image src={show} width={20} height={20} alt={"показать пароль"}/>
-                                        }
-                                    </Button>
+                                    <span>{toggleIcon}</span>
                                 </div>
 
                                 <Button
