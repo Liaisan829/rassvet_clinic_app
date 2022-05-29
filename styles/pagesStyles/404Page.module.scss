@@ -1,0 +1,42 @@
+@import "styles/mixins";
+
+.error {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40vh;
+
+  h1 {
+    color: red;
+    margin-bottom: 50px;
+
+    @include tablet720 {
+      @include header-text-adaptive;
+      color: red;
+      font-weight: 600;
+    }
+
+    @include tablet620 {
+      @include average-text;
+      color: red;
+      font-weight: 600;
+    }
+
+  }
+
+  a {
+    color: $c-dark-gray;
+
+    h3 {
+      @include tablet620 {
+        @include small-text;
+        color: $c-dark-gray;
+        font-weight: 600;
+      }
+    }
+
+    &:hover {
+      color: black;
+    }
+  }
+}

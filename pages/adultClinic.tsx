@@ -3,7 +3,7 @@ import {ClinicCard} from '../components/Card/ClinicCard/ClinicCard';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
 import styles from '/styles/pagesStyles/adultClinic.module.scss';
 import {useEffect, useState} from "react";
-import SkeletonClinicsPage from "../components/ui/Skeleton/SkeletonClinicsPage";
+import {Spinner} from "../components/ui/Spinner/Spinner";
 
 const AdultClinic = ({adultClinics}: any) => {
     const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const AdultClinic = ({adultClinics}: any) => {
                     жизненного пути&nbsp;&mdash; от&nbsp;беременности и
                     новорожденности до&nbsp;реабилитации и&nbsp;возвращения работоспособности пожилым пациентам.</p>
                 <section className={styles.clinicCards}>
-                    {loading ? <SkeletonClinicsPage/> :
+                    {loading ? <Spinner/> :
                         adultClinics.map((adultClinic: any)=>(
                             <ClinicCard
                                 key={adultClinic.title}

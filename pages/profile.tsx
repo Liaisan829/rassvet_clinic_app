@@ -3,13 +3,13 @@ import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import {useAuth} from "../config/auth";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
-import styles from '/styles/pagesStyles/profile.module.scss';
 import {Button} from '../components/ui/Button/Button';
 import {useRouter} from "next/router";
-import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
 import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
-import {firestore} from "../config/firebase";
 import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
+import {Spinner} from "../components/ui/Spinner/Spinner";
+import {firestore} from "../config/firebase";
+import styles from '/styles/pagesStyles/profile.module.scss';
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
@@ -34,7 +34,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 2800);
+        }, 2000);
         return () => clearTimeout(timing);
     }, []);
 
@@ -121,7 +121,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                 <h1>Записи на прием</h1>
                                 {}
                                 <div className={styles.visits__content}>
-                                    {loading ? <SkeletonAppointmentsComponent/> :
+                                    {loading ? <Spinner/> :
                                         appointments.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
                                             <div key={filteredAppointment.email}
                                                  className={styles.visits__content__info}>
