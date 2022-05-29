@@ -4,15 +4,14 @@ import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
 import SkeletonDoctorPage from "../../components/ui/Skeleton/SkeletonDoctorPage";
-import { getDocsFromFirebase } from '../../utils/getDocsFromFirebase';
+import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '/styles/pagesStyles/doctorsList.module.scss';
 import {useAuth} from "../../config/auth";
 
-export default function Doctor({doctors, doctorReviews, users}: any) {
-    const currentUser = useAuth();
+export default function Doctor({doctors, doctorReviews}: any) {
     const {query} = useRouter();
     const [showModal, setShowModal] = useState(false);
     const [showReviewModal, setShowReviewModal] = useState(false);
@@ -67,7 +66,7 @@ export default function Doctor({doctors, doctorReviews, users}: any) {
                                             <AppointmentModal
                                                 showModal={showModal}
                                                 setShowModal={setShowModal}
-                                                specialistName={filteredDoctor.fullName}
+                                                specialist={filteredDoctor}
                                             />
                                             <p>Запишитесь на прием к специалисту в удобное для вас время</p>
                                         </div>

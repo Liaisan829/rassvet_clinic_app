@@ -7,18 +7,34 @@ import {firestore} from "../../../config/firebase";
 interface Props {
     showModal: any,
     setShowModal: any,
-    specialistName: string,
+    specialist: any,
 }
 
-export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialistName}) => {
+export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist}) => {
     const [fullUserName, setFullUserName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [selectValue, setSelectValue] = useState<any>('');
     const databaseRef = collection(firestore, 'appointments');
 
     const sendAppointment = async () => {
-        await addDoc(databaseRef, {fullName: fullUserName, phone: phone, email: email, specialist: specialistName});
+        await addDoc(databaseRef, {
+            fullName: fullUserName,
+            phone: phone,
+            email: email,
+            date: selectValue,
+            specialist: specialist?.fullName
+        });
         await setShowModal(false)
+        await deleteDateFromDoctor(selectValue);
+    }
+
+    const deleteDateFromDoctor = (date: string) => {
+        //удаляет только
+        const index = specialist.date.indexOf(date);
+        if (index > -1) {
+            specialist.date.splice(index, 1);
+        }
     }
 
     return (
@@ -32,12 +48,27 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                    onChange={(event: any) => setPhone(event.target.value)}/>
             <input type="text" name="email" placeholder="Ваш email"
                    onChange={(event: any) => setEmail(event.target.value)}/>
-            <input type="text" name="specialist" value={"Специалист: " + specialistName} readOnly={true}/>
+            <input type="text" name="specialist" value={"Специалист: " + specialist?.fullName} readOnly={true}/>
 
-            <select>
-                <option disabled selected>Выберите дат и время приема</option>
+            <select
+                className={"select"}
+                defaultValue={"Выберите дату и время приема"}
+                onChange={(e: any) => setSelectValue(e.target.value)}
+            >
+                <option
+                    className={"option"}
+                    disabled
+                >Выберите дату и время приема
+                </option>
+
+                {specialist.date?.map((date: any) => (
+                    <option
+                        className={"option"}
+                        key={date}
+                        value={date}
+                    >{date}</option>
+                ))}
             </select>
-            {/*<input type='datetime-local'/>*/}
 
             <Button
                 type="submit"

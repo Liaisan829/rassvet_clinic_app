@@ -11,20 +11,14 @@ interface CardProps {
 export const DoctorCard: FC<CardProps> = ({img, fullName, speciality}) => {
 
     return (
-        <>
+        <Link href={`/doctorsList/${fullName}`}>
             <div className={styles.section}>
-                <Link href={`/doctorsList/${fullName}`}>
-                    <a><img src={img} alt="doctor" className={styles.section__ourDoctor}/></a>
-                </Link>
-                <Link href={`/doctorsList/${fullName}`}>
-                    <a>
-                        <div className={styles.section__items}>
-                            <h4>{fullName}</h4>
-                            <p>{speciality}</p>
-                        </div>
-                    </a>
-                </Link>
+                <img src={img} alt="doctor" className={styles.section__ourDoctor}/>
+                <div className={styles.section__items}>
+                    <h4>{fullName}</h4>
+                    <p>{speciality}</p>
+                </div>
             </div>
-        </>
+        </Link>
     );
 };
