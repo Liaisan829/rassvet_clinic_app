@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from '../styles/pagesStyles/404Page.module.scss';
 
-
 export default function Error() {
     return (
         <div className={styles.error}>

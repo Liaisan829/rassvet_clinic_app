@@ -6,7 +6,6 @@ import {AppointmentModal} from "../../components/Modals/AppointmentModal/Appoint
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
-import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '/styles/pagesStyles/doctorsList.module.scss';
 import {Spinner} from "../../components/ui/Spinner/Spinner";
 
