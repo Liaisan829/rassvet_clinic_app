@@ -24,6 +24,10 @@
   @include tablet620 {
     width: 400px;
   }
+
+  @include phone {
+    max-width: 350px;
+  }
 }
 
 .swiper-button-prev-custom,
@@ -65,19 +69,21 @@
   align-items: center;
   text-align: center;
   padding: 0 130px;
-  @include tablet620 {
+
+  @include tablet850 {
     height: 300px;
     padding: 0 20px;
   }
+
   h2 {
     color: $c-white;
     font-size: 50px;
     font-weight: bold;
-    @include laptop1050 {
+    @include laptop1250 {
       @include header-text;
       color: $c-white;
     }
-    @include tablet620 {
+    @include tablet850 {
       @include header-text-adaptive;
       color: $c-white;
     }
@@ -87,33 +93,15 @@
 .slide1 {
   background: url("../../public/slider/slide1.svg");
 }
+
 .slide2 {
   background: url("../../public/slider/slide2.svg");
 }
+
 .slide3 {
   background: url("../../public/slider/slide3.svg");
 }
+
 .slide4 {
   background: url("../../public/slider/slide4.svg");
-}
-
-.slide1, .slide2, .slide3, .slide4 {
-  @include laptop1250 {
-    width: 1000px;
-  }
-  @include laptop1050 {
-    width: 800px;
-  }
-  @include tablet850 {
-    width: 650px;
-  }
-  @include tablet720 {
-    width: 550px;
-  }
-  @include tablet620 {
-    width: 400px;
-  }
-  @include phone {
-    width: 350px;
-  }
 }

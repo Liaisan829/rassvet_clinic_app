@@ -22,15 +22,8 @@
     width: 210px;
   }
 
-  @include phone {
-    align-items: center;
-  }
-
-  &__img {
-    @include phone {
-      margin-top: -70px;
-      margin-bottom: -120px;
-    }
+  @include forSlider{
+    width: 350px;
   }
 
   &__info {

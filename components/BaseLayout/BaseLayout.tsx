@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import {Link as ScrollLink} from 'react-scroll';
 import {Button} from '../ui/Button/Button';
-import {logOut, useAuth} from '../../config/auth';
+import {useAuth} from '../../config/auth';
 import Menu from "../Menu/Menu";
 import logo from '/public/header/logo.svg';
 import phone from '/public/header/phone.svg';
@@ -105,16 +105,6 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                             Личный кабинет
                                         </Button>
                                     </a>
-                                    {/*<Button*/}
-                                    {/*    type='button'*/}
-                                    {/*    onClick={() => {*/}
-                                    {/*        logOut()*/}
-                                    {/*            .then(() => router.push('/'))*/}
-                                    {/*    }}*/}
-                                    {/*    theme='transparent'*/}
-                                    {/*>*/}
-                                    {/*    Выход*/}
-                                    {/*</Button>*/}
                                 </>
                             ) : (
                                 <>

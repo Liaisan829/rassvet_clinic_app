@@ -14,7 +14,7 @@ import doc6 from '/public/doctorsSlider/doc6.svg';
 export const DoctorsSlider = () => {
 
     SwiperCore.use([Navigation]);
-    // SwiperCore.use([Autoplay]);
+    SwiperCore.use([Autoplay]);
 
     return (
         <>
@@ -34,7 +34,7 @@ export const DoctorsSlider = () => {
                         nextEl: ".swiper-button-next-custom"
                     }}
                     loop={true}
-                    // autoplay={true}
+                    autoplay={true}
                     width={1200}
                     slidesPerView={3}
                     onSlideChange={() => {
@@ -45,7 +45,7 @@ export const DoctorsSlider = () => {
                         //когда экран больше 420px
                         420: {
                             width: 350,
-                            slidesPerView: 2
+                            slidesPerView: 1
                         },
                         //когда экран больше 550px
                         550: {

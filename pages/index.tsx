@@ -8,7 +8,6 @@ import {CardReview} from "../components/Card/CardReview/CardReview";
 import {ChatbotModal} from "../components/Modals/ChatbotModal/ChatbotModal";
 import {DoctorsSlider} from "../components/DoctorsSlider/DoctorsSlider";
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
-import {MobileDoctorsSlider} from "../components/DoctorsSlider/MobileDoctorsSlider";
 import AddressMap from "../components/yandexMap/AddressMap";
 import doctorLogo from '/public/doctorLogo.svg';
 import message from '/public/message.png';
@@ -39,13 +38,14 @@ const Home: NextPage = ({first, second}: any) => {
                     <section className={styles.healthCare}>
                         <h1>Забота о вашем здоровье</h1>
                         <ul>
-                            <li>Мы видим себя ярким экспертным проектом на рынке медицинских услуг и рынке комплексных
-                                услуг
-                                по сохранению и улучшению качества жизни людей.
+                            <li>Мы&nbsp;видим себя ярким экспертным проектом на&nbsp;рынке медицинских услуг
+                                и&nbsp;рынке комплексных услуг по&nbsp;сохранению и&nbsp;улучшению качества жизни людей.
                             </li>
-                            <li>Мы видим себя проводником и популяризатором доказательной медицины мирового уровня.</li>
-                            <li>Мы считаем, что вправе формировать стандарты диагностики и лечения, на которые будут
-                                ориентироваться врачи и образованные пациенты в России.
+                            <li>Мы&nbsp;видим себя проводником и&nbsp;популяризатором доказательной медицины мирового
+                                уровня.
+                            </li>
+                            <li>Мы&nbsp;считаем, что вправе формировать стандарты диагностики и&nbsp;лечения,
+                                на&nbsp;которые будут ориентироваться врачи и&nbsp;образованные пациенты в&nbsp;России.
                             </li>
                         </ul>
                     </section>
@@ -60,25 +60,16 @@ const Home: NextPage = ({first, second}: any) => {
 
                             <div className={styles.healthCare__list}>
                                 <ul>
-                                    <li>У нас есть любовь к делу и преданность ему.</li>
-                                    <li>У нас есть специалисты, самые значимые в здравоохранении.</li>
-                                    <li>У нас есть идеология, принятая в цивилизованном, развитом мире, где
-                                        люди живут дольше.
-                                    </li>
-                                    <li>У нас есть воля и средства объединить это.</li>
+                                    <li>У&nbsp;нас есть любовь к&nbsp;делу и&nbsp;преданность ему.</li>
+                                    <li>У&nbsp;нас есть специалисты, самые значимые в&nbsp;здравоохранении.</li>
+                                    <li>У&nbsp;нас есть идеология, принятая в&nbsp;цивилизованном, развитом мире, где люди живут дольше.</li>
+                                    <li>У&nbsp;нас есть воля и&nbsp;средства объединить это.</li>
                                 </ul>
                             </div>
                         </div>
                     </section>
 
-                    <div className={styles.doctorsSlider}>
-                        <div className={styles.doctorsSlider__standard}>
-                            <DoctorsSlider/>
-                        </div>
-                        <div className={styles.doctorsSlider__mobile}>
-                            <MobileDoctorsSlider/>
-                        </div>
-                    </div>
+                    <DoctorsSlider/>
 
                     <section className={styles.reviews}>
                         <div className={styles.reviews__title}>
