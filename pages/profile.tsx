@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
-import {logOut, useAuth} from "../config/auth";
+import {useAuth} from "../config/auth";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
 import styles from '/styles/pagesStyles/profile.module.scss';
@@ -90,6 +90,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
 
     return (
         <BaseLayout title="Профиль">
+            <div className={styles.profile}>
                 <div className={styles.userInfo}>
                     <UserCard user={user}/>
                     {isAdmin() ?
@@ -111,7 +112,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                                 onClick={() => onDelete(doctor.shortName)}
                                                 children={"Удалить"}
                                             />
-                                        </div >
+                                        </div>
                                     ))}
                                 </div>
                                 <Button
@@ -134,53 +135,42 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                 <div className={styles.visits__content}>
                                     {loading ? <SkeletonAppointmentsComponent/> :
                                         appointments.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
-                                            <div key={filteredAppointment.email} className={styles.visits__content__info}>
-                                                <h3>Вы записаны к специалисту: {filteredAppointment.specialist}</h3>
-                                                <h3>Дата и время приема: _____________________</h3>
+                                            <div key={filteredAppointment.email}
+                                                 className={styles.visits__content__info}>
+                                                <h3>Вы записаны к специалисту: {filteredAppointment?.specialist}</h3>
+                                                <h3>Дата и время приема: {filteredAppointment?.date}</h3>
                                             </div>
                                         ))}
                                 </div>
                             </div>
-                            {/*<div>*/}
-                            {/*    <div className={styles.review}>*/}
-                            {/*        <h1>Отзывы</h1>*/}
-                            {/*        <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>*/}
-                            {/*        <input*/}
-                            {/*            type='text'*/}
-                            {/*            placeholder='Введите фамилию и имя'*/}
-                            {/*            className={styles.review__reviewName}*/}
-                            {/*            onChange={setReviewer}*/}
-                            {/*        />*/}
-                            {/*        <textarea*/}
-                            {/*            placeholder='Напишите отзыв'*/}
-                            {/*            className={styles.review__reviewText}*/}
-                            {/*            onChange={setReview}*/}
-                            {/*        />*/}
-                            {/*        <div className={styles.review__button}>*/}
-                            {/*            <Button*/}
-                            {/*                type='submit'*/}
-                            {/*                theme={'orange'}*/}
-                            {/*                onClick={createReview}*/}
-                            {/*            >Отправить отзыв</Button>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*    <div className={styles.logoutBtn}>*/}
-                            {/*        <Button*/}
-                            {/*            type='button'*/}
-                            {/*            onClick={() => {*/}
-                            {/*                logOut();*/}
-                            {/*                router.push('/');*/}
-                            {/*            }}*/}
-                            {/*            theme='transparent'*/}
-                            {/*        >*/}
-                            {/*            Выход*/}
-                            {/*        </Button>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-                            <ToastContainer/>
+
                         </>
                     }
                 </div>
+                <div className={styles.review}>
+                    <h1>Отзывы</h1>
+                    <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>
+                    <input
+                        type='text'
+                        placeholder='Введите фамилию и имя'
+                        className={styles.review__reviewName}
+                        onChange={setReviewer}
+                    />
+                    <textarea
+                        placeholder='Напишите отзыв'
+                        className={styles.review__reviewText}
+                        onChange={setReview}
+                    />
+                    <div className={styles.review__button}>
+                        <Button
+                            type='submit'
+                            theme={'orange'}
+                            onClick={createReview}
+                        >Отправить отзыв</Button>
+                    </div>
+                </div>
+                <ToastContainer/>
+            </div>
         </BaseLayout>
     );
 };
