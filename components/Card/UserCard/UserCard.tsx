@@ -23,6 +23,7 @@ const UserCard = ({user}: any) => {
                     <div className={styles.profile__info__flex}>
                         <p>{user?.phone}</p>
                         <p>{user?.email}</p>
+                        <p>{user?.birthDate}</p>
                     </div>
                 </div>
             </ImageUpload>

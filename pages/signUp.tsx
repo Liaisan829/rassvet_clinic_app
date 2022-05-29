@@ -43,6 +43,7 @@ const SignUp = () => {
             phone: "",
             password: "",
             repassword: "",
+            birthDate: "",
             photoURL: "https://firebasestorage.googleapis.com/v0/b/rassvet-87044.appspot.com/o/avatar.png?alt=media&token=d38cd8c1-47b5-4f0d-9152-0a1dda1919ef"
         },
         validationSchema: Yup.object().shape({
@@ -61,8 +62,10 @@ const SignUp = () => {
                     "Неверный формат почты"),
             phone: Yup.string()
                 .required("Введите номер телефона")
-                .matches(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/g,
+                .matches(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{11,13}$/g,
                     "Неверный формат номера"),
+            birthDate: Yup.string()
+                .required("Введите вашу дату рождения"),
             password: Yup.string()
                 .required("Введите пароль")
                 .matches(/^(?=.*[0-9])(?=.*[a-z]).{3,10}$/g,
@@ -108,6 +111,7 @@ const SignUp = () => {
                         email: "",
                         phone: "",
                         password: "",
+                        birthDate: "",
                         repassword: ""
                     }}
                             onSubmit={console.log}
@@ -163,6 +167,19 @@ const SignUp = () => {
                                 />
                                 {formik.errors.phone && formik.touched.phone ? (
                                     <div className={styles.loginPage__content__form__error}>{formik.errors.phone}</div>
+                                ) : null}
+
+                                <label>Выберите вашу дату рождения</label>
+                                <Field
+                                    name='birthDate'
+                                    type='date'
+                                    format='DD-MM-YYYY'
+                                    value={formik.values.birthDate}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.errors.birthDate && formik.touched.birthDate ? (
+                                    <div className={styles.loginPage__content__form__error}>{formik.errors.birthDate}</div>
                                 ) : null}
 
                                 <div className={styles.loginPage__content__form__passwordline}>

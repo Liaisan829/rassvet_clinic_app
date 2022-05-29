@@ -1,10 +1,21 @@
 @import "styles/mixins";
 
+.addEditPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .loginPage {
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 100vh;
+
+  label {
+    margin-top: 10px;
+    margin-bottom: -20px;
+  }
 
   &__login {
     display: flex;
