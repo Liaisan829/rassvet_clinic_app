@@ -1,7 +1,7 @@
 import type {NextPage} from 'next'
+import Link from "next/link";
 import Image from "next/image";
 import {useState} from "react";
-import Link from 'next/link'
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import {Slider} from "../components/Slider/Slider";
 import {CardReview} from "../components/Card/CardReview/CardReview";
@@ -39,11 +39,14 @@ const Home: NextPage = ({first, second}: any) => {
                     <section className={styles.healthCare}>
                         <h1>Забота о вашем здоровье</h1>
                         <ul>
-                            <li>Мы видим себя ярким экспертным проектом на рынке медицинских услуг и рынке комплексных услуг
-                                по сохранению и улучшению качества жизни людей.</li>
+                            <li>Мы видим себя ярким экспертным проектом на рынке медицинских услуг и рынке комплексных
+                                услуг
+                                по сохранению и улучшению качества жизни людей.
+                            </li>
                             <li>Мы видим себя проводником и популяризатором доказательной медицины мирового уровня.</li>
                             <li>Мы считаем, что вправе формировать стандарты диагностики и лечения, на которые будут
-                                ориентироваться врачи и образованные пациенты в России.</li>
+                                ориентироваться врачи и образованные пациенты в России.
+                            </li>
                         </ul>
                     </section>
 
@@ -60,7 +63,8 @@ const Home: NextPage = ({first, second}: any) => {
                                     <li>У нас есть любовь к делу и преданность ему.</li>
                                     <li>У нас есть специалисты, самые значимые в здравоохранении.</li>
                                     <li>У нас есть идеология, принятая в цивилизованном, развитом мире, где
-                                        люди живут дольше.</li>
+                                        люди живут дольше.
+                                    </li>
                                     <li>У нас есть воля и средства объединить это.</li>
                                 </ul>
                             </div>

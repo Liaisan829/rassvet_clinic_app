@@ -41,28 +41,48 @@ export const DoctorsSlider = () => {
                     }}
                     onSwiper={() => {
                     }}
-                    // breakpoints={{
-                    //     1420: {
-                    //         width: 1420,
-                    //         slidesPerView: 3
-                    //     },
-                    //     1250: {
-                    //         width: 1250,
-                    //         slidesPerView: 3
-                    //     },
-                    //     1050: {
-                    //         width: 1050,
-                    //         slidesPerView: 2
-                    //     },
-                    //     850: {
-                    //         width: 850,
-                    //         slidesPerView: 2
-                    //     },
-                    //     720: {
-                    //         width: 720,
-                    //         slidesPerView: 2
-                    //     }
-                    // }}
+                    breakpoints={{
+                        //когда экран больше 420px
+                        420: {
+                            width: 350,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 550px
+                        550: {
+                            width: 420,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 650
+                        650: {
+                            width: 520,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 720
+                        720: {
+                            width: 670,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 850
+                        850: {
+                            width: 800,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 1050
+                        1050: {
+                            width: 1000,
+                            slidesPerView: 2
+                        },
+                        //когда экран больше 1250
+                        1250: {
+                            width: 1200,
+                            slidesPerView: 3
+                        },
+                        //когда экран больше 1450
+                        1420: {
+                            width: 1200,
+                            slidesPerView: 3
+                        }
+                    }}
                 >
                     <SwiperSlide>
                         <CardSlider

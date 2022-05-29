@@ -1,6 +1,5 @@
 @import "styles/mixins";
 
-
 .doctorsSliderMobile {
   display: none;
 }
@@ -21,6 +20,7 @@
 
 .legendaryDoctors {
   margin-top: 60px;
+
   &__description {
     display: flex;
     flex-direction: row;
@@ -28,14 +28,17 @@
       flex-direction: column;
     }
   }
+
   &__list {
     display: flex;
     flex-direction: column;
   }
+
   li {
     @include average-text;
     margin-bottom: 13px;
   }
+
   h1 {
     margin-bottom: 20px;
   }
@@ -43,13 +46,15 @@
 
 .doctorsSlider {
   &__standard {
-    @include phone {
+    @include forSlider {
       display: none;
     }
   }
+
   &__mobile {
     display: none;
-    @include phone {
+
+    @include forSlider {
       display: initial;
       padding-right: 20px;
     }
@@ -63,16 +68,18 @@
     @include regular-text;
     color: $c-orange;
   }
+
   &__title {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    &__link{
+    &__link {
       cursor: pointer;
     }
   }
+
   &__item {
     display: flex;
     flex-direction: row;
@@ -83,6 +90,7 @@
       align-items: center;
     }
   }
+
   h1 {
     margin-bottom: 20px;
   }
@@ -90,6 +98,7 @@
 
 .address {
   margin-top: 60px;
+
   &__info {
     display: flex;
     flex-direction: row;
@@ -109,8 +118,9 @@
         text-align: center;
         margin: 0 auto;
       }
+
       &__item {
-        margin-bottom:20px;
+        margin-bottom: 20px;
         @include phone {
           margin-bottom: 10px;
           &:not(:last-child) {
@@ -120,15 +130,18 @@
       }
     }
   }
+
   h6 {
     @include regular-text;
     font-weight: bold;
     color: $c-gray;
     margin-bottom: 10px;
   }
+
   p {
     @include small-text;
   }
+
   h1 {
     margin-bottom: 40px;
   }
@@ -155,12 +168,14 @@
 @include tablet850 {
   .healthCare {
     margin-top: 50px;
+
     li {
       font-size: 17px;
     }
   }
   .legendaryDoctors {
     margin-bottom: 50px;
+
     li {
       font-size: 16px;
     }
