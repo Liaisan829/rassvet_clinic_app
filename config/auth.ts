@@ -24,6 +24,7 @@ export function signUp(data: any) {
                 email: registeredUser.user.email,
                 phone: data.phone,
                 photoURL: data.photoURL,
+                birthDate: data.birthDate,
                 role: "user"
             })
                 .then(() => {

@@ -22,14 +22,6 @@ const Title = ({hospitals}: any) => {
         <BaseLayout title={query.title as string}>
             <div>
                 <h1>{query.title}</h1>
-                {hospitals?.filter((hospital: any)=>(query.title === hospital.title)).map((filteredHospital: any)=>(
-                    <div key={filteredHospital.title} className={styles.clinic}>
-                        <p>{filteredHospital.description}</p>
-                        <Image src={filteredHospital.image1} width={900} height={442} alt={'hospital image'}/>
-                        <Image src={filteredHospital.image2} width={900} height={442} alt={'hospital image'}/>
-                        <Image src={filteredHospital.image3} width={900} height={442} alt={'hospital image'}/>
-                    </div>
-                ))}
                 {loading ? <SkeletonHospitalPage/> :
                     <>
                         {hospitals?.filter((hospital: any)=>(query.title === hospital.title)).map((filteredHospital: any)=>(

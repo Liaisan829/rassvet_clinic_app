@@ -10,6 +10,7 @@ import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonApp
 import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
 import {firestore} from "../config/firebase";
 import {toast, ToastContainer} from "react-toastify";
+import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
@@ -20,6 +21,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const [users, setUsers] = useState<any>(usersInfo);
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
+    const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
 
     const notifyToast = () => toast('Спасибо, Ваш отзыв отправлен!', {
         position: 'top-center',
@@ -55,7 +57,8 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     }
 
     const onAddNew = () => {
-        router.push("/profileNew/addEdit");
+        // router.push("/profile/addEdit");
+        setShowAddDoctorModal(true)
     }
 
     const onDelete = async (shortName: string) => {
@@ -117,6 +120,10 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                     onClick={onAddNew}>
                                     Добавить нового доктора
                                 </Button>
+                                <AddDoctorModal
+                                    showModal={showAddDoctorModal}
+                                    setShowModal={setShowAddDoctorModal}
+                                />
                             </div>
                         </>
                         :
