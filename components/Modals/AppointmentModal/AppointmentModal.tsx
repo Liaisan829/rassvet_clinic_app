@@ -1,4 +1,4 @@
-import {addDoc, collection} from "@firebase/firestore";
+import {addDoc, collection, doc, updateDoc} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
@@ -16,6 +16,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
     const [phone, setPhone] = useState('');
     const [selectValue, setSelectValue] = useState<any>('');
     const databaseRef = collection(firestore, 'appointments');
+    const docRef = doc(firestore, "doctors", `${specialist.shortName}`)
 
     const sendAppointment = async () => {
         await addDoc(databaseRef, {
@@ -26,16 +27,19 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
             specialist: specialist?.fullName
         });
         await setShowModal(false)
-        await deleteDateFromDoctor(selectValue);
+        await updateDoc(docRef, {
+            //date:здесь будет массив который в отдельном методе фильтром убриает использованную дату
+        })
+        // await deleteDateFromDoctor(selectValue);
     }
-
-    const deleteDateFromDoctor = (date: string) => {
-        //удаляет только
-        const index = specialist.date.indexOf(date);
-        if (index > -1) {
-            specialist.date.splice(index, 1);
-        }
-    }
+    //
+    // const deleteDateFromDoctor = (date: string) => {
+    //     //удаляет только "локально", уже полученный массив
+    //     const index = specialist.date.indexOf(date);
+    //     if (index > -1) {
+    //         specialist.date.splice(index, 1);
+    //     }
+    // }
 
     return (
         <Modal title={"Запись на прием в клинику"} onClose={() => setShowModal(false)} show={showModal}>

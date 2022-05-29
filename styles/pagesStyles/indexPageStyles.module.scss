@@ -1,12 +1,12 @@
 @import "styles/mixins";
 
-.doctorsSliderMobile {
-  display: none;
-}
-
 .healthCare {
   background: $c-light-gray;
   margin-top: 60px;
+
+  @include phone{
+    max-width: 350px;
+  }
 
   li {
     margin-bottom: 15px;
@@ -20,6 +20,10 @@
 
 .legendaryDoctors {
   margin-top: 60px;
+
+  @include phone{
+    max-width: 350px;
+  }
 
   &__description {
     display: flex;
@@ -44,25 +48,14 @@
   }
 }
 
-.doctorsSlider {
-  &__standard {
-    @include forSlider {
-      display: none;
-    }
-  }
-
-  &__mobile {
-    display: none;
-
-    @include forSlider {
-      display: initial;
-      padding-right: 20px;
-    }
-  }
-}
-
 .reviews {
   margin-top: 60px;
+
+  @include phone {
+    max-width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
   h5 {
     @include regular-text;
@@ -72,8 +65,9 @@
   &__title {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
+
 
     &__link {
       cursor: pointer;
@@ -181,6 +175,3 @@
     }
   }
 }
-
-
-

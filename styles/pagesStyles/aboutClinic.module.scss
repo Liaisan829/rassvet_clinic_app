@@ -7,8 +7,17 @@
   margin-top: 20px;
   margin-bottom: 50px;
 
+  @include tablet850{
+    width: 650px;
+  }
+
   @include tablet720 {
-    flex-direction: column;
+    width: 550px;
     align-items: center;
+  }
+
+  @include tablet620{
+    width: 400px;
+    flex-direction: column;
   }
 }

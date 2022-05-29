@@ -23,6 +23,10 @@
     width: 420px;
   }
 
+  @include forSlider{
+    width: 350px;
+  }
+
   .navigation {
     display: flex;
     justify-content: space-between;
@@ -55,6 +59,10 @@
     @include tablet620{
       width: 430px;
       top: 130px;
+    }
+
+    @include forSlider{
+      display: none;
     }
   }
 }
