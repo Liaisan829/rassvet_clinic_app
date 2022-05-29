@@ -82,4 +82,27 @@
 
 .skeleton {
   margin-top: -40px;
+  @include laptop1250 {
+    max-width: 1000px;
+  }
+
+  @include laptop1050 {
+    max-width: 800px;
+  }
+
+  @include tablet850 {
+    max-width: 650px;
+  }
+
+  @include tablet720 {
+    max-width: 550px;
+  }
+
+  @include tablet620 {
+    max-width: 400px;
+  }
+
+  @include phone {
+    max-width: 350px;
+  }
 }

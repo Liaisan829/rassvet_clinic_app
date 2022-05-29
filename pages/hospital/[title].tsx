@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {getDocsFromFirebase} from "../../utils/getDocsFromFirebase";
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import styles from "/styles/pagesStyles/hospital.module.scss";
+import SkeletonHospitalPage from "../../components/ui/Skeleton/SkeletonHospitalPage";
 
 const Title = ({hospitals}: any) => {
+    const [loading, setLoading] = useState(false);
     const {query} = useRouter();
+
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 3700);
+        return () => clearTimeout(timing);
+    }, []);
 
     return (
         <BaseLayout title={query.title as string}>
@@ -20,6 +30,18 @@ const Title = ({hospitals}: any) => {
                         <Image src={filteredHospital.image3} width={900} height={442} alt={'hospital image'}/>
                     </div>
                 ))}
+                {loading ? <SkeletonHospitalPage/> :
+                    <>
+                        {hospitals?.filter((hospital: any)=>(query.title === hospital.title)).map((filteredHospital: any)=>(
+                            <div key={filteredHospital.title} className={styles.clinic}>
+                                <p>{filteredHospital.description}</p>
+                                <Image src={filteredHospital.image1} width={900} height={442} alt={'hospital image'}/>
+                                <Image src={filteredHospital.image2} width={900} height={442} alt={'hospital image'}/>
+                                <Image src={filteredHospital.image3} width={900} height={442} alt={'hospital image'}/>
+                            </div>
+                        ))}
+                    </>
+                }
             </div>
         </BaseLayout>
     );

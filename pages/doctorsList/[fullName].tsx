@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
@@ -26,13 +26,13 @@ export default function Doctor({doctors, doctorReviews, users}: any) {
         setShowReviewModal(true)
     }
 
-    // useEffect(() => {
-    //     setLoading(true);
-    //     const timing = setTimeout(() => {
-    //         setLoading(false);
-    //     }, 5000);
-    //     return () => clearTimeout(timing);
-    // }, []);
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 5000);
+        return () => clearTimeout(timing);
+    }, []);
 
     return (
         <BaseLayout title={'Специалист'}>

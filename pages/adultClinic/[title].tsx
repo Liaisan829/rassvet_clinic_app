@@ -3,36 +3,52 @@ import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {BaseLayout} from '../../components/BaseLayout/BaseLayout';
 import {DoctorCard} from "../../components/Card/CardSlider/DoctorCard";
 import styles from '/styles/pagesStyles/adultClinic.module.scss';
+import {useEffect, useState} from "react";
+import SkeletonDepartmentPage from "../../components/ui/Skeleton/ SkeletonDepartmentPage";
 
 export default function Clinic({doctors, adultClinics}: any) {
+    const [loading, setLoading] = useState(false);
     const {query} = useRouter();
+
+    useEffect(() => {
+        setLoading(true);
+        const timing = setTimeout(() => {
+            setLoading(false);
+        }, 3700);
+        return () => clearTimeout(timing);
+    }, []);
 
     return (
         <>
             <BaseLayout title={query.title as string}>
-                <div className={styles.department}>
-                    <h1>{query.title}</h1>
-                    {adultClinics?.filter((adultClinic: any) => (query.title === adultClinic.title)).map((filteredClinic: any) => (
-                        <div key={filteredClinic.title} className={styles.clinicPage}>
-                            <img src={filteredClinic.inner_url} alt='clinic'/>
-                            <blockquote className={styles.clinicPage__quote}>{filteredClinic.quote}</blockquote>
-                            <p>{filteredClinic.description}</p>
-                        </div>
-                    ))}
-
-                    <div className={styles.clinicPage__doctors}>
-                        <h3>Врачи отделения</h3>
-                        {doctors?.filter((doctor: any) => (doctor.department === (query.title)))
-                            .map((filteredDoctor: any) => (
-                                <DoctorCard
-                                    key={filteredDoctor.fullName}
-                                    img={filteredDoctor.url}
-                                    fullName={filteredDoctor.fullName}
-                                    speciality={filteredDoctor.speciality}
-                                />
+                <>
+                    {loading ? <SkeletonDepartmentPage/>
+                        :
+                        <div className={styles.department}>
+                            <h1>{query.title}</h1>
+                            {adultClinics?.filter((adultClinic: any) => (query.title === adultClinic.title)).map((filteredClinic: any) => (
+                                <div key={filteredClinic.title} className={styles.clinicPage}>
+                                    <img src={filteredClinic.inner_url} alt='clinic'/>
+                                    <blockquote className={styles.clinicPage__quote}>{filteredClinic.quote}</blockquote>
+                                    <p>{filteredClinic.description}</p>
+                                </div>
                             ))}
-                    </div>
-                </div>
+
+                            <div className={styles.clinicPage__doctors}>
+                                <h3>Врачи отделения</h3>
+                                {doctors?.filter((doctor: any) => (doctor.department === (query.title)))
+                                    .map((filteredDoctor: any) => (
+                                        <DoctorCard
+                                            key={filteredDoctor.fullName}
+                                            img={filteredDoctor.url}
+                                            fullName={filteredDoctor.fullName}
+                                            speciality={filteredDoctor.speciality}
+                                        />
+                                    ))}
+                            </div>
+                        </div>
+                    }
+                </>
             </BaseLayout>
         </>
     );

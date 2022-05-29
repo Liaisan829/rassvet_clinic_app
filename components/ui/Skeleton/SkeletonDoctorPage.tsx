@@ -3,10 +3,10 @@ import styles from '/styles/pagesStyles/doctorsList.module.scss';
 
 const SkeletonDoctorPage = () => {
     return (
-        <>
+        <div className={styles.skeleton}>
             <div className={styles.doctorPage}>
                 <div className={styles.doctorTitle}>
-                    <Skeleton duration={1} height={400} width={400}/>
+                    <Skeleton duration={1} height={350} width={350}/>
                     <div className={styles.doctorTitle__info}>
                         <div className={styles.doctorTitle__info__block}>
                             <div className={styles.items}>
@@ -28,20 +28,20 @@ const SkeletonDoctorPage = () => {
                 </div>
                 <div className={styles.doctorDescription}>
                     <div className={styles.doctorDescription__block}>
-                        <Skeleton duration={1} height={40} width={1200}/>
-                        <Skeleton duration={1} height={150} width={1200}/>
+                        <Skeleton duration={1} height={40} width={900}/>
+                        <Skeleton duration={1} height={150} width={900}/>
                     </div>
                     <div className={styles.doctorDescription__block}>
-                        <Skeleton duration={1} height={40} width={1200}/>
-                        <Skeleton duration={1} height={150} width={1200}/>
+                        <Skeleton duration={1} height={40} width={900}/>
+                        <Skeleton duration={1} height={150} width={900}/>
                     </div>
                     <div className={styles.doctorDescription__block}>
-                        <Skeleton duration={1} height={40} width={1200}/>
-                        <Skeleton duration={1} height={150} width={1200}/>
+                        <Skeleton duration={1} height={40} width={900}/>
+                        <Skeleton duration={1} height={150} width={900}/>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

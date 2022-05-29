@@ -13,10 +13,9 @@ const SkeletonClinicsPage = () => {
                 <Skeleton duration={1} height={213} width={287} className={styles.clinicCards__item}/>
                 <Skeleton duration={1} height={213} width={287} className={styles.clinicCards__item}/>
                 <Skeleton duration={1} height={213} width={287} className={styles.clinicCards__item}/>
+                <Skeleton duration={1} height={213} width={287} className={styles.clinicCards__item}/>
             </section>
         </div>
-
-
     );
 }
 export default SkeletonClinicsPage;
