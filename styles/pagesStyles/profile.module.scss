@@ -58,6 +58,16 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 40px;
+    max-width: 90%;
+    padding-left: 10px;
+
+    &__content {
+      border-bottom: 3px solid $c-dark-gray;
+
+      h3 {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 
@@ -70,6 +80,7 @@
 
   &__block {
     margin-top: 80px;
+
     p {
       margin-bottom: 15px;
     }
@@ -124,6 +135,7 @@
     &__item {
       margin-bottom: 15px;
     }
+
     p {
       margin-bottom: 8px;
     }
