@@ -9,7 +9,6 @@ import {useRouter} from "next/router";
 import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
 import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
 import {firestore} from "../config/firebase";
-import {toast, ToastContainer} from "react-toastify";
 import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
@@ -22,15 +21,6 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
     const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
-
-    const notifyToast = () => toast('Спасибо, Ваш отзыв отправлен!', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        type: 'success'
-    });
 
     useEffect(() => {
         users
@@ -57,7 +47,6 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     }
 
     const onAddNew = () => {
-        // router.push("/profile/addEdit");
         setShowAddDoctorModal(true)
     }
 
@@ -77,7 +66,6 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
         });
         await setReviewerName('');
         await setReviewText('');
-        notifyToast();
     };
 
     const setReviewer = (event: any) => {
@@ -147,29 +135,37 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                         </>
                     }
                 </div>
-                <div className={styles.review}>
-                    <h1>Отзывы</h1>
-                    <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>
-                    <input
-                        type='text'
-                        placeholder='Введите фамилию и имя'
-                        className={styles.review__reviewName}
-                        onChange={setReviewer}
-                    />
-                    <textarea
-                        placeholder='Напишите отзыв'
-                        className={styles.review__reviewText}
-                        onChange={setReview}
-                    />
-                    <div className={styles.review__button}>
-                        <Button
-                            type='submit'
-                            theme={'orange'}
-                            onClick={createReview}
-                        >Отправить отзыв</Button>
-                    </div>
+                <div className={styles.review__block}>
+                    {!isAdmin() ?
+                        <>
+                            <h1>Отзывы</h1>
+                            <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>
+                            <form className={styles.review}>
+                                <input
+                                    type='text'
+                                    required={true}
+                                    placeholder='Введите фамилию и имя'
+                                    className={styles.review__reviewName}
+                                    onChange={setReviewer}
+                                />
+                                <textarea
+                                    placeholder='Напишите отзыв'
+                                    required={true}
+                                    className={styles.review__reviewText}
+                                    onChange={setReview}
+                                />
+                                <div className={styles.review__button}>
+                                    <Button
+                                        type='submit'
+                                        theme={'orange'}
+                                        onClick={createReview}
+                                    >Отправить отзыв</Button>
+                                </div>
+                            </form>
+                        </>
+                        : null
+                    }
                 </div>
-                <ToastContainer/>
             </div>
         </BaseLayout>
     );

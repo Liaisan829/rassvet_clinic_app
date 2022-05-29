@@ -78,10 +78,12 @@
 .innerPart {
   height: 70vh;
   margin-top: 20px;
+
   &__container {
     height: 65vh;
     overflow-y: scroll;
   }
+}
   
 .select {
   border: 1px solid #675F5F;

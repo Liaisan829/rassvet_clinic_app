@@ -62,11 +62,17 @@
 }
 
 .review {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   @include phone {
     margin-top: 40px;
+  }
+
+  &__block {
+    margin-top: 80px;
+    p {
+      margin-bottom: 15px;
+    }
   }
 
   &__button {
