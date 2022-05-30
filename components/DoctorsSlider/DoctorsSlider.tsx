@@ -5,7 +5,7 @@ import {CardSlider} from "../Card/CardSlider/CardSlider";
 import prevArrow from '/public/slider/prev-arrow.svg';
 import nextArrow from '/public/slider/next-arrow.svg';
 import {useEffect, useState} from "react";
-import {DoctorModel, Doctors} from "../../stores/DoctorStore";
+import {DoctorModel, Doctors} from "../../mocks/DoctorMock";
 
 export const DoctorsSlider = () => {
     const [doctors, setDoctors] = useState<Array<DoctorModel>>([]);

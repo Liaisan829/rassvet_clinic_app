@@ -43,8 +43,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
         <>
             <Head>
                 <title>{title} | Клиника Рассвет</title>
-                {/*туть потом надо сделать др картинку*/}
-                <link rel='icon' href={'/header/logo.svg'}/>
+                <link rel='icon' href={'favicon.svg'}/>
             </Head>
             <div className={styles.app}>
                 <header className={styles.hr}>

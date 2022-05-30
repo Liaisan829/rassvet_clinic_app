@@ -25,7 +25,6 @@ const Home: NextPage = ({first, second}: any) => {
             <BaseLayout title={"Главная страница"}>
                 <div className={styles.index}>
                     <Slider/>
-
                     <button
                         className={styles.chatButton}
                         onClick={openChatbotModal}
