@@ -173,7 +173,9 @@ const SignUp = () => {
                                 <Field
                                     name='birthDate'
                                     type='date'
-                                    format='DD-MM-YYYY'
+                                    pattern='\d{1,2}/\d{1,2}/\d{4}'
+                                    min="1935-01-01"
+                                    max="2021-01-01"
                                     value={formik.values.birthDate}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}

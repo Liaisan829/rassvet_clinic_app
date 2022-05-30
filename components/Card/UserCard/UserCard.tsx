@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import styles from "./UserCard.module.scss";
 import {ImageUpload} from "../../ImageUpload/ImageUpload";
 import {logOut} from "../../../config/auth";
@@ -34,7 +34,6 @@ const UserCard = ({user}: any) => {
                             <div className={styles.profile__info__flex}>
                                 <p>{user?.phone}</p>
                                 <p>{user?.email}</p>
-                                <p>{user?.birthDate}</p>
                             </div>
                         </div>
                     </ImageUpload>
