@@ -14,7 +14,7 @@ const Title = ({hospitals}: any) => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 1500);
+        }, 3000);
         return () => clearTimeout(timing);
     }, []);
 
