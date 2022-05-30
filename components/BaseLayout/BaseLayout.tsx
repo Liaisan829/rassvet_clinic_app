@@ -43,7 +43,6 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
         <>
             <Head>
                 <title>{title} | Клиника Рассвет</title>
-                {/*туть потом надо сделать др картинку*/}
                 <link rel='icon' href={'/header/logo.svg'}/>
             </Head>
             <div className={styles.app}>
@@ -95,17 +94,15 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
 
                         <div className={styles.header__btn}>
                             {currentUser ? (
-                                <>
-                                    <a className={pathname === '/profile' ? styles.activeBtn : ''}>
-                                        <Button
-                                            type='button'
-                                            theme='transparent'
-                                            onClick={() => router.push("/profile")}
-                                        >
-                                            Личный кабинет
-                                        </Button>
-                                    </a>
-                                </>
+                                <a className={pathname === '/profile' ? styles.activeBtn : ''}>
+                                    <Button
+                                        type='button'
+                                        theme='transparent'
+                                        onClick={() => router.push("/profile")}
+                                    >
+                                        Личный кабинет
+                                    </Button>
+                                </a>
                             ) : (
                                 <>
                                     <Button

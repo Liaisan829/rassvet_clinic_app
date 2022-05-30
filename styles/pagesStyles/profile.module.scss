@@ -134,10 +134,21 @@
 
     &__item {
       margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 20px;
+
+      @include laptop1250{
+        display: block;
+        margin-bottom: 30px;
+      }
     }
 
     p {
       margin-bottom: 8px;
+      width: 310px;
     }
   }
 }

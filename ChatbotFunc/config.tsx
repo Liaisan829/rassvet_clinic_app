@@ -4,7 +4,7 @@ import Quiz from "../components/ChatbotComp/Quiz/Quiz";
 import BotAvatar from "../components/ChatbotComp/BotAvatar/BotAvatar";
 
 const config = {
-    botName: "Rassvet",
+    botName: "'Рассвет'",
     customComponents: {
         botAvatar: (props:any) => <BotAvatar {...props}/>
     },
