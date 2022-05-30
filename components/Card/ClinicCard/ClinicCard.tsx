@@ -11,18 +11,14 @@ interface CardProps {
 export const ClinicCard: FC<CardProps> = ({img, title}) => {
 
     return (
-        <>
+        <Link href={`/adultClinic/${title}`}>
             <div className={styles.card}>
-                <Link href={`/adultClinic/${title}`}>
-                    <a><Image src={img} width={285} height={165}/></a>
-                </Link>
+                <Image src={img} width={285} height={165}/>
 
                 <div className={styles.card__bottom}>
-                    <Link href={`/adultClinic/${title}`}>
-                        <a><p>{title}</p></a>
-                    </Link>
+                    <p>{title}</p>
                 </div>
             </div>
-        </>
+        </Link>
     );
 };

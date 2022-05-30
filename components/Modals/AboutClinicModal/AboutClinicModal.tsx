@@ -1,6 +1,6 @@
 import {FC} from 'react';
-import {Modal} from "../Modal/Modal";
 import Image from 'next/image';
+import {Modal} from "../Modal/Modal";
 import styles from './AboutClinicModal.module.scss';
 
 interface Props {

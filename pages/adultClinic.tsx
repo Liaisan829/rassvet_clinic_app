@@ -1,7 +1,7 @@
+import {useEffect, useState} from "react";
 import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import {ClinicCard} from '../components/Card/ClinicCard/ClinicCard';
 import {getDocsFromFirebase} from '../utils/getDocsFromFirebase';
-import {useEffect, useState} from "react";
 import {Spinner} from "../components/ui/Spinner/Spinner";
 import styles from '/styles/pagesStyles/adultClinic.module.scss';
 

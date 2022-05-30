@@ -44,7 +44,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
             <Head>
                 <title>{title} | Клиника Рассвет</title>
                 <link rel='icon' href={'favicon.svg'}/>
-  
+
             </Head>
             <div className={styles.app}>
                 <header className={styles.hr}>
@@ -128,6 +128,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                 </>
                             )}
                         </div>
+
                         <div className={styles.header__burgerMenu}>
                             <Button
                                 type={'button'}
@@ -137,6 +138,7 @@ export const BaseLayout: FC<Props> = ({children, title}) => {
                                 <Image src={burger}/>
                             </Button>
                         </div>
+
                         <Menu active={menuActive} setActive={setMenuActive}>
                             {navigation.map(({id, title, path}) => (
                                 <Link key={id} href={path}>

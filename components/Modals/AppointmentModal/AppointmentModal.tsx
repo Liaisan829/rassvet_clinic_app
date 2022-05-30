@@ -22,6 +22,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
     const [selectValue, setSelectValue] = useState<any>('');
     const databaseRef = collection(firestore, 'appointments');
     const docRef = doc(firestore, "doctors", `${specialist.shortName}`)
+    const defaultSelect = specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема";
 
     const notifyToast = () => toast("Спасибо, Ваш отзыв отправлен!", {
         position: "top-center",
@@ -57,7 +58,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                 <p>Администратор клиники с&nbsp;радостью ответит на&nbsp;ваши вопросы и&nbsp;запишет к&nbsp;нужному специалисту</p>
 
                 <form onSubmit={sendAppointment}>
-                    <input type="text" value={fullUserName} name="fullUserName" placeholder="Ваше ФИО" required
+                    <input autoFocus={true} type="text" value={fullUserName} name="fullUserName" placeholder="Ваше ФИО" required
                            onChange={(event: any) => setFullUserName(event.target.value)}/>
                     <input type="phone" name="phone" placeholder="Контактный телефон" required
                            onChange={(event: any) => setPhone(event.target.value)}/>
@@ -66,19 +67,20 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                     <input type="text" name="specialist" value={"Специалист: " + specialist?.fullName} readOnly={true}/>
 
                     <select
+                        required={true}
                         className={styles.select}
-                        value={specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
+                        defaultValue={defaultSelect}
                         onChange={(e: any) => setSelectValue(e.target.value)}
                     >
                         <option
-                            className={"option"}
+                            className={styles.select__option}
                             disabled
-                        >{specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
+                        >{defaultSelect}
                         </option>
 
                         {specialist.date?.map((date: any) => (
                             <option
-                                className={"option"}
+                                className={styles.select__option}
                                 key={date}
                                 value={date}
                             >{date}</option>

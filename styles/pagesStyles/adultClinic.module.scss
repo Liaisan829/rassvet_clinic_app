@@ -1,4 +1,4 @@
-@import "../mixins";
+@import "/styles/mixins";
 
 .clinicInfo {
   @include tablet850 {
@@ -11,7 +11,6 @@
     margin: 0 auto;
   }
 }
-
 
 .clinicCards {
   display: flex;
@@ -72,13 +71,13 @@
     @include bold-text;
     margin-top: 30px;
 
-    &__content{
+    &__content {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: baseline;
 
-      @include tablet720{
+      @include tablet720 {
         justify-content: space-between;
       }
 

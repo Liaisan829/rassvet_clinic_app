@@ -1,12 +1,12 @@
-@import "styles/mixins";
+@import "/styles/mixins";
 
-.allReviews{
+.allReviews {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 
-  &__skeletonItem{
+  &__skeletonItem {
     margin-bottom: 20px;
   }
 }

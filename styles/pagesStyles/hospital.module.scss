@@ -1,4 +1,4 @@
-@import "../mixins";
+@import "/styles/mixins";
 
 .hospital {
 
@@ -18,8 +18,8 @@
   }
 }
 
-.clinic{
-  p{
+.clinic {
+  p {
     margin-bottom: 20px;
   }
 }

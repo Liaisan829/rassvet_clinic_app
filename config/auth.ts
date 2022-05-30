@@ -3,12 +3,10 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
-    updateProfile,
 } from 'firebase/auth';
 import {addDoc, collection} from '@firebase/firestore';
-import {auth, firestore, storage} from './firebase';
+import {auth, firestore} from './firebase';
 import {useEffect, useState} from 'react';
-import {getDownloadURL, ref, uploadBytes} from '@firebase/storage';
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 
 const usersDatabaseRef = collection(firestore, 'users');
@@ -62,18 +60,6 @@ export function useAuth() {
 
     return currentUser;
 }
-
-export async function uploadUserPhoto(file: any, currentUser: any, setLoading: any) {
-    const fileRef = ref(storage, currentUser.uid + '.png')
-    setLoading(true)
-    const snapshot = await uploadBytes(fileRef, file)
-    const photoURL = await getDownloadURL(fileRef)
-
-    await updateProfile(currentUser, {photoURL})
-
-    setLoading(false)
-}
-
 
 export async function getUserFromStore(currentUser: any) {
     const users = getDocsFromFirebase("users");

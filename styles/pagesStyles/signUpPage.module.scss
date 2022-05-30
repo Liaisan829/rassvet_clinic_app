@@ -1,4 +1,4 @@
-@import "styles/mixins";
+@import "/styles/mixins";
 
 .addEditPage {
   display: flex;
@@ -78,12 +78,12 @@
         }
       }
 
-      &__passwordline{
+      &__passwordline {
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        span{
+        span {
           margin-top: 25px;
           margin-left: -40px;
           z-index: 3;
@@ -92,7 +92,7 @@
         }
       }
 
-      &__btn{
+      &__btn {
         margin-top: 20px;
       }
     }

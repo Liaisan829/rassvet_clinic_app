@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import styles from "./Spinner.module.scss";
 import {ClipLoader} from "react-spinners";
+import styles from "./Spinner.module.scss";
 
 export const Spinner = ({progress}:any) => {
     useEffect(()=>{}, [progress])

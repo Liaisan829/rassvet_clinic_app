@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {getDocsFromFirebase} from "../../utils/getDocsFromFirebase";
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
+import {getDocsFromFirebase} from "../../utils/getDocsFromFirebase";
 import {Spinner} from "../../components/ui/Spinner/Spinner";
 import styles from "/styles/pagesStyles/hospital.module.scss";
 

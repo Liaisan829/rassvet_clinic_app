@@ -6,8 +6,8 @@ import {AppointmentModal} from "../../components/Modals/AppointmentModal/Appoint
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
-import styles from '/styles/pagesStyles/doctorsList.module.scss';
 import {Spinner} from "../../components/ui/Spinner/Spinner";
+import styles from '/styles/pagesStyles/doctorsList.module.scss';
 
 export default function Doctor({doctors, doctorReviews}: any) {
     const {query} = useRouter();
@@ -120,7 +120,6 @@ export default function Doctor({doctors, doctorReviews}: any) {
 export async function getStaticProps() {
     const doctors = await getDocsFromFirebase("doctors");
     const doctorReviews = await getDocsFromFirebase("doctorReviews");
-    const users = await getDocsFromFirebase("users");
 
     return {
         props: {doctors, doctorReviews}
