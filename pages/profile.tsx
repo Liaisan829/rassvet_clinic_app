@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
 import {useRouter} from "next/router";
 import {firestore} from "../config/firebase";
+import Image from "next/image";
 import {useAuth} from "../config/auth";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
@@ -10,16 +11,17 @@ import {Button} from '../components/ui/Button/Button';
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
 import {Spinner} from "../components/ui/Spinner/Spinner";
+import applyNote from "../public/profile/applyNote.svg";
 import styles from '/styles/pagesStyles/profile.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
+    const [userAppointments, setUserAppointments] = useState<any>([]);
     const [reviewer, setReviewerName] = useState('');
     const [reviewText, setReviewText] = useState('');
     const reviewsCollectionRef = collection(firestore, 'reviews');
     const [loading, setLoading] = useState(false);
-    const [users, setUsers] = useState<any>(usersInfo);
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
     const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
@@ -34,20 +36,29 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     });
 
     useEffect(() => {
-        users
+        usersInfo
             .filter((user: any) => (
                 user.email === currentUser?.email)).map((loggedUser: any) => {
             setUser(loggedUser)
         })
+
+        getUserAppointments()
     }, [])
 
     useEffect(() => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 2500);
         return () => clearTimeout(timing);
     }, []);
+
+    const getUserAppointments = () => {
+        const apps = appointments?.filter((appointment: any) => (currentUser?.email ===
+            appointment.email))
+
+        setUserAppointments(apps);
+    }
 
     const isAdmin = () => {
         return user?.role === "admin";
@@ -107,7 +118,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                         />
                                         <Button
                                             type={"button"}
-                                            theme={"transparent"}
+                                            theme={"orange"}
                                             onClick={() => onDelete(doctor.shortName)}
                                             children={"Удалить"}
                                         />
@@ -118,7 +129,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                 type={"button"}
                                 theme={"orange"}
                                 onClick={onAddNew}>
-                                Добавить нового доктора
+                                Добавить специалиста
                             </Button>
                             <AddDoctorModal
                                 showModal={showAddDoctorModal}
@@ -130,13 +141,24 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                             <h1>Записи на прием</h1>
                             <div className={styles.visits__info}>
                                 {loading ? <Spinner/> :
-                                    appointments?.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
-                                        <div key={filteredAppointment.email}
-                                             className={styles.visits__info__content}>
-                                            <h3>Вы записаны к специалисту: {filteredAppointment?.specialist}</h3>
-                                            <h3>Дата и время приема: {filteredAppointment?.date}</h3>
-                                        </div>
-                                    ))}
+                                    <>
+                                        {userAppointments?.length === 0
+                                            ?
+                                            <div className={styles.visits__info__content}>
+                                                <Image src={applyNote} width={200} height={200} alt={"запись"}/>
+                                                <h3>Здесь будут отображаться Ваши записи</h3>
+                                            </div>
+                                            :
+                                            userAppointments?.map((filteredAppointment: any) => (
+                                                <div key={filteredAppointment.email}
+                                                     className={styles.visits__info__content}>
+                                                    <h3>Вы записаны к
+                                                        специалисту: {filteredAppointment?.specialist}</h3>
+                                                    <h3>Дата и время приема: {filteredAppointment?.date}</h3>
+                                                </div>
+                                            ))}
+                                    </>
+                                }
                             </div>
                         </div>
                     }
@@ -188,3 +210,4 @@ export async function getStaticProps() {
 }
 
 export default Profile;
+

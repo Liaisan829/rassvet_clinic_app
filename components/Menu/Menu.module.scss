@@ -4,7 +4,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 80px;
+  top: 85px;
   left: 0;
   transform: translateX(-130%);
   transition: 0.2s;
@@ -12,7 +12,7 @@
   &__blur {
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
     position: absolute;
   }
 
@@ -40,7 +40,7 @@
       color: $c-gray;
       @include small-text;
       font-weight: bold;
-      padding-top: 20px;
+      padding-top: 40px;
     }
   }
 }

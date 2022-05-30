@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 400px;
 
   @include laptop1050 {
     width: 380px;
@@ -20,6 +21,7 @@
 
   @include tablet620{
     width: 210px;
+    margin-bottom: 20px;
   }
 
   @include forSlider{
@@ -49,6 +51,7 @@
   h4 {
     @include bold-text;
     margin-bottom: 10px;
+    font-size: 17px;
 
     @include phone {
       @include regular-text;
