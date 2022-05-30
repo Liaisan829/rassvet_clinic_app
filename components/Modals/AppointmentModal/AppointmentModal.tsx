@@ -6,6 +6,7 @@ import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
 import {firestore} from "../../../config/firebase";
 import 'react-toastify/dist/ReactToastify.css';
+import styles from "../Modal/Modal.module.scss";
 
 interface Props {
     showModal: any,
@@ -45,7 +46,6 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
         })
         await router.reload();
         await notifyToast()
-        // await deleteDateFromDoctor(selectValue);
     }
     const deleteSelectedDate = (date: string) => {
         return specialist.date.filter((e: string) => e !== date)
@@ -54,8 +54,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
     return (
         <>
             <Modal title={"Запись на прием в клинику"} onClose={() => setShowModal(false)} show={showModal}>
-                <p>Администратор клиники с радостью ответит на ваши
-                    вопросы и запишет к нужному специалисту</p>
+                <p>Администратор клиники с&nbsp;радостью ответит на&nbsp;ваши вопросы и&nbsp;запишет к&nbsp;нужному специалисту</p>
 
                 <form onSubmit={sendAppointment}>
                     <input type="text" value={fullUserName} name="fullUserName" placeholder="Ваше ФИО" required
@@ -67,7 +66,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                     <input type="text" name="specialist" value={"Специалист: " + specialist?.fullName} readOnly={true}/>
 
                     <select
-                        className={"select"}
+                        className={styles.select}
                         value={specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
                         onChange={(e: any) => setSelectValue(e.target.value)}
                     >

@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import styles from "./UserCard.module.scss";
-import {ImageUpload} from "../../ImageUpload/ImageUpload";
 import {logOut} from "../../../config/auth";
 import {Button} from "../../ui/Button/Button";
 import {useRouter} from "next/router";
@@ -18,7 +17,7 @@ const UserCard = ({user}: any) => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 2500);
         return () => clearTimeout(timing);
     }, []);
 
@@ -26,17 +25,16 @@ const UserCard = ({user}: any) => {
         <div className={styles.profile}>
             {loading ? <Spinner/> :
                 <>
-                    <ImageUpload>
-                        <div className={styles.profile__info}>
-                            <p>{user?.surname} {user?.name} {user?.patronymic}</p>
-                            {isAdmin() && <p>Администратор</p>}
-                            <h3>Контактные данные:</h3>
-                            <div className={styles.profile__info__flex}>
-                                <p>{user?.phone}</p>
-                                <p>{user?.email}</p>
-                            </div>
+                    <img src={user?.photoURL} alt="фото профиля"/>
+                    <div className={styles.profile__info}>
+                        <h2 className={styles.profile__info__name}>{user?.surname} {user?.name} {user?.patronymic}</h2>
+                        {isAdmin() && <p>Администратор</p>}
+                        <h3>Контактные данные:</h3>
+                        <div className={styles.profile__info__flex}>
+                            <p>{user?.phone}</p>
+                            <p>{user?.email}</p>
                         </div>
-                    </ImageUpload>
+                    </div>
                     <Button
                         type='button'
                         onClick={() => {

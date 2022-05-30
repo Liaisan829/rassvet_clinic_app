@@ -1,16 +1,21 @@
-import { Component } from "react"
-import Link from "next/link";
-import styles from '../styles/pagesStyles/404Page.module.scss';
+import styles from "/styles/pagesStyles/error.module.scss";
 
-export default class extends Component {
-    render () {
-        return (
-            <div className={styles.error}>
-                <h1>Ooops, кажется, произошла ошибка!</h1>
-                <Link href={"/"}>
-                    <a><h3>Вернуться на главную</h3></a>
-                </Link>
-            </div>
-        )
-    }
+function Error({statusCode}: any) {
+    return (
+        <div className={styles.error}>
+            <h1>
+                {statusCode !== 404
+                    ? `An error ${statusCode} occurred on server`
+                    : 'Произошла ошибка! Такой страницы нет'}
+            </h1>
+            <a href="/"><h3>Перейти на главную страницу</h3></a>
+        </div>
+    )
 }
+
+Error.getInitialProps = ({res, err}: any) => {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+    return {statusCode}
+}
+
+export default Error

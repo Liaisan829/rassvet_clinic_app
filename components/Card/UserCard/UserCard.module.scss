@@ -40,11 +40,22 @@
   &__info {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    margin: 20px;
+
+    &__name{
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
 
     &__flex{
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      p{
+        margin-top: 10px;
+      }
     }
   }
 
