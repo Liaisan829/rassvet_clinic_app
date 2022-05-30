@@ -83,6 +83,12 @@
   }
 }
 
+@mixin tablet450{
+  @media (max-width: 450px){
+    @content
+  }
+}
+
 @mixin forSlider {
   @media(max-width: 500px) {
     @content
