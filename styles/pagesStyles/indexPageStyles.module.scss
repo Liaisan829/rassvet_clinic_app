@@ -1,10 +1,10 @@
-@import "styles/mixins";
+@import "/styles/mixins";
 
 .healthCare {
   background: $c-light-gray;
   margin-top: 60px;
 
-  @include phone{
+  @include phone {
     max-width: 350px;
   }
 
@@ -21,7 +21,7 @@
 .legendaryDoctors {
   margin-top: 60px;
 
-  @include phone{
+  @include phone {
     max-width: 350px;
   }
 

@@ -1,12 +1,12 @@
 import * as Yup from "yup";
 import {Field, Form, Formik, FormikValues, useFormik} from 'formik';
 import {toast, ToastContainer} from 'react-toastify';
+import Link from "next/link";
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signUp} from '../config/auth';
-import Link from "next/link";
 import usePasswordToggle from "../utils/usePasswordToggle";
 import logo from '/public/header/logo.svg';
 import cross from '/public/cross.png';

@@ -1,6 +1,6 @@
+import {useEffect, useState} from "react";
 import {BaseLayout} from '../components/BaseLayout/BaseLayout';
 import {HospitalCard} from "../components/Card/HospitalCard/HospitalCard";
-import {useEffect, useState} from "react";
 import {Spinner} from "../components/ui/Spinner/Spinner";
 import hospital from '/public/hospital.svg';
 import styles from '/styles/pagesStyles/hospital.module.scss';

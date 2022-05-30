@@ -1,8 +1,8 @@
+import {useEffect, useState} from "react";
 import {useRouter} from 'next/router';
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {BaseLayout} from '../../components/BaseLayout/BaseLayout';
 import {DoctorCard} from "../../components/Card/CardSlider/DoctorCard";
-import {useEffect, useState} from "react";
 import {Spinner} from "../../components/ui/Spinner/Spinner";
 import styles from '/styles/pagesStyles/adultClinic.module.scss';
 

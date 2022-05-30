@@ -10,7 +10,6 @@ interface CardProps {
 
 export const HospitalCard: FC<CardProps> = ({img, title}) => {
     return (
-
         <Link href={`/hospital/${title}`}>
             <div className={styles.card}>
                 <Image src={img} width={285} height={165}/>

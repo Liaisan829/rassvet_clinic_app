@@ -12,7 +12,6 @@ interface CardProps {
 }
 
 export const CardSlider: FC<CardProps> = ({img, fullName, speciality, price, width}) => {
-
     return (
         <Link href={`/doctorsList/${fullName}`}>
             <div className={styles.section}>

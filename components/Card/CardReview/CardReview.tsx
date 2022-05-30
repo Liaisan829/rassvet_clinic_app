@@ -8,7 +8,6 @@ interface CardProps {
 }
 
 export const CardReview: FC<CardProps> = (props) => {
-
     return (
         <div className={styles.section}>
             <div className={styles.section__info}>

@@ -1,4 +1,4 @@
-@import "../mixins";
+@import "/styles/mixins";
 
 .profile {
   display: flex;
@@ -140,7 +140,7 @@
       justify-content: space-between;
       column-gap: 20px;
 
-      @include laptop1250{
+      @include laptop1250 {
         display: block;
         margin-bottom: 30px;
       }

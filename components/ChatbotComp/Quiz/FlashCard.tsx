@@ -21,6 +21,7 @@ const FlashCard:FC<Props> = ({ question, answer, incrementIndex }) => {
                 {!showAnswer && question}
                 {showAnswer && answer}
             </div>
+
             {showAnswer && (
                 <button onClick={incrementIndex} className={styles.flashcardButton}>
                     Next question

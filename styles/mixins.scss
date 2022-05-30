@@ -39,7 +39,7 @@
   font-size: 12px;
 }
 
-@mixin modalText{
+@mixin modalText {
   font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -65,26 +65,26 @@
   }
 }
 
-@mixin tablet850{
-  @media(max-width: 850px){
+@mixin tablet850 {
+  @media(max-width: 850px) {
     @content
   }
 }
 
-@mixin tablet720{
-  @media(max-width: 720px){
+@mixin tablet720 {
+  @media(max-width: 720px) {
     @content
   }
 }
 
-@mixin tablet620{
+@mixin tablet620 {
   @media (max-width: 620px) {
     @content
   }
 }
 
-@mixin forSlider{
-  @media(max-width: 500px){
+@mixin forSlider {
+  @media(max-width: 500px) {
     @content
   }
 }

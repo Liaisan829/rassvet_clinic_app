@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import styles from "./UserCard.module.scss";
+import {useRouter} from "next/router";
 import {logOut} from "../../../config/auth";
 import {Button} from "../../ui/Button/Button";
-import {useRouter} from "next/router";
 import {Spinner} from "../../ui/Spinner/Spinner";
+import styles from "./UserCard.module.scss";
 
 const UserCard = ({user}: any) => {
     const [loading, setLoading] = useState(false);

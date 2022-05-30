@@ -21,6 +21,7 @@ const AboutClinicCard: FC<Props> = ({title, img, href}) => {
     return (
         <div className={styles.clinicCard}>
             <h4>{title}</h4>
+
             <div className={styles.clinicCard__img}>
                 <Button
                     type={'submit'}
@@ -29,6 +30,7 @@ const AboutClinicCard: FC<Props> = ({title, img, href}) => {
                 >
                     <Image src={img} width={300} height={350}/>
                 </Button>
+
                 <AboutClinicModal
                     img={img}
                     showModal={showModal}

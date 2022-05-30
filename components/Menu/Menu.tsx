@@ -1,11 +1,11 @@
 import React, {FC, ReactNode, useState} from 'react';
-import {Button} from "../ui/Button/Button";
 import {useRouter} from "next/router";
-import {useAuth} from "../../config/auth";
-import styles from './Menu.module.scss';
 import Image from "next/image";
-import message from '/public/message.png';
+import {Button} from "../ui/Button/Button";
+import {useAuth} from "../../config/auth";
 import {ChatbotModal} from "../Modals/ChatbotModal/ChatbotModal";
+import message from '/public/message.png';
+import styles from './Menu.module.scss';
 
 interface MenuProps {
     active: any,

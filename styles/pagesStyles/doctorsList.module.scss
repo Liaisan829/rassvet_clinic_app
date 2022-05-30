@@ -1,4 +1,4 @@
-@import "styles/mixins";
+@import "/styles/mixins";
 
 .doctorPage {
 
@@ -13,6 +13,7 @@
       padding-right: 10px;
     }
   }
+
   h5 {
     @include regular-text;
     font-weight: bold;
@@ -191,4 +192,3 @@
     max-width: 350px;
   }
 }
-

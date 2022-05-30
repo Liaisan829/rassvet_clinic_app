@@ -43,8 +43,10 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
     return (
         <>
             <Modal title={"Отзыв о специалисте"} onClose={() => setShowModal(false)} show={showModal}>
+                <p>Мы будем рады Вашему отзыву!</p>
+
                 <form onSubmit={sendDoctorReview}>
-                    <input type="text" value={name} name="name" placeholder="Ваше имя" required
+                    <input autoFocus={true} type="text" value={name} name="name" placeholder="Ваше имя" required
                            onChange={(event: any) => setName(event.target.value)}/>
                     <input type="text" name="phone" placeholder="Контактный телефон" required
                            onChange={(event: any) => setPhone(event.target.value)}/>

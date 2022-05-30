@@ -9,7 +9,6 @@ interface CardProps {
 }
 
 export const DoctorCard: FC<CardProps> = ({img, fullName, speciality}) => {
-
     return (
         <Link href={`/doctorsList/${fullName}`}>
             <div className={styles.section}>

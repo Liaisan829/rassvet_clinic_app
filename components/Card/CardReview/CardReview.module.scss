@@ -12,15 +12,19 @@
   @include laptop1250 {
     width: 490px;
   }
+
   @include laptop1050 {
     width: 390px;
   }
+
   @include tablet850 {
     width: 290px;
   }
+
   @include tablet720 {
     width: 270px;
   }
+
   @include phone {
     width: 320px;
     padding: 20px;
@@ -29,6 +33,7 @@
   h4 {
     @include bold-text;
     margin-bottom: 5px;
+
     @include tablet850 {
       @include small-text;
       font-weight: bold;
@@ -38,6 +43,7 @@
   p {
     @include small-text;
     line-height: 20px;
+
     @include tablet850 {
       @include regular-text;
     }
