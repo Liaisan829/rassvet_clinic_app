@@ -145,7 +145,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                         {userAppointments?.length === 0
                                             ?
                                             <div className={styles.visits__info__content}>
-                                                <Image src={applyNote} width={200} height={200} alt={"запись"}/>
+                                                <Image src={applyNote} width={150} height={150} alt={"запись"}/>
                                                 <h3>Здесь будут отображаться Ваши записи</h3>
                                             </div>
                                             :
@@ -186,6 +186,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                     <Button
                                         type='submit'
                                         theme={'orange'}
+                                        onClick={createReview}
                                     >Отправить отзыв</Button>
                                 </div>
                             </form>

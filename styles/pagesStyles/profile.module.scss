@@ -63,6 +63,7 @@
 
     &__content {
       border-bottom: 3px solid $c-dark-gray;
+      text-align: center;
 
       h3 {
         margin-bottom: 10px;
@@ -74,12 +75,21 @@
 .review {
   display: flex;
   flex-direction: column;
+
   @include phone {
     margin-top: 40px;
   }
 
   &__block {
     margin-top: 80px;
+
+    @include tablet450{
+      width: 400px;
+    }
+
+    @include phone{
+      width: 350px;
+    }
 
     p {
       margin-bottom: 15px;
