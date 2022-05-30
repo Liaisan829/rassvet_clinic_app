@@ -1,8 +1,9 @@
+import {toast, ToastContainer} from "react-toastify";
 import React, {useEffect, useState} from 'react';
 import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
+import {useRouter} from "next/router";
 import {firestore} from "../config/firebase";
 import {useAuth} from "../config/auth";
-import {useRouter} from "next/router";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
 import {Button} from '../components/ui/Button/Button';
@@ -11,7 +12,6 @@ import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal
 import {Spinner} from "../components/ui/Spinner/Spinner";
 import styles from '/styles/pagesStyles/profile.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import {toast, ToastContainer} from "react-toastify";
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
@@ -77,6 +77,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
         });
         await setReviewerName('');
         await setReviewText('');
+        await notifyToast();
     };
 
     const setReviewer = (event: any) => {

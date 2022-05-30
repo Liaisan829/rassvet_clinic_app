@@ -1,10 +1,10 @@
 import {addDoc, collection, doc, updateDoc} from "@firebase/firestore";
 import {FC, useState} from "react";
+import {toast, ToastContainer} from "react-toastify";
 import useRouter from "next/router";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
 import {firestore} from "../../../config/firebase";
-import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
@@ -93,8 +93,10 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                         onClick={sendAppointment}
                         disabled={specialist.date.length === 0}
                     >Отправить</Button>
+                </form>
             </Modal>
+
             <ToastContainer/>
         </>
-)
+    )
 };

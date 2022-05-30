@@ -169,6 +169,7 @@
 
   &__burgerMenu {
     display: none;
+
     @include tablet720 {
       display: initial;
     }
@@ -227,7 +228,7 @@
       padding: 16px 16px 16px 0;
       @include regular-text;
 
-      @include tablet850{
+      @include tablet850 {
         padding: 5px 5px 5px 0;
       }
     }
