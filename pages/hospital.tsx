@@ -12,7 +12,7 @@ const Hospital = () => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 3000);
         return () => clearTimeout(timing);
     }, []);
 
