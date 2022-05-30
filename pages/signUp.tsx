@@ -83,8 +83,7 @@ const SignUp = () => {
         <div className={styles.loginPage}>
             <Head>
                 <title>Регистрация | Клиника Рассвет</title>
-                {/*туть потом надо сделать др картинку*/}
-                <link rel='icon' href={'/header/logo.svg'}/>
+                <link rel='icon' href={'favicon.svg'}/>
             </Head>
             <div className={styles.loginPage__login}>
                 <div className={styles.loginPage__login__img}>
