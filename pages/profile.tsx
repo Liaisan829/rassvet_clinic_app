@@ -1,17 +1,17 @@
+import {toast, ToastContainer} from "react-toastify";
 import React, {useEffect, useState} from 'react';
-import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
+import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
+import {useRouter} from "next/router";
+import {firestore} from "../config/firebase";
 import {useAuth} from "../config/auth";
 import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
 import {Button} from '../components/ui/Button/Button';
-import {useRouter} from "next/router";
-import {addDoc, collection, deleteDoc, doc} from "@firebase/firestore";
+import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
 import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
 import {Spinner} from "../components/ui/Spinner/Spinner";
-import {firestore} from "../config/firebase";
 import styles from '/styles/pagesStyles/profile.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import {toast, ToastContainer} from "react-toastify";
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
@@ -94,57 +94,51 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                 <div className={styles.userInfo}>
                     <UserCard user={user}/>
                     {isAdmin() ?
-                        <>
-                            <div className={styles.doctors}>
-                                <div className={styles.doctors__row}>
-                                    {doctorsList.map((doctor: any) => (
-                                        <div className={styles.doctors__row__item}>
-                                            <p>{doctor.fullName}</p>
-                                            <Button
-                                                type={"button"}
-                                                theme={"transparent"}
-                                                onClick={() => onPreview(doctor)}
-                                                children={"Подробнее"}
-                                            />
-                                            <Button
-                                                type={"button"}
-                                                theme={"transparent"}
-                                                onClick={() => onDelete(doctor.shortName)}
-                                                children={"Удалить"}
-                                            />
+                        <div className={styles.doctors}>
+                            <div className={styles.doctors__row}>
+                                {doctorsList.map((doctor: any) => (
+                                    <div className={styles.doctors__row__item}>
+                                        <p>{doctor.fullName}</p>
+                                        <Button
+                                            type={"button"}
+                                            theme={"transparent"}
+                                            onClick={() => onPreview(doctor)}
+                                            children={"Подробнее"}
+                                        />
+                                        <Button
+                                            type={"button"}
+                                            theme={"transparent"}
+                                            onClick={() => onDelete(doctor.shortName)}
+                                            children={"Удалить"}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                            <Button
+                                type={"button"}
+                                theme={"orange"}
+                                onClick={onAddNew}>
+                                Добавить нового доктора
+                            </Button>
+                            <AddDoctorModal
+                                showModal={showAddDoctorModal}
+                                setShowModal={setShowAddDoctorModal}
+                            />
+                        </div>
+                        :
+                        <div className={styles.visits}>
+                            <h1>Записи на прием</h1>
+                            <div className={styles.visits__info}>
+                                {loading ? <Spinner/> :
+                                    appointments?.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
+                                        <div key={filteredAppointment.email}
+                                             className={styles.visits__info__content}>
+                                            <h3>Вы записаны к специалисту: {filteredAppointment?.specialist}</h3>
+                                            <h3>Дата и время приема: {filteredAppointment?.date}</h3>
                                         </div>
                                     ))}
-                                </div>
-                                <Button
-                                    type={"button"}
-                                    theme={"orange"}
-                                    onClick={onAddNew}>
-                                    Добавить нового доктора
-                                </Button>
-                                <AddDoctorModal
-                                    showModal={showAddDoctorModal}
-                                    setShowModal={setShowAddDoctorModal}
-                                />
                             </div>
-                        </>
-                        :
-                        <>
-                            <div className={styles.visits}>
-                                <h1>Записи на прием</h1>
-                                {}
-                                <div className={styles.visits__content}>
-                                    {loading ? <Spinner/> :
-                                        appointments.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
-                                            <div key={filteredAppointment.email}
-                                                 className={styles.visits__content__info}>
-                                                <h3>Вы записаны к специалисту: {filteredAppointment?.specialist}</h3>
-                                                <h3>Дата и время приема: {filteredAppointment?.date}</h3>
-                                            </div>
-                                        ))}
-                                </div>
-                            </div>
-
-                        </>
+                        </div>
                     }
                 </div>
                 <div className={styles.review__block}>
