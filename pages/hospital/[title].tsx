@@ -3,8 +3,8 @@ import {getDocsFromFirebase} from "../../utils/getDocsFromFirebase";
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
+import {Spinner} from "../../components/ui/Spinner/Spinner";
 import styles from "/styles/pagesStyles/hospital.module.scss";
-import SkeletonHospitalPage from "../../components/ui/Skeleton/SkeletonHospitalPage";
 
 const Title = ({hospitals}: any) => {
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ const Title = ({hospitals}: any) => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 3700);
+        }, 1500);
         return () => clearTimeout(timing);
     }, []);
 
@@ -22,7 +22,7 @@ const Title = ({hospitals}: any) => {
         <BaseLayout title={query.title as string}>
             <div>
                 <h1>{query.title}</h1>
-                {loading ? <SkeletonHospitalPage/> :
+                {loading ? <Spinner/> :
                     <>
                         {hospitals?.filter((hospital: any)=>(query.title === hospital.title)).map((filteredHospital: any)=>(
                             <div key={filteredHospital.title} className={styles.clinic}>

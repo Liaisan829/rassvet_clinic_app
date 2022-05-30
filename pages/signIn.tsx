@@ -6,10 +6,10 @@ import {useRouter} from 'next/router';
 import Head from 'next/head';
 import {Button} from '../components/ui/Button/Button';
 import {signIn} from '../config/auth';
+import usePasswordToggle from "../utils/usePasswordToggle";
 import logo from '/public/header/logo.svg';
 import cross from '/public/cross.png';
 import styles from '/styles/pagesStyles/signUpPage.module.scss';
-import usePasswordToggle from "../utils/usePasswordToggle";
 
 const SignIn = () => {
     const [passwordInputType, toggleIcon] = usePasswordToggle();

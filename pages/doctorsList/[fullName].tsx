@@ -3,13 +3,11 @@ import {useRouter} from "next/router";
 import {Button} from "../../components/ui/Button/Button";
 import {BaseLayout} from "../../components/BaseLayout/BaseLayout";
 import {AppointmentModal} from "../../components/Modals/AppointmentModal/AppointmentModal";
-import SkeletonDoctorPage from "../../components/ui/Skeleton/SkeletonDoctorPage";
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {DoctorReviewModal} from "../../components/Modals/DoctorReviewModal/DoctorReviewModal";
 import {CardReview} from "../../components/Card/CardReview/CardReview";
-import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '/styles/pagesStyles/doctorsList.module.scss';
-import {useAuth} from "../../config/auth";
+import {Spinner} from "../../components/ui/Spinner/Spinner";
 
 export default function Doctor({doctors, doctorReviews}: any) {
     const {query} = useRouter();
@@ -37,7 +35,7 @@ export default function Doctor({doctors, doctorReviews}: any) {
         <BaseLayout title={'Специалист'}>
             <div>
                 <h1>{query.fullName}</h1>
-                {loading ? <SkeletonDoctorPage/> :
+                {loading ? <Spinner/> :
                     doctors?.filter((doctor: any) => (query.fullName === doctor.fullName)).map((filteredDoctor: any) => (
                             <div key={filteredDoctor.fullName} className={styles.doctorPage}>
                                 <div className={styles.doctorTitle}>

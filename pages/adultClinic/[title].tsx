@@ -2,9 +2,9 @@ import {useRouter} from 'next/router';
 import {getDocsFromFirebase} from '../../utils/getDocsFromFirebase';
 import {BaseLayout} from '../../components/BaseLayout/BaseLayout';
 import {DoctorCard} from "../../components/Card/CardSlider/DoctorCard";
-import styles from '/styles/pagesStyles/adultClinic.module.scss';
 import {useEffect, useState} from "react";
-import SkeletonDepartmentPage from "../../components/ui/Skeleton/ SkeletonDepartmentPage";
+import {Spinner} from "../../components/ui/Spinner/Spinner";
+import styles from '/styles/pagesStyles/adultClinic.module.scss';
 
 export default function Clinic({doctors, adultClinics}: any) {
     const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ export default function Clinic({doctors, adultClinics}: any) {
         <>
             <BaseLayout title={query.title as string}>
                 <>
-                    {loading ? <SkeletonDepartmentPage/>
+                    {loading ? <Spinner/>
                         :
                         <div className={styles.department}>
                             <h1>{query.title}</h1>

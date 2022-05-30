@@ -7,9 +7,11 @@ import {BaseLayout} from "../components/BaseLayout/BaseLayout";
 import UserCard from "../components/Card/UserCard/UserCard";
 import {Button} from '../components/ui/Button/Button';
 import {getDocsFromFirebase} from "../utils/getDocsFromFirebase";
-import SkeletonAppointmentsComponent from "../components/ui/Skeleton/SkeletonAppointmentsComponent";
 import {AddDoctorModal} from "../components/Modals/AddDoctorModal/AddDoctorModal";
+import {Spinner} from "../components/ui/Spinner/Spinner";
 import styles from '/styles/pagesStyles/profile.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from "react-toastify";
 
 const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const currentUser = useAuth();
@@ -21,6 +23,15 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
     const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
+
+    const notifyToast = () => toast('Спасибо, ваш отзыв о сайте записан!', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        type: 'success'
+    });
 
     useEffect(() => {
         users
@@ -34,7 +45,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
         setLoading(true);
         const timing = setTimeout(() => {
             setLoading(false);
-        }, 2800);
+        }, 2000);
         return () => clearTimeout(timing);
     }, []);
 
@@ -117,7 +128,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                         <div className={styles.visits}>
                             <h1>Записи на прием</h1>
                             <div className={styles.visits__info}>
-                                {loading ? <SkeletonAppointmentsComponent/> :
+                                {loading ? <Spinner/> :
                                     appointments?.filter((appointment: any) => (currentUser?.email === appointment.email)).map((filteredAppointment: any) => (
                                         <div key={filteredAppointment.email}
                                              className={styles.visits__info__content}>
@@ -134,17 +145,17 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                         <>
                             <h1>Отзывы</h1>
                             <p>Хотите оставить отзыв о клинике &quot;Рассвет&quot;? Заполните форму:</p>
-                            <form className={styles.review}>
+                            <form onSubmit={createReview} className={styles.review}>
                                 <input
                                     type='text'
-                                    required={true}
+                                    required
                                     placeholder='Введите фамилию и имя'
                                     className={styles.review__reviewName}
                                     onChange={setReviewer}
                                 />
                                 <textarea
                                     placeholder='Напишите отзыв'
-                                    required={true}
+                                    required
                                     className={styles.review__reviewText}
                                     onChange={setReview}
                                 />
@@ -152,7 +163,6 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                                     <Button
                                         type='submit'
                                         theme={'orange'}
-                                        onClick={createReview}
                                     >Отправить отзыв</Button>
                                 </div>
                             </form>
@@ -160,6 +170,7 @@ const Profile = ({usersInfo, appointments, doctorsList}: any) => {
                         : null
                     }
                 </div>
+                <ToastContainer/>
             </div>
         </BaseLayout>
     );
