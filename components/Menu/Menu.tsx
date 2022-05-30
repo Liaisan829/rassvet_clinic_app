@@ -6,7 +6,6 @@ import styles from './Menu.module.scss';
 import Image from "next/image";
 import message from '/public/message.png';
 import {ChatbotModal} from "../Modals/ChatbotModal/ChatbotModal";
-import {ChatBottomSheet} from "../../containers/ChatBottomSheet/ChatBottomSheet";
 
 interface MenuProps {
     active: any,
@@ -15,12 +14,13 @@ interface MenuProps {
 }
 
 const Menu: FC<MenuProps> = ({active, setActive, children}) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
     const router = useRouter();
     const currentUser = useAuth();
+    const [showModal, setShowModal] = useState(false);
 
     const openChatbotModal = () => {
-            setIsOpen(!isOpen);
+        setShowModal(true)
+        setActive(false)
     }
     return (
         <div className={active ? `${styles.menu} ${styles.active}` : `${styles.menu}`}
@@ -60,8 +60,8 @@ const Menu: FC<MenuProps> = ({active, setActive, children}) => {
                     >
                         <Image src={message} width={30} height={30}/>
                     </button>
+                    <ChatbotModal onClose={() => setShowModal(false)} show={showModal}/>
                 </div>
-                <ChatBottomSheet isOpen={isOpen}/>
             </div>
         </div>
     );

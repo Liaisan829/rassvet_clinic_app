@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import ChatBot from "../../ChatbotComp/ChatBot";
 import {Button} from "../../ui/Button/Button";
@@ -27,13 +27,11 @@ export const ChatbotModal: FC<ModalProps> = ({show, onClose}) => {
                 <div>
                     <ChatBot/>
                 </div>
-                <div className={styles.overlay__popup_bottom}>
-                    <Button
-                        type="button"
-                        theme=""
-                        onClick={onHandleClose}
-                    >Закрыть</Button>
-                </div>
+                <Button
+                    type="button"
+                    theme="orange"
+                    onClick={onHandleClose}
+                >Закрыть</Button>
             </div>
         </div>
     ) : null;
