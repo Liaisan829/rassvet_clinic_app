@@ -1,9 +1,10 @@
-import {toast} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import {addDoc, collection} from "@firebase/firestore";
 import {FC, useState} from "react";
 import {Button} from "../../ui/Button/Button";
 import {Modal} from "../Modal/Modal";
 import {firestore} from "../../../config/firebase";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
     showModal: any,
@@ -19,7 +20,7 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
 
     const notifyToast = () => toast("Спасибо, Ваш отзыв отправлен!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -42,22 +43,22 @@ export const DoctorReviewModal: FC<Props> = ({showModal, setShowModal, specialis
     return (
         <>
             <Modal title={"Отзыв о специалисте"} onClose={() => setShowModal(false)} show={showModal}>
-                <input type="text" value={name} name="name" placeholder="Ваше имя"
-                       onChange={(event: any) => setName(event.target.value)}/>
-                <input type="text" name="phone" placeholder="Контактный телефон"
-                       onChange={(event: any) => setPhone(event.target.value)}/>
-                <input type="text" name="specialist" value={"Специалист: " + specialistName} readOnly={true}/>
-                <input type="text" name="review" placeholder="Напишите отзыв"
-                       onChange={(event: any) => setTextReview(event.target.value)}/>
+                <form onSubmit={sendDoctorReview}>
+                    <input type="text" value={name} name="name" placeholder="Ваше имя" required
+                           onChange={(event: any) => setName(event.target.value)}/>
+                    <input type="text" name="phone" placeholder="Контактный телефон" required
+                           onChange={(event: any) => setPhone(event.target.value)}/>
+                    <input type="text" name="specialist" value={"Специалист: " + specialistName} readOnly={true} required/>
+                    <input type="text" name="review" placeholder="Напишите отзыв" required
+                           onChange={(event: any) => setTextReview(event.target.value)}/>
 
-                <Button
-                    type="submit"
-                    theme="orange"
-                    onClick={sendDoctorReview}
-                >Отправить</Button>
-
+                    <Button
+                        type="submit"
+                        theme="orange"
+                    >Отправить</Button>
+                </form>
             </Modal>
-            {/*<ToastContainer/>*/}
+            <ToastContainer/>
         </>
     )
 };

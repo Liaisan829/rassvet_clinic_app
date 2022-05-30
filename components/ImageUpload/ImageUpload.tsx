@@ -41,7 +41,6 @@ export const ImageUpload: FC<Props> = ({children}) => {
         }
     }, [currentUser])
 
-
     return (
         <div className={styles.imageUpload}>
 
