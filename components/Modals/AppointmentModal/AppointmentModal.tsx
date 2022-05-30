@@ -68,13 +68,13 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
 
                     <select
                         className={"select"}
-                        value={specialist.date.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
+                        value={specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
                         onChange={(e: any) => setSelectValue(e.target.value)}
                     >
                         <option
                             className={"option"}
                             disabled
-                        >{specialist.date.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
+                        >{specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема"}
                         </option>
 
                         {specialist.date?.map((date: any) => (
@@ -91,7 +91,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                         type="submit"
                         theme="orange"
                         onClick={sendAppointment}
-                        disabled={specialist.date.length === 0}
+                        disabled={specialist.date?.length === 0}
                     >Отправить</Button>
                 </form>
             </Modal>
