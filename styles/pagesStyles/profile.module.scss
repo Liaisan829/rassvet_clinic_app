@@ -83,11 +83,11 @@
   &__block {
     margin-top: 80px;
 
-    @include tablet450{
+    @include tablet450 {
       width: 400px;
     }
 
-    @include phone{
+    @include phone {
       width: 350px;
     }
 
@@ -137,7 +137,9 @@
 }
 
 .doctors {
-  margin-top: 40px;
+  @include tablet720 {
+    margin-top: 40px;
+  }
 
   &__row {
     margin-bottom: 20px;
