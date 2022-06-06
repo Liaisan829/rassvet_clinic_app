@@ -41,7 +41,7 @@ export const Doctors: Array<DoctorModel> = [
     {
         img: doc5,
         fullName: "Наумова Наталья Андреевна",
-        speciality: "Кардиолог",
+        speciality: "Гастроэнтеролог",
         price: "Первичный прием: 6500 руб."
     },
     {

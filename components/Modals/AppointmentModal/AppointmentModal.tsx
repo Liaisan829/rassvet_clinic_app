@@ -16,7 +16,6 @@ interface Props {
 
 export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist}) => {
     const [fullUserName, setFullUserName] = useState('');
-    const router = useRouter;
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [selectValue, setSelectValue] = useState<any>('');
@@ -24,7 +23,7 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
     const docRef = doc(firestore, "doctors", `${specialist.shortName}`)
     const defaultSelect = specialist.date?.length === 0 ? "К сожалению, запись на данный момент невозможна" : "Выберите дату и время приема";
 
-    const notifyToast = () => toast("Спасибо, Ваш отзыв отправлен!", {
+    const notifyToast = () => toast("Спасибо, Вы записаны на прием!", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -41,13 +40,15 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
             date: selectValue,
             specialist: specialist?.fullName
         });
-        await setShowModal(false)
+
         await updateDoc(docRef, {
             date: deleteSelectedDate(selectValue)
-        })
-        await router.reload();
-        await notifyToast()
+        });
+
+        await setShowModal(false);
+        await notifyToast();
     }
+
     const deleteSelectedDate = (date: string) => {
         return specialist.date.filter((e: string) => e !== date)
     }
@@ -91,7 +92,6 @@ export const AppointmentModal: FC<Props> = ({showModal, setShowModal, specialist
                     <Button
                         type="submit"
                         theme="orange"
-                        onClick={sendAppointment}
                         disabled={specialist.date?.length === 0}
                     >Отправить</Button>
                 </form>

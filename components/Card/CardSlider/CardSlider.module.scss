@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   width: 400px;
+  cursor: pointer;
 
   @include laptop1050 {
     width: 380px;
